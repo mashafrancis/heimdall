@@ -13,7 +13,7 @@
 		"build:web": "turbo --filter web build",
 		"dev:tracker": "turbo --filter \"./packages/*\" dev",
 		"dev": "turbo run dev --concurrency 12",
-		"lint": "turbo run lint",
+		"lint": "turbo run lint -- --fix",
 		"format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
 		"format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\"",
 		"clean": "turbo run clean && rm -rf node_modules",
@@ -22,7 +22,9 @@
 		"deploy:api": "turbo --filter api deploy",
 		"migrate": "turbo --filter db migrate",
 		"migrate:clickhouse": "turbo --filter clickhouse migrate",
-		"studio": "pnpm --filter db studio"
+		"studio": "pnpm --filter db studio",
+		"release": "changeset version && changeset publish && changeset release",
+		"publish:packages": "pnpm run build && pnpm run release"
 	},
 	"pnpm": {
 		"overrides": {

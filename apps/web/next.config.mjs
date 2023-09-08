@@ -16,7 +16,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  siteUrl: env.NEXTAUTH_URL ?? 'https://heimdall.francismasha.com',
   images: {
     remotePatterns: [
       {
@@ -27,8 +26,8 @@ const nextConfig = {
   },
   rewrites: async () => [
     {
-      destination: env.NEXT_PUBLIC_API_URL,
       source: '/api/heimdall',
+      destination: env.NEXT_PUBLIC_API_URL,
     },
   ],
   transpilePackages: ['@heimdall-logs/tracker', '@heimdall-logs/api'],

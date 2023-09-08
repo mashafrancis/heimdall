@@ -18,7 +18,6 @@ const Events = ({
 	endDate: Date;
 	websiteId: string;
 }) => {
-	console.log(websiteId, 'event');
 	const url = env.NEXT_PUBLIC_API_URL;
 	const { data, isLoading } = useSWR<LoglibCustomEvent[]>(
 		`${url}/events?websiteId=${websiteId}&startDate=${startDate}&endDate=${endDate}`,

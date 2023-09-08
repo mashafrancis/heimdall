@@ -51,7 +51,7 @@ app.get('/', async (c) => {
 			if (err) {
 				throw err;
 			}
-			//@ts-ignore
+			//@ts-expect-error
 			if (decoded.website !== websiteId) {
 				throw Error;
 			}
@@ -71,7 +71,6 @@ app.get('/', async (c) => {
 			3,
 			4
 		);
-		console.log('Class: , Function: , Line 74 events():', events);
 		const tack = performance.now();
 		console.log(tack - tick, 'ms taken to query');
 		const filters = JSON.parse(queries.data.filter) as Filter<HeimdallEvent>[];
@@ -83,7 +82,6 @@ app.get('/', async (c) => {
 			const utmSource = queryParams?.utm_source ?? '';
 			return { ...s, utmCampaign, utmSource };
 		});
-		console.log('Class: , Function: , Line 85 events():', events);
 
 		//add utm as a key in session
 		lastEvents = lastEvents.map((s) => {
@@ -92,8 +90,6 @@ app.get('/', async (c) => {
 			const utmSource = queryParams?.utm_source ?? '';
 			return { ...s, utmCampaign, utmSource };
 		});
-
-		console.log('Class: , Function: , Line 95 lastEvents():', lastEvents);
 
 		filters.length &&
 			filters.forEach((f) => {

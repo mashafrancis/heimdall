@@ -188,10 +188,6 @@ async function getHitsData(
 					format: 'JSONEachRow',
 				})
 				.then(async (res) => {
-					console.log(
-						'Class: getHitsData, Function: , Line 191 await res():',
-						await res.json()
-					);
 					return (await res.json()) as HeimdallEvent[];
 				});
 		},
@@ -277,7 +273,7 @@ export function heimdallDb(db: 'sqlite' | 'clickhouse') {
 		) {
 			const hits = createEvent();
 			const insert = await hits(data);
-			return await insert[db]();
+			return insert[db]();
 		},
 		async getHits(
 			startDateObj: Date,

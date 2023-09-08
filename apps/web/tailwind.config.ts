@@ -61,6 +61,7 @@ const tailwindConfig = {
 			fontFamily: {
 				sans: ['var(--font-sans)', ...fontFamily.sans],
 				heading: ['var(--font-heading)', ...fontFamily.sans],
+				numeric: ['var(--font-numeric)', ...fontFamily.sans],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

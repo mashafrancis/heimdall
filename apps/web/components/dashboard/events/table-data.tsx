@@ -95,7 +95,7 @@ function DataTable<TData, TValue>({
 				<strong> {data.length} </strong>
 				events
 			</p>
-			<motion.div className='rounded-md border dark:border-gray-800 scrollbar-hide'>
+			<motion.div className='rounded-md border dark:border-gray-800 scrollbar-hide bg-background'>
 				<div className='flex items-center py-4 px-2 justify-between'>
 					<Input
 						placeholder='Search Events...'
@@ -110,7 +110,7 @@ function DataTable<TData, TValue>({
 					{/* @ts-ignore */}
 					<EventFilter data={data} setData={setLocalData} />
 				</div>
-				<Table className=' scrollbar-hide'>
+				<Table className='scrollbar-hide'>
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (
 							<TableRow>
