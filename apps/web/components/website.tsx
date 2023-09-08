@@ -51,7 +51,7 @@ export function Website({
 						<p className='font-semibold text-sm'>{visitors} Visitors</p>
 					</div>
 				</div>
-				<Link className=' w-full @[320px]/card:w-fit ' href={`/${site.id}`}>
+				<Link className='w-full @[320px]/card:w-fit ' href={`/s/${site.id}`}>
 					<Button
 						variant='outline'
 						className=' w-full @[320px]/card:w-fit'

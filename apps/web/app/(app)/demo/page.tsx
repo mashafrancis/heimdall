@@ -3,10 +3,11 @@ import { generateToken } from '@/lib/generate-token';
 
 const DemoPage = () => {
 	const token = generateToken({
-		website: 'localhost',
-		name: 'localhost',
-		id: 'localhost',
+		website: 'heimdall',
+		name: '',
+		id: 'heimdall',
 	});
+
 	return (
 		<Dashboard
 			// website={{
