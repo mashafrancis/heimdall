@@ -45,7 +45,7 @@ export default function Search({ disabled }: { disabled?: boolean }) {
 					name='search'
 					id='search'
 					disabled={disabled}
-					className='block h-10 w-full rounded-md bg-background pl-9 sm:text-sm'
+					className='block h-10 w-full  rounded-md shadow-none bg-background pl-9 sm:text-sm'
 					placeholder='Search...'
 					spellCheck={false}
 					onChange={(e) => handleSearch(e.target.value)}

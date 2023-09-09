@@ -10,6 +10,7 @@ import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { SidebarNavItem } from '@/types';
+import { ExcludeSquare } from '@phosphor-icons/react';
 import { For } from 'million/react';
 
 interface DashboardNavProps {
@@ -25,7 +26,17 @@ export function SideNav({ items }: DashboardNavProps) {
 
 	return (
 		<aside className='fixed inset-0 z-[1] hidden h-screen w-24 flex-col justify-between overflow-y-hidden p-2 backdrop-blur md:flex'>
-			<ul className='flex flex-col space-y-8 mt-14'>
+			<ul className='flex flex-col space-y-8'>
+				<div className='flex items-center justify-center gap-2 align-middle'>
+					<Link
+						href='/'
+						aria-label='heimdall-home'
+						className='block whitespace-nowrap text-xl font-medium transition focus:outline-none mt-4 mb-8'
+					>
+						<ExcludeSquare size={32} color='#0074a6' weight='duotone' />
+					</Link>
+				</div>
+
 				<For each={items}>
 					{({ id, href, disabled, title, icon }) => {
 						const Icon = Icons[icon || 'arrowRight'];

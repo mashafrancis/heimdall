@@ -59,14 +59,77 @@ const tailwindConfig = {
 				},
 			},
 			fontFamily: {
-				sans: ['var(--font-sans)', ...fontFamily.sans],
-				heading: ['var(--font-heading)', ...fontFamily.sans],
-				numeric: ['var(--font-numeric)', ...fontFamily.sans],
+				sans: [
+					'var(--font-sans)',
+					'Inter',
+					'BlinkMacSystemFont',
+					'-apple-system',
+					'Segoe UI',
+					'Roboto',
+					'Oxygen',
+					'Ubuntu',
+					'Cantarell',
+					'Fira Sans',
+					'Droid Sans',
+					'Helvetica Neue',
+					'Helvetica',
+					'Arial',
+					'sans-serif',
+				],
+				monospace: [
+					'var(--font-roboto-mono)',
+					'Roboto Mono',
+					'SFMono-Regular',
+					'Menlo',
+					'Monaco',
+					'Consolas',
+					'Liberation Mono',
+					'Courier New',
+					'monospace',
+				],
 			},
+			fontSize: {
+				h1: [
+					'32px',
+					{
+						lineHeight: '44px',
+						fontWeight: '500',
+					},
+				],
+				h2: [
+					'24px',
+					{
+						lineHeight: '32px',
+						fontWeight: '500',
+					},
+				],
+				h3: [
+					'18px',
+					{
+						lineHeight: '28px',
+						fontWeight: '500',
+					},
+				],
+				h4: [
+					'16px',
+					{
+						lineHeight: '20px',
+						fontWeight: '500',
+					},
+				],
+			},
+			// fontFamily: {
+			// 	sans: ['var(--font-sans)', ...fontFamily.sans],
+			// 	heading: ['var(--font-heading)', ...fontFamily.sans],
+			// 	numeric: ['var(--font-numeric)', ...fontFamily.sans],
+			// },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
+			},
+			lineHeight: {
+				DEFAULT: '24px',
 			},
 			keyframes: {
 				'accordion-down': {

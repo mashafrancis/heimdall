@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 
+import { NextLink } from '@/components/arrow-button';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -13,7 +14,6 @@ import { Icons } from './icons';
 interface WebsiteProps {
 	site: WebsiteType;
 	visitors: number;
-	key: string;
 	setSelected: (id: string) => void;
 	setIsOpen: (state: boolean) => void;
 }
@@ -21,18 +21,17 @@ interface WebsiteProps {
 export function Website({
 	site,
 	visitors,
-	key,
 	setSelected,
 	setIsOpen,
 }: WebsiteProps) {
 	const [isLoading, setIsLoading] = useState(false);
 	return (
-		<Card key={key} className='@container/card shadow-sm rounded-sm'>
+		<Card className='@container/card shadow-none rounded-md'>
 			<div className='card__layer1'></div>
 			<div className='card__layer2'></div>
 			<CardHeader className=''>
 				<div className=' flex items-center justify-between'>
-					<h3 className='text-lg font-semibold'>{site.title}</h3>
+					<h3 className='text-lg'>{site.title}</h3>
 					<MoreVertical
 						className='cursor-pointer'
 						size={18}
@@ -46,26 +45,12 @@ export function Website({
 			</CardHeader>
 			<CardContent className='flex flex-col @[320px]/card:flex-row @[320px]/card:items-center justify-between gap-2'>
 				<div>
-					<div className='flex items-center gap-2 text-secondary'>
+					<div className='flex items-center gap-2 text-lime-500'>
 						<User2 size={20} className=' ' />
-						<p className='font-semibold text-sm'>{visitors} Visitors</p>
+						<p className='text-sm'>{visitors} Visitors</p>
 					</div>
 				</div>
-				<Link className='w-full @[320px]/card:w-fit ' href={`/s/${site.id}`}>
-					<Button
-						variant='outline'
-						className=' w-full @[320px]/card:w-fit'
-						onClick={() => {
-							setIsLoading(true);
-						}}
-					>
-						{isLoading ? (
-							<Icons.spinner className=' h-4 w-4 animate-spin' />
-						) : (
-							'Go to Dashboard'
-						)}
-					</Button>
-				</Link>
+				<NextLink to={`/s/${site.id}`}></NextLink>
 			</CardContent>
 		</Card>
 	);

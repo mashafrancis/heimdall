@@ -29,9 +29,9 @@ export default async function HomePage() {
 	return (
 		<>
 			<section className='space-y-6 pb-8 md:pb-12 pt-10 lg:py-32'>
-				<div className='container flex max-w-[64rem] flex-col items-center gap-4 text-center'>
+				<div className='container flex max-w-[64rem] flex-col items-center gap-6 text-center'>
 					<svg
-						className='pointer-events-none absolute inset-0 h-full z-[-1] w-full stroke-gray-200 opacity-50 [mask-image:radial-gradient(100%_100%_at_top_center,white,transparent)]'
+						className='pointer-events-none absolute inset-0 h-full z-[-1] w-full stroke-gray-200 dark:stroke-[#414141] opacity-50 [mask-image:radial-gradient(100%_100%_at_top_center,white,transparent)]'
 						aria-hidden
 					>
 						<defs>
@@ -46,7 +46,11 @@ export default async function HomePage() {
 								<path d='M100 200V.5M.5 .5H200' fill='none' />
 							</pattern>
 						</defs>
-						<svg x='50%' y={-1} className='overflow-visible fill-gray-50'>
+						<svg
+							x='50%'
+							y={-1}
+							className='overflow-visible fill-gray-50 dark:fill-gray-950'
+						>
 							<path
 								d='M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z'
 								strokeWidth={0.5}
@@ -86,24 +90,13 @@ export default async function HomePage() {
 						>
 							{user ? 'Go to dashboard' : 'Get started'}
 						</Link>
-						<Link
-							href='/play'
-							className={cn(
-								buttonVariants({
-									variant: 'outline',
-									size: 'lg',
-								})
-							)}
-						>
-							Live playground
-						</Link>
 					</div>
 				</div>
 			</section>
 
 			<section
 				id='features'
-				className='container space-y-6 bg-white/10 py-8 lg:rounded-xl bg-slate-50 dark:bg-transparent lg:py-24'
+				className='container space-y-6 bg-muted py-8 lg:rounded-xl lg:py-24'
 			>
 				<div className='container flex max-w-[64rem] flex-col items-center gap-4 text-center'>
 					<div className='bg-primary/10 text-primary rounded-2xl px-4 py-1.5 text-sm font-medium'>

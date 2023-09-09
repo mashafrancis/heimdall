@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { ClientProvider } from '@/components/client-provider';
+import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { Toaster } from '@/components/ui/toaster';
 import { fontHeading, fontNumeric, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
@@ -81,6 +82,7 @@ export default function RootLayout({
 					/>
 					<Toaster />
 					<Analytics />
+					<TailwindIndicator />
 				</ClientProvider>
 			</body>
 		</html>

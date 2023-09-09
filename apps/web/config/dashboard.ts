@@ -1,6 +1,44 @@
 import { DashboardConfig } from '@/types';
 
 export const dashboardConfig: DashboardConfig = {
+	sideNav: [
+		{
+			id: 'website',
+			title: 'Website',
+			href: '/dashboard',
+			icon: 'monitor',
+		},
+		{
+			id: 'monitors',
+			title: 'Monitors',
+			href: '/dashboard/monitors',
+			icon: 'frequency',
+		},
+		{
+			id: 'status',
+			title: 'Status',
+			href: '/dashboard/status',
+			icon: 'radio',
+		},
+		{
+			id: 'api-keys',
+			title: 'Security',
+			href: '/dashboard/api-keys',
+			icon: 'key',
+		},
+		// {
+		// 	id: 'reports',
+		// 	title: 'Reports',
+		// 	href: '/dashboard/reports',
+		// 	icon: 'reports',
+		// },
+		// {
+		// 	id: 'settings',
+		// 	title: 'Notifications',
+		// 	href: '/dashboard/notification',
+		// 	icon: 'settings',
+		// },
+	],
 	projectNav: [
 		{
 			title: 'Overview',
@@ -11,7 +49,7 @@ export const dashboardConfig: DashboardConfig = {
 			href: '/monitoring',
 		},
 		{
-			title: 'Api Keys',
+			title: 'Api-Keys',
 			href: '/api-keys',
 		},
 		{

@@ -68,8 +68,6 @@ export const Dashboard = ({
 		fetcher
 	);
 
-	console.log('Class: , Function: Dashboard, Line 71 data():', data);
-
 	function addFilter(f: Filter) {
 		setFilters([...filters, f]);
 	}
@@ -161,8 +159,9 @@ export const Dashboard = ({
 							<div className=' flex flex-col items-end'>
 								<div className=' flex gap-1 items-center'>
 									<div className=' w-2.5 h-2.5 bg-gradient-to-tr from-lime-500 to-lime-700 animate-pulse rounded-full'></div>
-									<p className=' text-sm bg-gradient-to-tr from-lime-600 to-lime-800 text-transparent bg-clip-text font-medium'>
-										{data ? data.data.onlineVisitors : 0} Online
+									<p className=' text-sm bg-gradient-to-tr from-lime-600 to-lime-800 font-mono text-transparent bg-clip-text font-medium'>
+										{data ? data.data.onlineVisitors : 0}
+										<span className='font-sans pl-1'>Online</span>
 									</p>
 								</div>
 							</div>

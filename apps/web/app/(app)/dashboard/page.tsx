@@ -17,7 +17,7 @@ export default async function DashboardPage() {
 	const websites = userWebsites.concat(teamWebsites);
 
 	return (
-		<DashboardShell>
+		<>
 			<Tabs defaultValue='card' className='w-full'>
 				<div className='flex items-center justify-items-stretch px-0 gap-2'>
 					<Search />
@@ -38,6 +38,6 @@ export default async function DashboardPage() {
 					<WebsitesList websites={websites} />
 				</TabsContent>
 			</Tabs>
-		</DashboardShell>
+		</>
 	);
 }

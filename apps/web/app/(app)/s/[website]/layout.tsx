@@ -21,7 +21,7 @@ export default async function layout({ children }: { children: ReactNode }) {
 		<div className='flex min-h-screen flex-col bg-muted/50 pb-12'>
 			<div className='flex h-full'>
 				<main className='flex w-full flex-1 flex-col overflow-hidden space-y-8'>
-					<DashboardHeader user={user} items={dashboardConfig.projectNav} />
+					{/*<DashboardHeader user={user} items={dashboardConfig.projectNav} />*/}
 					<div className='container'>{children}</div>
 				</main>
 			</div>

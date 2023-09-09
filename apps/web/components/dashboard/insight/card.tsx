@@ -54,7 +54,7 @@ export function InsightCard({
 			</CardHeader>
 			{!isLoading && data ? (
 				<CardContent className='px-4'>
-					<div className='text-2xl xl:text-3xl font-bold ordinal slashed-zero tabular-nums'>{`${
+					<div className='text-2xl xl:text-3xl font-semibold ordinal slashed-zero tabular-nums'>{`${
 						data.current ? data.current.toLocaleString() : 0
 					} ${valuePrefix ?? ''}`}</div>
 					<div className=' flex justify-between items-center'>

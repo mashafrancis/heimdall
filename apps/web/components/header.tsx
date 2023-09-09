@@ -26,8 +26,12 @@ interface MiniHeaderProps {
 interface DashboardHeaderProps {
 	items: MainNavItem[];
 	user: User;
-	showOrgSelect?: boolean;
-	showLogo?: boolean;
+	className?: string;
+}
+
+interface Props {
+	className?: string;
+	user?: User;
 }
 
 const LINKS = [
@@ -57,137 +61,83 @@ function NavItem({ href, text }: { href: string; text: string }) {
 	);
 }
 
-function SiteHeader({ user }: { user?: User }) {
-	const navRef = useRef<HTMLDivElement>(null);
-	const control = useAnimation();
-
-	const addShadowToNavbar = useCallback(async () => {
-		if (window.pageYOffset > 10) {
-			navRef.current?.classList.add(
-				...['border-b', 'backdrop-blur-xl', 'bg-white/70', 'dark:bg-gray-900']
-			);
-
-			await control.start('visible');
-		} else {
-			navRef.current?.classList.remove(
-				...['border-b', 'backdrop-blur-xl', 'bg-white/70', 'dark:bg-gray-900']
-			);
-			await control.start('hidden');
-		}
-	}, [control]);
-
-	useEffect(() => {
-		window.addEventListener('scroll', addShadowToNavbar);
-		return () => {
-			window.removeEventListener('scroll', addShadowToNavbar);
-		};
-	}, [addShadowToNavbar]);
-
+function SiteHeader({ user, className }: Props) {
 	return (
-		<header className='flex h-12 items-center justify-between gap-6 border-b py-0 md:gap-10'>
-			<nav
-				ref={navRef}
-				className='fixed inset-x-0 top-0 z-10 w-full p-4 lg:p-2 lg:px-0'
-			>
-				<div className='container mx-auto flex justify-between'>
-					<div className='flex items-center justify-center gap-2 align-middle'>
-						<ExcludeSquare size={32} color='#0074a6' weight='duotone' />
-						<Link
-							href='/'
-							aria-label='almond-ui'
-							className='block whitespace-nowrap text-lg font-semibold transition focus:outline-none'
-						>
-							heimdall
-						</Link>
-					</div>
+		<header
+			className={cn(
+				'flex w-full items-center justify-between gap-2',
+				className
+			)}
+		>
+			<div className='flex items-center justify-center gap-2 align-middle'>
+				<ExcludeSquare size={32} color='#0074a6' weight='duotone' />
+				<Link
+					href='/'
+					aria-label='almond-ui'
+					className='block whitespace-nowrap text-lg font-semibold transition focus:outline-none'
+				>
+					heimdall
+				</Link>
+			</div>
 
-					<div className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
-						<ul className='hidden lg:flex'>
-							{LINKS.map((link) => (
-								<NavItem key={link.href} href={link.href} text={link.name} />
-							))}
-						</ul>
-						<MobileMenu user={user} />
-					</div>
+			<div className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
+				<ul className='hidden lg:flex'>
+					{LINKS.map((link) => (
+						<NavItem key={link.href} href={link.href} text={link.name} />
+					))}
+				</ul>
+				<MobileMenu user={user} />
+			</div>
 
-					<div className='md:flex hidden'>
-						{user ? (
-							<UserAccountNav user={user} />
-						) : (
-							<Link
-								href='/login'
-								className={cn(
-									buttonVariants({ variant: 'ghost' }),
-									'hover:bg-primary/10 hover:text-primary'
-								)}
-							>
-								Login
-							</Link>
+			<div className='md:flex hidden'>
+				{user ? (
+					<UserAccountNav user={user} />
+				) : (
+					<Link
+						href='/login'
+						className={cn(
+							buttonVariants({ variant: 'ghost' }),
+							'hover:bg-primary/10 hover:text-primary'
 						)}
-					</div>
-				</div>
-			</nav>
+					>
+						Login
+					</Link>
+				)}
+			</div>
 		</header>
 	);
 }
 
-function DashboardHeader({ user, items }: DashboardHeaderProps) {
-	const navRef = useRef<HTMLDivElement>(null);
-	const control = useAnimation();
-
-	const addShadowToNavbar = useCallback(async () => {
-		if (window.pageYOffset > 10) {
-			navRef.current?.classList.add(
-				...['border-b', 'backdrop-blur-xl', 'bg-white/70', 'dark:bg-gray-900']
-			);
-
-			await control.start('visible');
-		} else {
-			navRef.current?.classList.remove(
-				...['border-b', 'backdrop-blur-xl', 'bg-white/70', 'dark:bg-gray-900']
-			);
-			await control.start('hidden');
-		}
-	}, [control]);
-
-	useEffect(() => {
-		window.addEventListener('scroll', addShadowToNavbar);
-		return () => {
-			window.removeEventListener('scroll', addShadowToNavbar);
-		};
-	}, [addShadowToNavbar]);
-
+function DashboardHeader({ user, items, className }: DashboardHeaderProps) {
 	return (
-		<header className='flex bg-background h-16 items-center justify-between gap-6 border-b py-0 md:gap-10'>
-			<nav
-				ref={navRef}
-				className='fixed inset-x-0 top-0 z-10 w-full p-3 lg:p-2 lg:px-0'
-			>
-				<div className='mx-auto md:mx-8 flex justify-between'>
-					<div className='flex items-center justify-center gap-2 align-middle'>
-						<Link
-							href='/'
-							aria-label='heimdall-home'
-							className='block whitespace-nowrap text-xl font-medium transition focus:outline-none'
-						>
-							<ExcludeSquare size={32} color='#0074a6' weight='duotone' />
-						</Link>
-					</div>
+		<header
+			className={cn(
+				'flex w-full items-center justify-between gap-2',
+				className
+			)}
+		>
+			<div className='flex items-center justify-center gap-2 align-middle'>
+				<Link
+					href='/'
+					aria-label='heimdall-home'
+					className='block whitespace-nowrap text-xl font-medium transition focus:outline-none'
+				>
+					<ExcludeSquare size={32} color='#0074a6' weight='duotone' />
+				</Link>
+			</div>
 
-					<div className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
-						<ul className='hidden lg:flex'>
-							{items.map((link) => (
-								<NavItem key={link.href} href={link.href} text={link.title} />
-							))}
-						</ul>
-						<MobileMenu user={user} />
-					</div>
+			<div className='ml-[-0.60rem] lg:flex lg:items-center lg:justify-center'>
+				<ul className='hidden lg:flex'>
+					{items.map((link) => (
+						<NavItem key={link.href} href={link.href} text={link.title} />
+					))}
+				</ul>
+				<MobileMenu user={user} />
+			</div>
 
-					<div className='md:flex hidden'>
-						<UserAccountNav user={user} />
-					</div>
-				</div>
-			</nav>
+			<div className='md:flex hidden'>
+				<UserAccountNav user={user} />
+			</div>
 		</header>
 	);
 }

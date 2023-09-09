@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
@@ -27,8 +27,8 @@ import { z } from 'zod';
 import { Icons } from './icons';
 
 export const WebsiteForm = () => {
-	const [isLoading, setIsLoading] = useState(false);
-	const router = useRouter();
+	const [isLoading, startTransition] = useTransition();
+	const { refresh } = useRouter();
 	const form = useForm<z.infer<typeof websiteFormSchema>>({
 		resolver: zodResolver(websiteFormSchema),
 		defaultValues: {
@@ -37,35 +37,42 @@ export const WebsiteForm = () => {
 		},
 	});
 
-	async function onSubmit(values: z.infer<typeof websiteFormSchema>) {
-		setIsLoading(true);
-		const res = await fetch('/api/website', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(values),
-		});
-		if (!res.ok) {
-			setIsLoading(false);
-			if (res.status === 409) {
-				return toast({
+	const onSubmit = (values: z.infer<typeof websiteFormSchema>) => {
+		startTransition(async () => {
+			try {
+				const res = await fetch('/api/website', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(values),
+				});
+				if (!res.ok) {
+					if (res.status === 409) {
+						toast({
+							title: 'Uh oh!',
+							description:
+								'This website already exists. Please try again with a different website ID or Website URL.',
+							variant: 'destructive',
+						});
+					}
+					toast({
+						title: 'Uh oh!',
+						description:
+							'This website already exists. Please try again with a different website ID or Website URL.',
+						variant: 'destructive',
+					});
+				}
+				refresh();
+			} catch (e) {
+				toast({
 					title: 'Uh oh!',
-					description:
-						'This website already exists. Please try again with a different website ID or Website URL.',
+					description: `An error occurred: ${e.message}`,
 					variant: 'destructive',
 				});
 			}
-			return toast({
-				title: 'Uh oh!',
-				description:
-					'This website already exists. Please try again with a different website ID or Website URL.',
-				variant: 'destructive',
-			});
-		}
-		setIsLoading(false);
-		router.refresh();
-	}
+		});
+	};
 
 	const fieldValue = form.watch('url');
 
@@ -150,11 +157,8 @@ export const WebsiteForm = () => {
 					)}
 				/>
 				<Button type='submit' disabled={isLoading}>
-					{isLoading ? (
-						<Icons.spinner className='h-4 w-4 animate-spin' />
-					) : (
-						'Add Website'
-					)}
+					{isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
+					Submit Task
 				</Button>
 			</form>
 		</Form>

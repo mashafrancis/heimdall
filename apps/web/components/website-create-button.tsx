@@ -14,10 +14,10 @@ export function WebsiteCreateButton({ variant, ...props }: ButtonProps) {
 	const [, setCreateWebsite] = useAtom(websiteFormAtom);
 
 	async function onClick() {
-		if (websites.length > 1) {
+		if (websites.length > 5) {
 			return toast({
-				title: 'Limit of 2 websites reached.',
-				description: 'We currently only support 2 websites per account.',
+				title: 'Limit of 6 websites reached.',
+				description: 'We currently only support 6 websites per account.',
 				variant: 'destructive',
 			});
 		}
