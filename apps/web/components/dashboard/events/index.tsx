@@ -23,11 +23,8 @@ const Events = ({
 		`${url}/events?websiteId=${websiteId}&startDate=${startDate}&endDate=${endDate}`,
 		fetcher
 	);
-	if (!isLoading) {
-		console.log(data, 'event ata');
-	}
 	return (
-		<div className=' no-scrollbar'>
+		<div className='no-scrollbar'>
 			<DataTable
 				columns={columns}
 				data={data ?? []}

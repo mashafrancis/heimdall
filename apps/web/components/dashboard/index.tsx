@@ -21,7 +21,7 @@ import {
 	LineChart,
 	MoreHorizontal,
 	TimerIcon,
-	UserIcon,
+	User2,
 	Users2,
 } from 'lucide-react';
 import useSWR from 'swr';
@@ -194,7 +194,7 @@ export const Dashboard = ({
 									<div className='grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4'>
 										<InsightCard
 											title={viCardSwitch}
-											Icon={UserIcon}
+											Icon={User2}
 											data={
 												data
 													? viCardSwitch === 'New Visitors'
@@ -310,13 +310,11 @@ export const Dashboard = ({
 										/>
 									</div>
 									<div className='grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7'>
-										<Card className='md:col-span-4'>
+										<Card className='md:col-span-4 shadow-none'>
 											{curTableTab === 'locations' ? (
 												<Fragment>
-													<CardHeader className=' flex flex-row items-end gap-2'>
-														<CardTitle className='py-4 text-base'>
-															Visitors Map
-														</CardTitle>
+													<CardHeader className='flex flex-row items-end gap-2'>
+														<CardTitle className='py-2'>Visitors Map</CardTitle>
 													</CardHeader>
 													<CardContent
 														className={cn(

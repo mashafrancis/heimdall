@@ -1,6 +1,7 @@
 'use client';
 
 import COUNTRIES from '@/lib/constants';
+import dayjs from '@/lib/dayjsTime';
 import { LoglibCustomEvent } from '@heimdall-logs/types';
 import { ColumnDef } from '@tanstack/react-table';
 import {
@@ -58,25 +59,29 @@ export const columns: ColumnDef<LoglibCustomEvent>[] = [
 			);
 		},
 		cell: ({ row }) => {
-			const diff =
-				Date.now() - Date.parse(row.original.timestamp as unknown as string);
-			const hours = Math.floor(diff / (1000 * 60 * 60));
-			const minutes = Math.floor(diff / (1000 * 60));
-			const seconds = Math.floor(diff / 1000);
-			const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-			if (days > 0) {
-				return `${days} days ago`;
-			}
-			if (hours > 0) {
-				return `${hours} hours ago`;
-			}
-			if (minutes > 0) {
-				return `${minutes} minutes ago`;
-			}
-			if (seconds > 0) {
-				return `${seconds} seconds ago`;
-			}
-			return 'Just now';
+			const relativeTime = dayjs(
+				row.original.timestamp as unknown as string
+			).fromNow();
+			return dayjs(row.original.timestamp as unknown as string).fromNow();
+			// const diff =
+			// 	Date.now() - Date.parse(row.original.timestamp as unknown as string);
+			// const hours = Math.floor(diff / (1000 * 60 * 60));
+			// const minutes = Math.floor(diff / (1000 * 60));
+			// const seconds = Math.floor(diff / 1000);
+			// const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+			// if (days > 0) {
+			// 	return `${days} days ago`;
+			// }
+			// if (hours > 0) {
+			// 	return `${hours} hours ago`;
+			// }
+			// if (minutes > 0) {
+			// 	return `${minutes} minutes ago`;
+			// }
+			// if (seconds > 0) {
+			// 	return `${seconds} seconds ago`;
+			// }
+			// return 'Just now';
 		},
 	},
 	{

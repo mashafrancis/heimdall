@@ -26,7 +26,7 @@ export default async function layout({ children }: { children: ReactNode }) {
 						user={user}
 						items={dashboardConfig.projectNav}
 					/>
-					<SideNav items={dashboardConfig.sideNav} />
+					<SideNav items={dashboardConfig.sideNav} user={user} />
 					<div className='container'>{children}</div>
 				</main>
 			</div>

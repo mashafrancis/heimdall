@@ -95,7 +95,7 @@ function DataTable<TData, TValue>({
 				<strong> {data.length} </strong>
 				events
 			</p>
-			<motion.div className='scrollbar-hide rounded-md border bg-background dark:border-gray-800'>
+			<motion.div className='scrollbar-hide rounded-xl border bg-card dark:border-gray-800'>
 				<div className='flex items-center justify-between px-2 py-4'>
 					<Input
 						placeholder='Search Events...'
@@ -168,21 +168,21 @@ function DataTable<TData, TValue>({
 						) : isLoading ? (
 							<TableRow
 								className={
-									'h-6 animate-pulse gap-2 rounded-md bg-gray-200 dark:bg-gray-800'
+									'h-6 animate-pulse gap-2 rounded-md bg-gray-200 dark:bg-muted/50'
 								}
 							>
 								<TableCell
 									colSpan={columns.length}
-									className=' h-6 animate-pulse gap-2 bg-gray-200 text-center dark:bg-gray-800'
+									className=' h-6 animate-pulse gap-2 bg-gray-200 text-center dark:bg-muted/50'
 								>
-									Loading Data ...
+									Loading Data
 								</TableCell>
 							</TableRow>
 						) : (
 							<TableRow>
 								<TableCell
 									colSpan={columns.length}
-									className='h-24 text-center'
+									className='h-36 text-center'
 								>
 									No results.
 								</TableCell>

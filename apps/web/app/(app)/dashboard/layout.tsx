@@ -41,7 +41,7 @@ export default async function DashboardWebsiteLayout({
 			<StoreSetter store='teams' data={teams} />
 			<main className='flex min-h-screen w-full flex-col items-center justify-center space-y-6 bg-muted p-4 md:p-0'>
 				<MobileDashboardHeader user={user} items={dashboardConfig.projectNav} />
-				<SideNav items={dashboardConfig.sideNav} />
+				<SideNav items={dashboardConfig.sideNav} user={user} />
 				<div className='flex w-full max-w-[calc(95ch+8rem)] flex-1 flex-row justify-center'>
 					{children}
 				</div>

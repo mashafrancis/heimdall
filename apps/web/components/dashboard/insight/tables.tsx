@@ -45,7 +45,7 @@ export const InsightTables = ({
 	}
 
 	return (
-		<Card className=' md:col-span-3'>
+		<Card className=' md:col-span-3 shadow-none'>
 			<Tabs
 				defaultValue='pages'
 				onValueChange={(val) => {
@@ -55,7 +55,7 @@ export const InsightTables = ({
 					});
 				}}
 			>
-				<TabsList className='grid grid-cols-4 space-x-2 md:w-full md:justify-start'>
+				<TabsList className='grid grid-cols-4 space-x-2 md:w-full md:justify-start border-none rounded-xl'>
 					<TabsTrigger value='pages' className=' space-x-2 '>
 						<PanelTop size={16} />
 						<p>Pages</p>
@@ -137,7 +137,7 @@ export const InsightTables = ({
 									}}
 								/>
 							) : null}
-							<TabsList className=' ml-auto border-gray-400'>
+							<TabsList className=' ml-auto'>
 								<TabsTrigger value='country'>Country</TabsTrigger>
 								<TabsTrigger value='city'>City</TabsTrigger>
 							</TabsList>
@@ -223,7 +223,7 @@ export const InsightTables = ({
 									Row={(location) => (
 										<TableRow>
 											<TableCell
-												className=' flex cursor-pointer items-center gap-1'
+												className='flex cursor-pointer items-center gap-1'
 												onClick={() =>
 													addFilter({
 														key: 'country',
