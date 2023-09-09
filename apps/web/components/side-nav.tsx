@@ -24,13 +24,13 @@ export function SideNav({ items }: DashboardNavProps) {
 	}
 
 	return (
-		<aside className='fixed inset-0 z-[1] hidden h-screen w-24 flex-col justify-between overflow-y-hidden p-2 backdrop-blur md:flex'>
-			<ul className='flex flex-col space-y-8'>
+		<aside className='fixed inset-0 z-[1] hidden h-screen w-24 flex-col justify-between overflow-y-hidden p-2 md:flex'>
+			<ul className='flex flex-col space-y-2'>
 				<div className='flex items-center justify-center gap-2 align-middle'>
 					<Link
 						href='/'
 						aria-label='heimdall-home'
-						className='mb-8 mt-4 block whitespace-nowrap text-xl font-medium transition focus:outline-none'
+						className='mb-8 mt-2 block whitespace-nowrap text-xl font-medium transition focus:outline-none'
 					>
 						<ExcludeSquare size={32} color='#0074a6' weight='duotone' />
 					</Link>

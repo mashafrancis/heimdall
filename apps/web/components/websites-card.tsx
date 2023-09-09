@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from 'react';
 
-import WebSiteItem from '@/components/websites/website-item';
 import { fancyId } from '@/lib/utils';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
 
 import { EmptyPlaceholder } from './empty-placeholder';
+import { Website } from './website';
 import { WebsiteCreateButton } from './website-create-button';
 import { DeleteWebsiteAlert } from './website-delete-alert';
 import { EditWebsiteForm } from './website-edit-form';
 
-export default function WebsitesList({
+export default function WebsitesCard({
 	websites,
 }: {
 	websites: (WebsiteType & { visitors: number })[];
@@ -27,17 +27,19 @@ export default function WebsitesList({
 	}, [selected, websites]);
 
 	return (
-		<div className='space-y-2'>
+		<>
 			{websites.length ? (
-				websites.map((website) => (
-					<WebSiteItem
-						key={fancyId()}
-						site={website}
-						visitors={website.visitors}
-						setSelected={setSelected}
-						setIsOpen={setIsOpen}
-					/>
-				))
+				<div className='mt-4 grid grid-cols-2 gap-2 sm:grid-cols-2 xl:grid-cols-3'>
+					{websites.map((website) => (
+						<Website
+							key={fancyId()}
+							site={website}
+							visitors={website.visitors}
+							setSelected={setSelected}
+							setIsOpen={setIsOpen}
+						/>
+					))}
+				</div>
 			) : (
 				<EmptyPlaceholder className=' my-4'>
 					<EmptyPlaceholder.Icon name='layout' />
@@ -54,6 +56,6 @@ export default function WebsitesList({
 				isOpen={isOpen}
 			/>
 			<DeleteWebsiteAlert id={selected} />
-		</div>
+		</>
 	);
 }

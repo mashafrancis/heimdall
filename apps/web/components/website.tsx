@@ -1,15 +1,10 @@
-import Link from 'next/link';
-
 import { useState } from 'react';
 
 import { NextLink } from '@/components/arrow-button';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
-import { LucideSettings, MoreVertical, User2 } from 'lucide-react';
-
-import { Icons } from './icons';
+import { MoreVertical, User2 } from 'lucide-react';
 
 interface WebsiteProps {
 	site: WebsiteType;
@@ -26,12 +21,10 @@ export function Website({
 }: WebsiteProps) {
 	const [isLoading, setIsLoading] = useState(false);
 	return (
-		<Card className='rounded-md shadow-none @container/card'>
-			<div className='card__layer1'></div>
-			<div className='card__layer2'></div>
-			<CardHeader className=''>
-				<div className=' flex items-center justify-between'>
-					<h3 className='text-lg'>{site.title}</h3>
+		<Card className='rounded-xl shadow-none @container/card'>
+			<CardHeader className='p-4 md:p-6'>
+				<div className='flex items-center justify-between'>
+					<h3 className='text-base md:text-lg'>{site.title}</h3>
 					<MoreVertical
 						className='cursor-pointer'
 						size={18}
@@ -41,16 +34,21 @@ export function Website({
 						}}
 					/>
 				</div>
-				<p className='text-sm text-muted-foreground'>{site.url}</p>
+				<p className='text-xs md:text-sm text-muted-foreground truncate'>
+					{site.url}
+				</p>
 			</CardHeader>
-			<CardContent className='flex flex-col justify-between gap-2 @[320px]/card:flex-row @[320px]/card:items-center'>
-				<div>
-					<div className='flex items-center gap-2 text-lime-500'>
-						<User2 size={20} className=' ' />
-						<p className='text-sm'>{visitors} Visitors</p>
-					</div>
+			<CardContent className='flex justify-between gap-2 p-4 pt-0 md:p-6'>
+				<div className='flex items-center gap-2 text-lime-500'>
+					<User2 size={20} />
+					<p className='text-sm'>
+						{visitors} <span className='hidden md:inline-block'>Visitors</span>
+					</p>
 				</div>
-				<NextLink to={`/s/${site.id}`}></NextLink>
+				<NextLink
+					className='text-muted-foreground'
+					to={`/s/${site.id}`}
+				></NextLink>
 			</CardContent>
 		</Card>
 	);

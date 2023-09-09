@@ -2,7 +2,8 @@ import { redirect } from 'next/navigation';
 
 import { ReactNode } from 'react';
 
-import { DashboardHeader } from '@/components/header';
+import { MobileDashboardHeader } from '@/components/header';
+import { SideNav } from '@/components/side-nav';
 import { dashboardConfig } from '@/config/dashboard';
 // import {
 // 	DashboardHeader,
@@ -20,8 +21,12 @@ export default async function layout({ children }: { children: ReactNode }) {
 	return (
 		<div className='flex min-h-screen flex-col bg-muted/50 pb-12'>
 			<div className='flex h-full'>
-				<main className='flex w-full flex-1 flex-col space-y-8 overflow-hidden'>
-					{/*<DashboardHeader user={user} items={dashboardConfig.projectNav} />*/}
+				<main className='flex w-full flex-1 flex-col space-y-0 overflow-hidden'>
+					<MobileDashboardHeader
+						user={user}
+						items={dashboardConfig.projectNav}
+					/>
+					<SideNav items={dashboardConfig.sideNav} />
 					<div className='container'>{children}</div>
 				</main>
 			</div>

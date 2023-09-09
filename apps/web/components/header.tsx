@@ -3,19 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { ReactNode, useCallback, useEffect, useRef } from 'react';
+import { ReactNode } from 'react';
 
-import { BackLink, NextLink } from '@/components/arrow-button';
-import ExpandingArrow from '@/components/expanding-arrow';
+import { BackLink } from '@/components/arrow-button';
 import MobileMenu from '@/components/mobile-menu';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { UserAccountNav } from '@/components/user-account-nav';
 import { cn } from '@/lib/utils';
 import { MainNavItem } from '@/types';
 import { ExcludeSquare } from '@phosphor-icons/react';
-import { useAnimation } from 'framer-motion';
 import { User } from 'next-auth';
-import { useSession } from 'next-auth/react';
 
 interface MiniHeaderProps {
 	heading: string;
@@ -174,4 +171,35 @@ function PublicDashboardHeader() {
 	);
 }
 
-export { SiteHeader, DashboardHeader, MiniHeader, PublicDashboardHeader };
+function MobileDashboardHeader({
+	user,
+	items,
+	className,
+}: DashboardHeaderProps) {
+	return (
+		<header
+			className={cn(
+				'flex w-full items-center justify-between gap-2 md:hidden p-4',
+				className
+			)}
+		>
+			<div className='flex items-center justify-center gap-2 align-middle'>
+				<BackLink className='' to='/'>
+					back to home
+				</BackLink>
+			</div>
+
+			<div className=''>
+				<UserAccountNav user={user} />
+			</div>
+		</header>
+	);
+}
+
+export {
+	SiteHeader,
+	DashboardHeader,
+	MiniHeader,
+	PublicDashboardHeader,
+	MobileDashboardHeader,
+};

@@ -2,7 +2,6 @@ import { redirect } from 'next/navigation';
 
 import React from 'react';
 
-import { BackLink } from '@/components/arrow-button';
 import { Dashboard } from '@/components/dashboard';
 import { db } from '@/lib/db';
 import { generateToken } from '@/lib/generate-token';
@@ -65,9 +64,6 @@ export default async function Page({
 		  })();
 	return (
 		<main>
-			<BackLink className='absolute left-8 top-8 flex' to='/dashboard'>
-				back to dashboard
-			</BackLink>
 			<Dashboard
 				website={website}
 				isPublic={isPublic}

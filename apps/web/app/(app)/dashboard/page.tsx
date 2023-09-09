@@ -1,7 +1,8 @@
 import Search from '@/components/search';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WebsiteCreateButton } from '@/components/website-create-button';
-import WebsitesCards from '@/components/websites-list';
+import WebsitesCard from '@/components/websites-card';
+import WebsitesList from '@/components/websites-list';
 import { getWebsite } from '@/server/query/website';
 import { LayoutGrid, List } from 'lucide-react';
 
@@ -25,10 +26,10 @@ export default async function DashboardPage() {
 					{websites?.length ? <WebsiteCreateButton /> : null}
 				</div>
 				<TabsContent value='card'>
-					<WebsitesCards websites={websites} />
+					<WebsitesCard websites={websites} />
 				</TabsContent>
 				<TabsContent value='list'>
-					<WebsitesCards websites={websites} />
+					<WebsitesList websites={websites} />
 				</TabsContent>
 			</Tabs>
 		</>

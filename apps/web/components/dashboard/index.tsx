@@ -19,11 +19,11 @@ import {
 	Eye,
 	Laptop2,
 	LineChart,
+	MoreHorizontal,
 	TimerIcon,
 	UserIcon,
 	Users2,
 } from 'lucide-react';
-import { MoreHorizontal } from 'lucide-react';
 import useSWR from 'swr';
 
 import { AddTracker } from '../add-tracker';
@@ -97,12 +97,12 @@ export const Dashboard = ({
 	}, [setting]);
 
 	return (
-		<main>
+		<>
 			<AddTracker websiteId={website.id} show={showSetup ?? false} />
 			<LayoutGroup>
 				<div
 					className={cn(
-						'scrollbar-hide w-full space-y-4 transition-all duration-700 dark:text-white/80'
+						'scrollbar-hide w-full space-y-4 py-4 transition-all duration-700 dark:text-white/80'
 					)}
 				>
 					<Tabs defaultValue='insights' className='space-y-4'>
@@ -126,18 +126,18 @@ export const Dashboard = ({
 									>
 										Events
 									</TabsTrigger>
+									<TabsTrigger
+										value='logs'
+										// className=' dark:data-[state=active]:text-emphasis data-[state=active]:text-emphasis'
+										onClick={() =>
+											heimdall.track('logs-tab-clicked', {
+												websiteId: website.id,
+											})
+										}
+									>
+										Logs
+									</TabsTrigger>
 								</TabsList>
-								{/*<div>*/}
-								{/*	{data && (*/}
-								{/*		<Celebrate*/}
-								{/*			pageview={data.insight.totalPageViews}*/}
-								{/*			uniqVisitor={data.insight.uniqueVisitors}*/}
-								{/*			websiteId={website.id}*/}
-								{/*			time={timeRange.stringValue}*/}
-								{/*			title={website.title ?? undefined}*/}
-								{/*		/>*/}
-								{/*	)}*/}
-								{/*</div>*/}
 							</div>
 						) : null}
 						<div className=' flex justify-between'>
@@ -425,6 +425,6 @@ export const Dashboard = ({
 					</Tabs>
 				</div>
 			</LayoutGroup>
-		</main>
+		</>
 	);
 };
