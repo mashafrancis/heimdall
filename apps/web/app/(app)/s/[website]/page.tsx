@@ -65,7 +65,7 @@ export default async function Page({
 		  })();
 	return (
 		<main>
-			<BackLink className='absolute flex left-8 top-8' to='/dashboard'>
+			<BackLink className='absolute left-8 top-8 flex' to='/dashboard'>
 				back to dashboard
 			</BackLink>
 			<Dashboard

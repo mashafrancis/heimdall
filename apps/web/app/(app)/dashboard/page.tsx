@@ -1,14 +1,7 @@
-import { Suspense } from 'react';
-
-import { CardSkeleton } from '@/components/card-skeleton';
-import { DashboardHeader, MiniHeader } from '@/components/header';
 import Search from '@/components/search';
-import { DashboardShell } from '@/components/shell';
-import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WebsiteCreateButton } from '@/components/website-create-button';
-import { WebsiteForm } from '@/components/website-create-form';
-import WebsitesList from '@/components/websites-list';
+import WebsitesCards from '@/components/websites-list';
 import { getWebsite } from '@/server/query/website';
 import { LayoutGrid, List } from 'lucide-react';
 
@@ -19,9 +12,9 @@ export default async function DashboardPage() {
 	return (
 		<>
 			<Tabs defaultValue='card' className='w-full'>
-				<div className='flex items-center justify-items-stretch px-0 gap-2'>
+				<div className='flex items-center justify-items-stretch gap-2 px-0'>
 					<Search />
-					<TabsList className='grid grid-cols-2 h-10'>
+					<TabsList className='grid h-10 grid-cols-2'>
 						<TabsTrigger value='card'>
 							<LayoutGrid size={18} />
 						</TabsTrigger>
@@ -32,10 +25,10 @@ export default async function DashboardPage() {
 					{websites?.length ? <WebsiteCreateButton /> : null}
 				</div>
 				<TabsContent value='card'>
-					<WebsitesList websites={websites} />
+					<WebsitesCards websites={websites} />
 				</TabsContent>
 				<TabsContent value='list'>
-					<WebsitesList websites={websites} />
+					<WebsitesCards websites={websites} />
 				</TabsContent>
 			</Tabs>
 		</>

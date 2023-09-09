@@ -89,7 +89,7 @@ function SiteHeader({ user, className }: Props) {
 				<MobileMenu user={user} />
 			</div>
 
-			<div className='md:flex hidden'>
+			<div className='hidden md:flex'>
 				{user ? (
 					<UserAccountNav user={user} />
 				) : (
@@ -135,7 +135,7 @@ function DashboardHeader({ user, items, className }: DashboardHeaderProps) {
 				<MobileMenu user={user} />
 			</div>
 
-			<div className='md:flex hidden'>
+			<div className='hidden md:flex'>
 				<UserAccountNav user={user} />
 			</div>
 		</header>
@@ -146,10 +146,10 @@ function MiniHeader({ heading, text, children }: MiniHeaderProps) {
 	return (
 		<div className='flex items-center justify-between px-2'>
 			<div className='grid gap-1'>
-				<h1 className='bg-clip-text tracking-tight text-xl font-extrabold md:text-2xl'>
+				<h1 className='bg-clip-text text-xl font-extrabold tracking-tight md:text-2xl'>
 					{heading}
 				</h1>
-				{text && <p className='text-muted-foreground text-sm'>{text}</p>}
+				{text && <p className='text-sm text-muted-foreground'>{text}</p>}
 			</div>
 			{children}
 		</div>

@@ -58,7 +58,7 @@ export function CalendarDateRangePicker({
 						variant={'outline'}
 						size='sm'
 						className={cn(
-							'w-max justify-start text-left font-normal bg-background',
+							'w-max justify-start bg-background text-left font-normal',
 							!date && ' text-stone-800'
 						)}
 					>
@@ -181,14 +181,14 @@ export const DatePicker = ({
 	}
 
 	return (
-		<div className=' flex space-x-2 items-center'>
+		<div className=' flex items-center space-x-2'>
 			<Select
 				onValueChange={(value) => setTime(value)}
 				value={customTime ? 'custom' : timeRange.stringValue}
 				defaultValue='24hr'
 			>
-				<SelectTrigger className='w-auto px-2 space-x-4 dark:text-white/75 bg-background h-9'>
-					<CalendarDays className='dark:text-gray-300 text-gray-700 w-5 h-5' />
+				<SelectTrigger className='h-9 w-auto space-x-4 bg-background px-2 dark:text-white/75'>
+					<CalendarDays className='h-5 w-5 text-gray-700 dark:text-gray-300' />
 					<SelectValue placeholder='Select Time' />
 				</SelectTrigger>
 

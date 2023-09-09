@@ -117,12 +117,12 @@ export function Graph({
 						content={({ active, payload, label }) => {
 							if (active && payload && payload.length) {
 								return (
-									<div className='custom-tooltip dark:bg-black bg-white/10 px-2 border rounded-md border-gray-700 py-2'>
-										<div className=' flex items-center gap-2 dark:text-emphasis text-black'>
+									<div className='custom-tooltip rounded-md border border-gray-700 bg-white/10 p-2 dark:bg-black'>
+										<div className=' dark:text-emphasis flex items-center gap-2 text-black'>
 											<Icon size={16} />
 											<p className=' font-medium'>{`${payload[0]?.value} ${name}`}</p>
 										</div>
-										<p className='text-gray-400 text-sm'>{label}</p>
+										<p className='text-sm text-gray-400'>{label}</p>
 									</div>
 								);
 							}
@@ -132,12 +132,12 @@ export function Graph({
 				</ParentDiv>
 			) : (
 				<div className=' flex flex-col justify-center gap-2'>
-					<div className='text-2xl font-bold text-center '>
+					<div className='text-center text-2xl font-bold '>
 						{isLoading ? (
-							<p className='text-sm font-medium animate-pulse'>loading data</p>
+							<p className='animate-pulse text-sm font-medium'>loading data</p>
 						) : (
-							<div className='animate-in fade-in-50 flex flex-col mt-12 items-center justify-center text-center'>
-								<div className='bg-muted/50 flex h-16 w-16 items-center justify-center rounded-full'>
+							<div className='mt-12 flex flex-col items-center justify-center text-center animate-in fade-in-50'>
+								<div className='flex h-16 w-16 items-center justify-center rounded-full bg-muted/50'>
 									{/* @ts-ignore */}
 									<Icons.reports
 										className={cn('h-8 w-8 text-muted-foreground')}

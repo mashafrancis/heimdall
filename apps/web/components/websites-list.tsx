@@ -31,7 +31,7 @@ export default function WebsitesList({
 	return (
 		<>
 			{websites.length ? (
-				<div className='grid grid-cols-1 mt-4 gap-4 sm:grid-cols-2 xl:grid-cols-3'>
+				<div className='mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3'>
 					{websites.map((website) => (
 						<Website
 							key={fancyId()}

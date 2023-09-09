@@ -10,10 +10,10 @@ const LocationMap = ({
 		value: d.visits,
 	}));
 	return (
-		<div className='flex justify-center items-center animate-in min-h-[400px]'>
+		<div className='flex min-h-[400px] items-center justify-center animate-in'>
 			{!data.length ? (
-				<div className=' flex items-center h-full justify-center relative'>
-					<p className=' text-center animate-pulse bg-gradient-to-tr from-emphasis absolute to-white/80 text-transparent bg-clip-text'>
+				<div className=' relative flex h-full items-center justify-center'>
+					<p className=' from-emphasis absolute animate-pulse bg-gradient-to-tr to-white/80 bg-clip-text text-center text-transparent'>
 						Loading Map...
 					</p>
 					<WorldMap

@@ -143,7 +143,7 @@ export const EditWebsiteForm = ({
 							ease: 'easeInOut',
 							duration: 0.3,
 						}}
-						className='animate-in relative flex w-11/12 flex-col  justify-center rounded-md border bg-gradient-to-tr from-gray-100 to-gray-200 px-8 pb-10 pt-4 dark:border-stone-800 dark:from-black dark:to-stone-900/20 md:w-3/12'
+						className='relative flex w-11/12 flex-col justify-center  rounded-md border bg-gradient-to-tr from-gray-100 to-gray-200 px-8 pb-10 pt-4 animate-in dark:border-stone-800 dark:from-black dark:to-stone-900/20 md:w-3/12'
 					>
 						<div className=' ml-auto'>
 							<Button
@@ -203,18 +203,18 @@ export const EditWebsiteForm = ({
 									control={form.control}
 									name='id'
 									render={({ field }) => (
-										<FormItem className=' w-full flex-grow'>
+										<FormItem className=' w-full grow'>
 											<FormLabel>Your website @heimdall</FormLabel>
 											{/* <FormMessage /> */}
 											<FormControl>
-												<div className='border-input flex items-center  rounded-md border px-1 focus-within:outline-none'>
+												<div className='flex items-center rounded-md  border border-input px-1 focus-within:outline-none'>
 													<span className='flex h-10 items-center border-r px-2 text-sm dark:border-stone-800'>
 														heimdall.francismasha.com/
 													</span>
 													<input
 														placeholder='site_name'
 														{...field}
-														className='ring-offset-background placeholder:text-muted-foreground flex h-10 w-full rounded-md border border-none bg-transparent p-2 text-sm outline-none file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50'
+														className='flex h-10 w-full rounded-md border border-none bg-transparent p-2 text-sm outline-none ring-offset-background file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50'
 													/>
 												</div>
 											</FormControl>
@@ -250,21 +250,21 @@ export const EditWebsiteForm = ({
 													<Link
 														href={`${siteConfig.url}/${data?.id}`}
 														target='_blank'
-														className=' flex items-center gap-2 hover:underline decoration-blue-500'
+														className=' flex items-center gap-2 decoration-blue-500 hover:underline'
 													>
-														<p className=' text-blue-600 text-sm'>
+														<p className=' text-sm text-blue-600'>
 															{`${siteConfig.url}/`}
 															<span className=''>{data?.id}</span>{' '}
 														</p>
 
 														<ExternalLink
 															size={14}
-															className=' text-blue-500 cursor-pointer'
+															className=' cursor-pointer text-blue-500'
 														/>
 													</Link>
 													<CopyToClipboard
 														text={`${siteConfig.url}/${data?.id}`}
-														className='w-4 h-4'
+														className='h-4 w-4'
 													/>
 												</div>
 											) : null}

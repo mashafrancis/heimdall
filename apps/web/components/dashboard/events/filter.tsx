@@ -130,13 +130,13 @@ export const EventFilter = ({
 						});
 					}}
 					variant='outline'
-					className=' flex items-center relative gap-2 font-medium'
+					className=' relative flex items-center gap-2 font-medium'
 				>
 					<SlidersHorizontal size={14} />
 					Filter
-					<div className=' absolute -top-3 -right-1'>
+					<div className=' absolute -right-1 -top-3'>
 						{activeFilter.length > 0 ? (
-							<span className=' bg-brand-950/50 border font-medium rounded-sm text-[8px] p-1'>
+							<span className=' bg-brand-950/50 rounded-sm border p-1 text-[8px] font-medium'>
 								{activeFilter.length}
 							</span>
 						) : (
@@ -148,7 +148,7 @@ export const EventFilter = ({
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle className=' my-2'>Filters</DialogTitle>
-					<div className=' gap-2 items-center flex flex-wrap'>
+					<div className=' flex flex-wrap items-center gap-2'>
 						{filteData.map((filter) => (
 							<Toggle
 								size='sm'

@@ -23,7 +23,7 @@ interface Props {
 export default function RightSection({ activeStrategy }: Props) {
 	return (
 		<>
-			<BackLink className='absolute md:hidden flex right-8 bottom-8' to='/'>
+			<BackLink className='absolute bottom-8 right-8 flex md:hidden' to='/'>
 				back to home
 			</BackLink>
 			<div className='absolute left-[159px] top-[30px] md:hidden'>

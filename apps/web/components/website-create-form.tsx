@@ -142,14 +142,14 @@ export const WebsiteForm = () => {
 							<FormLabel>Your website @heimdall</FormLabel>
 							{/* <FormMessage /> */}
 							<FormControl>
-								<div className='border-input flex items-center  rounded-md border px-1 focus-within:outline-none'>
+								<div className='flex items-center rounded-md  border border-input px-1 focus-within:outline-none'>
 									<span className=' flex h-10 items-center border-r px-2 text-sm'>
 										heimdall.com/
 									</span>
 									<input
 										placeholder='site_name'
 										{...field}
-										className='ring-offset-background placeholder:text-muted-foreground flex h-10 rounded-md border border-none bg-transparent p-2 text-sm outline-none file:bg-transparent file:text-sm file:font-medium disabled:cursor-not-allowed disabled:opacity-50'
+										className='flex h-10 rounded-md border border-none bg-transparent p-2 text-sm outline-none ring-offset-background file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50'
 									/>
 								</div>
 							</FormControl>

@@ -26,7 +26,7 @@ export function Website({
 }: WebsiteProps) {
 	const [isLoading, setIsLoading] = useState(false);
 	return (
-		<Card className='@container/card shadow-none rounded-md'>
+		<Card className='rounded-md shadow-none @container/card'>
 			<div className='card__layer1'></div>
 			<div className='card__layer2'></div>
 			<CardHeader className=''>
@@ -43,7 +43,7 @@ export function Website({
 				</div>
 				<p className='text-sm text-muted-foreground'>{site.url}</p>
 			</CardHeader>
-			<CardContent className='flex flex-col @[320px]/card:flex-row @[320px]/card:items-center justify-between gap-2'>
+			<CardContent className='flex flex-col justify-between gap-2 @[320px]/card:flex-row @[320px]/card:items-center'>
 				<div>
 					<div className='flex items-center gap-2 text-lime-500'>
 						<User2 size={20} className=' ' />

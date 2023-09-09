@@ -28,12 +28,12 @@ export const columns: ColumnDef<LoglibCustomEvent>[] = [
 		header: ({ column }) => {
 			return (
 				<span
-					className='flex items-center group gap-2'
+					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
 					Event Name
 					<ChevronsUpDown
-						className='mr-2 opacity-0 group-hover:opacity-100 transition-all ease-in-out'
+						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
 					/>
 				</span>
@@ -46,12 +46,12 @@ export const columns: ColumnDef<LoglibCustomEvent>[] = [
 		header: ({ column }) => {
 			return (
 				<span
-					className='flex items-center group gap-2'
+					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
 					Time
 					<ChevronsUpDown
-						className='mr-2 opacity-0 group-hover:opacity-100 transition-all ease-in-out'
+						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
 					/>
 				</span>
@@ -85,12 +85,12 @@ export const columns: ColumnDef<LoglibCustomEvent>[] = [
 		header: ({ column }) => {
 			return (
 				<span
-					className='flex items-center group gap-2'
+					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
 					City
 					<ChevronsUpDown
-						className='mr-2 opacity-0 group-hover:opacity-100 transition-all ease-in-out'
+						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
 					/>
 				</span>
@@ -103,12 +103,12 @@ export const columns: ColumnDef<LoglibCustomEvent>[] = [
 		header: ({ column }) => {
 			return (
 				<span
-					className='flex items-center group gap-2'
+					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
 					Country
 					<ChevronsUpDown
-						className='mr-2 opacity-0 group-hover:opacity-100 transition-all ease-in-out'
+						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
 					/>
 				</span>
@@ -124,12 +124,12 @@ export const columns: ColumnDef<LoglibCustomEvent>[] = [
 		header: ({ column }) => {
 			return (
 				<span
-					className='flex items-center group gap-2'
+					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
 					OS
 					<ChevronsUpDown
-						className='mr-2 opacity-0 group-hover:opacity-100 transition-all ease-in-out'
+						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
 					/>
 				</span>

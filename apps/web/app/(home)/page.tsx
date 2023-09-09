@@ -28,10 +28,10 @@ export default async function HomePage() {
 	const user = await getCurrentUser();
 	return (
 		<>
-			<section className='space-y-6 pb-8 md:pb-12 pt-10 lg:py-32'>
+			<section className='space-y-6 pb-8 pt-10 md:pb-12 lg:py-32'>
 				<div className='container flex max-w-[64rem] flex-col items-center gap-6 text-center'>
 					<svg
-						className='pointer-events-none absolute inset-0 h-full z-[-1] w-full stroke-gray-200 dark:stroke-[#414141] opacity-50 [mask-image:radial-gradient(100%_100%_at_top_center,white,transparent)]'
+						className='pointer-events-none absolute inset-0 z-[-1] h-full w-full stroke-gray-200 opacity-50 [mask-image:radial-gradient(100%_100%_at_top_center,white,transparent)] dark:stroke-[#414141]'
 						aria-hidden
 					>
 						<defs>
@@ -65,7 +65,7 @@ export default async function HomePage() {
 					</svg>
 					<Link
 						href='/demo'
-						className='rounded-2xl bg-primary/10 px-4 py-1.5 pr-8 text-sm font-medium group flex space-x-1 hover:text-primary/90 text-primary transition-all ring-0 sm:mt-0'
+						className='group flex space-x-1 rounded-2xl bg-primary/10 px-4 py-1.5 pr-8 text-sm font-medium text-primary ring-0 transition-all hover:text-primary/90 sm:mt-0'
 						// className='group px-4 py-1.5 pr-8 mt-20 flex space-x-1 rounded-full text-primary hover:text-primary/90 border border-primary/50 bg-primary/10 text-sm font-medium ring-0 transition-all hover:border-primary/80 hover:bg-primary/20 sm:mt-0'
 					>
 						<p>Check our live demo</p>
@@ -79,7 +79,7 @@ export default async function HomePage() {
 						understand your visitors and grow your business with web and API's
 						performance.
 					</p>
-					<div className='space-x-4 mt-8'>
+					<div className='mt-8 space-x-4'>
 						<Link
 							href={user ? '/dashboard' : '/login'}
 							className={cn(
@@ -99,7 +99,7 @@ export default async function HomePage() {
 				className='container space-y-6 bg-muted py-8 lg:rounded-xl lg:py-24'
 			>
 				<div className='container flex max-w-[64rem] flex-col items-center gap-4 text-center'>
-					<div className='bg-primary/10 text-primary rounded-2xl px-4 py-1.5 text-sm font-medium'>
+					<div className='rounded-2xl bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary'>
 						Monitoring and Reporting
 					</div>
 					<H3>
@@ -115,12 +115,12 @@ export default async function HomePage() {
 					{features.map((feature) => (
 						<div
 							key={feature.title}
-							className='bg-background relative overflow-hidden rounded-lg border p-2'
+							className='relative overflow-hidden rounded-lg border bg-background p-2'
 						>
 							<div className='flex h-[140px] flex-col justify-between rounded-md p-6'>
 								<div className='space-y-2'>
 									<h3 className='font-bold'>{feature.title}</h3>
-									<p className='text-muted-foreground text-sm'>
+									<p className='text-sm text-muted-foreground'>
 										{feature.description}
 									</p>
 								</div>

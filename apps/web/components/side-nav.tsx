@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import * as React from 'react';
-import { Fragment } from 'react';
 
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
@@ -31,7 +30,7 @@ export function SideNav({ items }: DashboardNavProps) {
 					<Link
 						href='/'
 						aria-label='heimdall-home'
-						className='block whitespace-nowrap text-xl font-medium transition focus:outline-none mt-4 mb-8'
+						className='mb-8 mt-4 block whitespace-nowrap text-xl font-medium transition focus:outline-none'
 					>
 						<ExcludeSquare size={32} color='#0074a6' weight='duotone' />
 					</Link>
@@ -46,7 +45,7 @@ export function SideNav({ items }: DashboardNavProps) {
 									key={id}
 									href={disabled ? '/' : href}
 									className={cn(
-										'hover:text-foreground/80 m-4 flex flex-col items-center justify-center text-center font-medium transition-colors',
+										'm-4 flex flex-col items-center justify-center text-center font-medium transition-colors hover:text-foreground/80',
 										pathname === href
 											? 'text-foreground'
 											: 'text-foreground/60',
@@ -60,7 +59,7 @@ export function SideNav({ items }: DashboardNavProps) {
 										size='icon'
 										className={cn(
 											pathname === href
-												? 'bg-primary/10 hover:bg-primary/10 hover:text-primary text-primary'
+												? 'bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary'
 												: 'text-gray-500',
 											'h-8 w-14 rounded-full p-0 font-medium ring-primary/40 transition-all hover:bg-primary/10 hover:ring-1 disabled:cursor-not-allowed disabled:text-muted-foreground/50 disabled:opacity-80'
 										)}

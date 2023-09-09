@@ -102,7 +102,7 @@ export const Dashboard = ({
 			<LayoutGroup>
 				<div
 					className={cn(
-						'w-full space-y-4 transition-all duration-700 dark:text-white/80 scrollbar-hide'
+						'scrollbar-hide w-full space-y-4 transition-all duration-700 dark:text-white/80'
 					)}
 				>
 					<Tabs defaultValue='insights' className='space-y-4'>
@@ -142,7 +142,7 @@ export const Dashboard = ({
 						) : null}
 						<div className=' flex justify-between'>
 							<div
-								className=' flex gap-2 items-center'
+								className=' flex items-center gap-2'
 								onClick={() =>
 									heimdall.track('date-picker-clicked', {
 										websiteId: website.id,
@@ -157,11 +157,11 @@ export const Dashboard = ({
 								/>
 							</div>
 							<div className=' flex flex-col items-end'>
-								<div className=' flex gap-1 items-center'>
-									<div className=' w-2.5 h-2.5 bg-gradient-to-tr from-lime-500 to-lime-700 animate-pulse rounded-full'></div>
-									<p className=' text-sm bg-gradient-to-tr from-lime-600 to-lime-800 font-mono text-transparent bg-clip-text font-medium'>
+								<div className=' flex items-center gap-1'>
+									<div className=' h-2.5 w-2.5 animate-pulse rounded-full bg-gradient-to-tr from-lime-500 to-lime-700'></div>
+									<p className=' bg-gradient-to-tr from-lime-600 to-lime-800 bg-clip-text font-mono text-sm font-medium text-transparent'>
 										{data ? data.data.onlineVisitors : 0}
-										<span className='font-sans pl-1'>Online</span>
+										<span className='pl-1 font-sans'>Online</span>
 									</p>
 								</div>
 							</div>
@@ -191,7 +191,7 @@ export const Dashboard = ({
 						<AnimatePresence>
 							<motion.div layout>
 								<TabsContent value='insights' className='space-y-4'>
-									<div className='grid gap-4 md:grid-cols-2 grid-cols-2 lg:grid-cols-4'>
+									<div className='grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4'>
 										<InsightCard
 											title={viCardSwitch}
 											Icon={UserIcon}
@@ -309,12 +309,12 @@ export const Dashboard = ({
 											tooltip=' The percentage of visitors who quickly exit your website without exploring further.'
 										/>
 									</div>
-									<div className='grid gap-4 min-h-max md:grid-cols-2 lg:grid-cols-7 grid-cols-1'>
+									<div className='grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7'>
 										<Card className='md:col-span-4'>
 											{curTableTab === 'locations' ? (
 												<Fragment>
-													<CardHeader className=' flex flex-row gap-2 items-end'>
-														<CardTitle className='text-base py-4'>
+													<CardHeader className=' flex flex-row items-end gap-2'>
+														<CardTitle className='py-4 text-base'>
 															Visitors Map
 														</CardTitle>
 													</CardHeader>
@@ -330,7 +330,7 @@ export const Dashboard = ({
 												</Fragment>
 											) : (
 												<Tabs defaultValue='visitors' className=''>
-													<CardHeader className=' flex flex-row justify-between items-center'>
+													<CardHeader className=' flex flex-row items-center justify-between'>
 														<CardTitle className='text-base'>
 															<TabsList className=''>
 																<TabsTrigger value='visitors'>

@@ -19,7 +19,7 @@ export const RefIcons = {
 			width='16'
 			height='18'
 			viewBox='0 0 76 65'
-			className=' dark:fill-white fill-black'
+			className=' fill-black dark:fill-white'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		>
@@ -31,7 +31,7 @@ export const RefIcons = {
 		<svg
 			viewBox='0 0 24 24'
 			aria-hidden='true'
-			className=' w-4 h-4 dark:fill-white'
+			className=' h-4 w-4 dark:fill-white'
 		>
 			<g>
 				<path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'></path>
@@ -42,7 +42,7 @@ export const RefIcons = {
 		<svg
 			viewBox='0 0 24 24'
 			aria-hidden='true'
-			className=' w-4 h-4 dark:fill-white'
+			className=' h-4 w-4 dark:fill-white'
 		>
 			<g>
 				<path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'></path>
@@ -53,7 +53,7 @@ export const RefIcons = {
 		<svg
 			viewBox='0 0 24 24'
 			aria-hidden='true'
-			className=' w-4 h-4 dark:fill-white'
+			className=' h-4 w-4 dark:fill-white'
 		>
 			<g>
 				<path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'></path>
@@ -78,7 +78,7 @@ export const RefIcons = {
 	telegram: () => (
 		<svg
 			width='18px'
-			className=' stroke-black stroke-2 dark:stroke-white fill-none'
+			className=' fill-none stroke-black stroke-2 dark:stroke-white'
 			height='18px'
 			viewBox='0 0 48 48'
 			id='Layer_2'
@@ -95,7 +95,7 @@ export const RefIcons = {
 			viewBox='0 0 24 24'
 			version='1.1'
 			xmlns='http://www.w3.org/2000/svg'
-			className='w-5 h-5'
+			className='h-5 w-5'
 			fill='#000000'
 		>
 			<g id='SVGRepo_bgCarrier' strokeWidth='0'></g>
