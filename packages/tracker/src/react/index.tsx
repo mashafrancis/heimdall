@@ -22,7 +22,7 @@ declare global {
  * @param {Partial<Config>} [config] - The configuration options for the tracker. See {@link Config} for overview
  * @see [Documentation](https://heimdall.francismasha.com/docs) for details.
  */
-function LogLib({ config }: Props) {
+function Heimdall({ config }: Props) {
 	useEffect(() => {
 		record(config);
 	}, []);
@@ -72,4 +72,4 @@ export function TrackClick({ name, payload, children }: TrackViewProps) {
 	});
 }
 
-export default LogLib;
+export default Heimdall;

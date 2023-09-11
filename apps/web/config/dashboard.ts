@@ -11,19 +11,19 @@ export const dashboardConfig: DashboardConfig = {
 		{
 			id: 'monitors',
 			title: 'Monitors',
-			href: '/dashboard/monitors',
+			href: '/monitors',
 			icon: 'frequency',
 		},
 		{
 			id: 'status',
 			title: 'Status',
-			href: '/dashboard/status',
+			href: '/status',
 			icon: 'radio',
 		},
 		{
 			id: 'api-keys',
 			title: 'Security',
-			href: '/dashboard/api-keys',
+			href: '/api-keys',
 			icon: 'key',
 		},
 		// {

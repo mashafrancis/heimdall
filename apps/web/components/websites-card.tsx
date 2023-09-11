@@ -29,7 +29,7 @@ export default function WebsitesCard({
 	return (
 		<>
 			{websites.length ? (
-				<div className='mt-4 grid grid-cols-2 gap-2 sm:grid-cols-2 xl:grid-cols-3'>
+				<div className='mt-4 grid grid-cols-1 gap-2 sm:grid-cols-1 xl:grid-cols-3'>
 					{websites.map((website) => (
 						<Website
 							key={fancyId()}
@@ -41,8 +41,8 @@ export default function WebsitesCard({
 					))}
 				</div>
 			) : (
-				<EmptyPlaceholder className=' my-4'>
-					<EmptyPlaceholder.Icon name='layout' />
+				<EmptyPlaceholder className='my-4'>
+					<EmptyPlaceholder.Icon name='monitor' />
 					<EmptyPlaceholder.Title>No Website Added</EmptyPlaceholder.Title>
 					<EmptyPlaceholder.Description>
 						You haven&apos;t added any website yet. Start adding website

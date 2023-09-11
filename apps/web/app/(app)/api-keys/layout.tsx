@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
 
 import { GenerateApiKey } from '@/components/api-key-generate-modal';
-import { DashboardHeader, MiniHeader } from '@/components/header';
+import { MiniHeader, MobileDashboardHeader } from '@/components/header';
 import { DashboardShell } from '@/components/shell';
 import { SideNav } from '@/components/side-nav';
 import { dashboardConfig } from '@/config/dashboard';
@@ -27,7 +27,11 @@ export default async function APIKeysLayout({
 		<div className='flex min-h-screen flex-col bg-gray-50'>
 			<div className='flex h-full'>
 				<main className='flex w-full flex-1 flex-col overflow-hidden'>
-					<DashboardHeader user={user} items={dashboardConfig.projectNav} />
+					<MobileDashboardHeader
+						user={user}
+						items={dashboardConfig.projectNav}
+					/>
+					<SideNav items={dashboardConfig.sideNav} user={user} />
 					<div className='container'>
 						<DashboardShell>
 							<MiniHeader heading='API Keys' text='Manage your api keys.'>

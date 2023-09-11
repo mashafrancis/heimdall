@@ -16,7 +16,7 @@ export default function WebSiteItem({
 	setSelected,
 }: WebsiteProps) {
 	return (
-		<div className='cursor-pointer grid grid-cols-12 bg-background border rounded-md items-center justify-between px-2 md:px-6 py-2 hover:bg-accent/50'>
+		<div className='cursor-pointer grid grid-cols-12 bg-card border rounded-xl items-center justify-between px-2 md:px-6 py-3 hover:bg-accent/50'>
 			<div className='flex items-center gap-1 text-lime-500 col-span-2 md:col-span-1'>
 				<User2 size={20} />
 				<p className='text-sm'>{visitors}</p>

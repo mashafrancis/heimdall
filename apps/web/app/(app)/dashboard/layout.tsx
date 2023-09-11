@@ -39,14 +39,19 @@ export default async function DashboardWebsiteLayout({
 			<StoreSetter store='teamWebsites' data={teamWebsites} />
 			<StoreSetter store='userWebsites' data={userWebsites} />
 			<StoreSetter store='teams' data={teams} />
-			<main className='flex min-h-screen w-full flex-col items-center justify-center space-y-6 bg-muted p-4 md:p-0'>
-				<MobileDashboardHeader user={user} items={dashboardConfig.projectNav} />
-				<SideNav items={dashboardConfig.sideNav} user={user} />
-				<div className='flex w-full max-w-[calc(95ch+8rem)] flex-1 flex-row justify-center'>
-					{children}
+			<div className='flex min-h-screen flex-col bg-muted/50 pb-12'>
+				<div className='flex h-full'>
+					<main className='flex w-full flex-1 flex-col space-y-0 overflow-hidden'>
+						<MobileDashboardHeader
+							user={user}
+							items={dashboardConfig.projectNav}
+						/>
+						<SideNav items={dashboardConfig.sideNav} user={user} />
+						<div className='container'>{children}</div>
+						<BottomNavigation items={dashboardConfig.sideNav} />
+					</main>
 				</div>
-				<BottomNavigation items={dashboardConfig.sideNav} />
-			</main>
+			</div>
 		</>
 	);
 }

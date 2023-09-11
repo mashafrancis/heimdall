@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WebsiteCreateButton } from '@/components/website-create-button';
 import WebsitesCard from '@/components/websites-card';
 import WebsitesList from '@/components/websites-list';
+import { cn } from '@/lib/utils';
 import { getWebsite } from '@/server/query/website';
 import { LayoutGrid, List } from 'lucide-react';
 
@@ -11,7 +12,11 @@ export default async function DashboardPage() {
 	const websites = userWebsites.concat(teamWebsites);
 
 	return (
-		<>
+		<div
+			className={cn(
+				'scrollbar-hide w-full space-y-4 py-4 transition-all duration-700 dark:text-white/80'
+			)}
+		>
 			<Tabs defaultValue='card' className='w-full'>
 				<div className='flex items-center justify-items-stretch gap-2 px-0'>
 					<Search />
@@ -32,6 +37,6 @@ export default async function DashboardPage() {
 					<WebsitesList websites={websites} />
 				</TabsContent>
 			</Tabs>
-		</>
+		</div>
 	);
 }

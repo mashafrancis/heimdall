@@ -63,13 +63,11 @@ export default async function Page({
 				return true;
 		  })();
 	return (
-		<main>
-			<Dashboard
-				website={website}
-				isPublic={isPublic}
-				showSetup={showSetup}
-				token={token}
-			/>
-		</main>
+		<Dashboard
+			website={website}
+			isPublic={isPublic}
+			showSetup={showSetup}
+			token={token}
+		/>
 	);
 }
