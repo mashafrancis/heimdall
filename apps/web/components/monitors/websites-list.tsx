@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from 'react';
 
+import WebSiteItem from '@/components/websites/website-item';
 import { fancyId } from '@/lib/utils';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
 
 import { EmptyPlaceholder } from '../empty-placeholder';
-import { WebsiteCardDetails } from './website-card-details';
 import { WebsiteCreateButton } from './website-create-button';
 import { DeleteWebsiteAlert } from './website-delete-alert';
 import { EditWebsiteForm } from './website-edit-form';
 
-export default function WebsitesCard({
+export default function WebsitesList({
 	websites,
 }: {
 	websites: (WebsiteType & { visitors: number })[];
@@ -27,22 +27,20 @@ export default function WebsitesCard({
 	}, [selected, websites]);
 
 	return (
-		<>
+		<div className='space-y-2'>
 			{websites.length ? (
-				<div className='mt-4 grid grid-cols-1 gap-2 sm:grid-cols-1 xl:grid-cols-3'>
-					{websites.map((website) => (
-						<WebsiteCardDetails
-							key={fancyId()}
-							site={website}
-							visitors={website.visitors}
-							setSelected={setSelected}
-							setIsOpen={setIsOpen}
-						/>
-					))}
-				</div>
+				websites.map((website) => (
+					<WebSiteItem
+						key={fancyId()}
+						site={website}
+						visitors={website.visitors}
+						setSelected={setSelected}
+						setIsOpen={setIsOpen}
+					/>
+				))
 			) : (
-				<EmptyPlaceholder className='my-4'>
-					<EmptyPlaceholder.Icon name='monitor' />
+				<EmptyPlaceholder className=' my-4'>
+					<EmptyPlaceholder.Icon name='layout' />
 					<EmptyPlaceholder.Title>No Website Added</EmptyPlaceholder.Title>
 					<EmptyPlaceholder.Description>
 						You haven&apos;t added any website yet. Start adding website
@@ -56,6 +54,6 @@ export default function WebsitesCard({
 				isOpen={isOpen}
 			/>
 			<DeleteWebsiteAlert id={selected} />
-		</>
+		</div>
 	);
 }

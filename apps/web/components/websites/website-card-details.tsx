@@ -17,7 +17,7 @@ interface WebsiteProps {
 	setIsOpen: (state: boolean) => void;
 }
 
-export function Website({
+export function WebsiteCardDetails({
 	site,
 	visitors,
 	setSelected,
@@ -76,7 +76,7 @@ export function Website({
 	);
 }
 
-Website.Skeleton = function WebsiteSkeleton() {
+WebsiteCardDetails.Skeleton = function WebsiteSkeleton() {
 	return (
 		<div className='p-4'>
 			<div className='space-y-3'>

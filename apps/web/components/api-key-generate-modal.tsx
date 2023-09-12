@@ -184,14 +184,14 @@ export const GenerateApiKey = ({ websites }: { websites: Website[] }) => {
 										name='website'
 										render={({ field }) => (
 											<FormItem className=' w-full'>
-												<FormLabel>Website</FormLabel>
+												<FormLabel>MonitorCardDetails</FormLabel>
 												<FormControl>
 													<Select
 														onValueChange={(value) => field.onChange(value)}
 														value={field.value as string}
 													>
 														<SelectTrigger>
-															<SelectValue placeholder='Select Website' />
+															<SelectValue placeholder='Select MonitorCardDetails' />
 														</SelectTrigger>
 														<SelectContent>
 															<SelectGroup>

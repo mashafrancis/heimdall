@@ -1,6 +1,6 @@
 {
 	"name": "@heimdall-logs/tracker",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A simple tracker for heimdall",
 	"main": "./dist/index.js",
 	"packageManager": "pnpm@8.6.10",

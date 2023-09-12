@@ -23,7 +23,7 @@
 		"migrate": "turbo --filter db migrate",
 		"migrate:clickhouse": "turbo --filter clickhouse migrate",
 		"studio": "pnpm --filter db studio",
-		"release": "changeset version && changeset publish && changeset release",
+		"release": "changeset version && changeset publish",
 		"publish:packages": "pnpm run build && pnpm run release"
 	},
 	"pnpm": {
