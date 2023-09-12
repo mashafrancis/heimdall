@@ -2,17 +2,17 @@
 
 import { useEffect, useState } from 'react';
 
-import { DeleteWebsiteAlert } from '@/components/website-delete-alert';
+import { DeleteWebsiteAlert } from '@/components/websites/website-delete-alert';
 import { fancyId } from '@/lib/utils';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
 import { MoreVertical } from 'lucide-react';
 
 import { EmptyPlaceholder } from '../empty-placeholder';
 import { Icons } from '../icons';
-import { WebsiteCreateButton } from '../website-create-button';
-import { EditWebsiteForm } from '../website-edit-form';
+import { WebsiteCreateButton } from '../websites/website-create-button';
+import { EditWebsiteForm } from '../websites/website-edit-form';
 
-export default function WebsitesList({
+export default function MonitorsList({
 	websites,
 }: {
 	websites: (WebsiteType & { visitors: number })[];
@@ -33,7 +33,7 @@ export default function WebsitesList({
 				websites.map((website) => (
 					<div
 						key={fancyId()}
-						className='flex cursor-pointer bg-background border rounded-md items-center justify-between px-6 py-2 hover:bg-accent/50'
+						className='cursor-pointer flex bg-card border rounded-xl items-center justify-between px-2 md:px-6 py-3 hover:bg-accent/50'
 					>
 						<div className='flex cursor-pointer items-center justify-between gap-8'>
 							<span className='flex h-3 w-3 translate-y-1 rounded-full bg-lime-500' />

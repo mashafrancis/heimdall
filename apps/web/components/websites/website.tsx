@@ -8,7 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
 import { User2 } from 'lucide-react';
 
-import logo from '../public/android-chrome-512x512.png';
+import logo from '../../public/android-chrome-512x512.png';
 
 interface WebsiteProps {
 	site: WebsiteType;

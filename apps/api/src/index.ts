@@ -25,6 +25,19 @@ const app = new Hono();
 app.use('*', appLogger());
 app.use('*', cors());
 
+logger.configureLogger(
+	{
+		prettyPrint: Boolean({
+			doc: 'Weather the logger should be configured to pretty print the output',
+			format: 'Boolean',
+			default: true,
+			nullable: false,
+			env: 'PRETTY_PRINT_LOG',
+		}),
+	},
+	true
+);
+
 app.post('/', async (c) => {
 	const body = await c.req.json();
 	const headers = Object.fromEntries(c.req.headers);

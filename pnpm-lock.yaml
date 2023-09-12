@@ -664,16 +664,25 @@ importers:
       drizzle-orm:
         specifier: ^0.28.6
         version: 0.28.6(@libsql/client@0.3.2)(@planetscale/database@1.11.0)(kysely@0.26.3)
+      drizzle-zod:
+        specifier: ^0.5.1
+        version: 0.5.1(drizzle-orm@0.28.6)(zod@3.22.2)
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.29)(typescript@5.2.2)
       tsx:
         specifier: ^3.12.8
         version: 3.12.8
+      zod:
+        specifier: ^3.22.2
+        version: 3.22.2
     devDependencies:
       '@heimdall-logs/config':
         specifier: 0.0.1
         version: link:../config
+      '@heimdall-logs/logger':
+        specifier: 0.0.1
+        version: link:../logger
 
   packages/eslint-config:
     devDependencies:
@@ -8826,6 +8835,16 @@ packages:
       '@libsql/client': 0.3.2(bufferutil@4.0.7)(encoding@0.1.13)(utf-8-validate@6.0.3)
       '@planetscale/database': 1.11.0
       kysely: 0.26.3
+    dev: false
+
+  /drizzle-zod@0.5.1(drizzle-orm@0.28.6)(zod@3.22.2):
+    resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
+    peerDependencies:
+      drizzle-orm: '>=0.23.13'
+      zod: '*'
+    dependencies:
+      drizzle-orm: 0.28.6(@libsql/client@0.3.2)(@planetscale/database@1.11.0)(kysely@0.26.3)
+      zod: 3.22.2
     dev: false
 
   /duplexer2@0.1.4:

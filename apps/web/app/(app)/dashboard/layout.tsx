@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 import BottomNavigation from '@/components/bottom-navigation';
 import { MobileDashboardHeader } from '@/components/header';
@@ -33,15 +33,15 @@ export default async function DashboardWebsiteLayout({
 	const websites = userWebsites.concat(teamWebsites);
 
 	return (
-		<>
+		<Suspense fallback={null}>
 			<StoreSetter store='website' data={websites} />
 			<StoreSetter store='user' data={user} />
 			<StoreSetter store='teamWebsites' data={teamWebsites} />
 			<StoreSetter store='userWebsites' data={userWebsites} />
 			<StoreSetter store='teams' data={teams} />
-			<div className='flex min-h-screen flex-col bg-muted/50 pb-12'>
+			<main className='flex min-h-screen flex-col bg-muted/50 pb-12'>
 				<div className='flex h-full'>
-					<main className='flex w-full flex-1 flex-col space-y-0 overflow-hidden'>
+					<div className='flex w-full flex-1 flex-col space-y-0 overflow-hidden'>
 						<MobileDashboardHeader
 							user={user}
 							items={dashboardConfig.projectNav}
@@ -49,9 +49,9 @@ export default async function DashboardWebsiteLayout({
 						<SideNav items={dashboardConfig.sideNav} user={user} />
 						<div className='container'>{children}</div>
 						<BottomNavigation items={dashboardConfig.sideNav} />
-					</main>
+					</div>
 				</div>
-			</div>
-		</>
+			</main>
+		</Suspense>
 	);
 }

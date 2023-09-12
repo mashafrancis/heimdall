@@ -6,7 +6,7 @@ import WebSiteItem from '@/components/websites/website-item';
 import { fancyId } from '@/lib/utils';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
 
-import { EmptyPlaceholder } from './empty-placeholder';
+import { EmptyPlaceholder } from '../empty-placeholder';
 import { WebsiteCreateButton } from './website-create-button';
 import { DeleteWebsiteAlert } from './website-delete-alert';
 import { EditWebsiteForm } from './website-edit-form';

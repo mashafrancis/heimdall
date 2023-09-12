@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { fancyId } from '@/lib/utils';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
 
-import { EmptyPlaceholder } from './empty-placeholder';
+import { EmptyPlaceholder } from '../empty-placeholder';
 import { Website } from './website';
 import { WebsiteCreateButton } from './website-create-button';
 import { DeleteWebsiteAlert } from './website-delete-alert';

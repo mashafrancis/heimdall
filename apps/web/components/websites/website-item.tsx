@@ -24,11 +24,7 @@ export default function WebSiteItem({
 			<div className='col-span-9 md:col-span-10'>
 				<div className='grid gap-1'>
 					{site.title}
-					<div>
-						<div>
-							<p className='text-xs text-muted-foreground'>{site.url}</p>
-						</div>
-					</div>
+					<p className='text-xs text-muted-foreground'>{site.url}</p>
 				</div>
 			</div>
 			<MoreVertical

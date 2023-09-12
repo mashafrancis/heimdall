@@ -32,7 +32,7 @@ interface Props {
 }
 
 const LINKS = [
-	{ name: 'Pricing', href: '/pricing' },
+	// { name: 'Pricing', href: '/pricing' },
 	{ name: 'Changelog', href: '/changelog' },
 	{ name: 'Docs', href: '/docs' },
 ];

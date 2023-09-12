@@ -3,21 +3,21 @@
 import { Button, ButtonProps } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from '@/components/ui/use-toast';
-import { WebsiteForm } from '@/components/website-create-form';
+import { WebsiteForm } from '@/components/websites/website-create-form';
 import { userWebsitesAtom, websiteFormAtom } from '@/jotai/store';
 import { useAtom } from 'jotai';
 
-import { Icons } from './icons';
+import { Icons } from '../icons';
 
 export function WebsiteCreateButton({ variant, ...props }: ButtonProps) {
 	const [websites] = useAtom(userWebsitesAtom);
 	const [, setCreateWebsite] = useAtom(websiteFormAtom);
 
 	async function onClick() {
-		if (websites.length > 5) {
+		if (websites.length > 9) {
 			return toast({
-				title: 'Limit of 6 websites reached.',
-				description: 'We currently only support 6 websites per account.',
+				title: 'Limit of 10 websites reached.',
+				description: 'We currently only support 10 websites per account.',
 				variant: 'destructive',
 			});
 		}

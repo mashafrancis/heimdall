@@ -26,6 +26,12 @@ export const dashboardConfig: DashboardConfig = {
 			href: '/api-keys',
 			icon: 'key',
 		},
+		{
+			id: 'teams',
+			title: 'Teams',
+			href: '/dashboard/team',
+			icon: 'users',
+		},
 		// {
 		// 	id: 'reports',
 		// 	title: 'Reports',

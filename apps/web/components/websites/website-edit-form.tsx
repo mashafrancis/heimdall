@@ -38,8 +38,8 @@ import { useForm } from 'react-hook-form';
 import Modal from 'react-modal';
 import { z } from 'zod';
 
-import { CopyToClipboard } from './copy-to-clipboard';
-import { Icons } from './icons';
+import { CopyToClipboard } from '../copy-to-clipboard';
+import { Icons } from '../icons';
 
 export const EditWebsiteForm = ({
 	data,

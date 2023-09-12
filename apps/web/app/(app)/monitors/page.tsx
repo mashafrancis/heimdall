@@ -1,8 +1,8 @@
+import MonitorsList from '@/components/monitors/monitors-list';
 import Search from '@/components/search';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WebsiteCreateButton } from '@/components/websites/website-create-button';
 import WebsitesCard from '@/components/websites/websites-card';
-import WebsitesList from '@/components/websites/websites-list';
 import { cn } from '@/lib/utils';
 import { getWebsite } from '@/server/query/website';
 import { LayoutGrid, List } from 'lucide-react';
@@ -34,7 +34,7 @@ export default async function DashboardPage() {
 					<WebsitesCard websites={websites} />
 				</TabsContent>
 				<TabsContent value='list'>
-					<WebsitesList websites={websites} />
+					<MonitorsList websites={websites} />
 				</TabsContent>
 			</Tabs>
 		</div>

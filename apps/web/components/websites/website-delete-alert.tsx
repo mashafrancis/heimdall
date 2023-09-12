@@ -16,7 +16,7 @@ import { toast } from '@/components/ui/use-toast';
 import { websiteDeleteModalAtom } from '@/jotai/store';
 import { useAtom } from 'jotai';
 
-import { Icons } from './icons';
+import { Icons } from '../icons';
 
 export function DeleteWebsiteAlert({ id }: { id: string }) {
 	const router = useRouter();
