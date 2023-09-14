@@ -308,7 +308,7 @@ export const InsightTables = ({
 													data: 'session',
 												});
 											}}
-											className=' cursor-pointer'
+											className='cursor-pointer'
 										>
 											<TableCell className='z-10 flex items-center gap-2'>
 												{RefIcons[
@@ -319,7 +319,7 @@ export const InsightTables = ({
 													<DefaultIcons url={refs.referrerDomain} />
 												)}
 												<Link
-													className=' hover:underline'
+													className='hover:underline'
 													href={refs.referrerDomain}
 												>
 													{refs.referrer.split('.').length > 1
@@ -490,7 +490,7 @@ export const InsightTables = ({
 									Row={(d) => (
 										<TableRow>
 											<TableCell
-												className=' flex cursor-pointer items-center gap-1'
+												className='flex cursor-pointer items-center gap-1'
 												onClick={() =>
 													addFilter({
 														key: 'device',
@@ -516,7 +516,7 @@ export const InsightTables = ({
 										nameLabel: 'OS',
 										valueLabel: 'visits',
 									}}
-									searchPlaceholder='search Browser...'
+									searchPlaceholder='Search Browser...'
 									tip='Your browsers and how many time your website is visited from them :)'
 									hideSearchBar={data && data?.data.browser.length < 10}
 									Row={(d) => (

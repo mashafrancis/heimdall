@@ -105,13 +105,24 @@ export const Dashboard = ({
 						'scrollbar-hide w-full space-y-4 py-4 transition-all duration-700 dark:text-white/80'
 					)}
 				>
-					<Tabs defaultValue='insights' className='space-y-4'>
+					<Tabs defaultValue='analytics' className='space-y-4'>
 						{!isPublic ? (
 							<div className=' flex items-center justify-between'>
 								<TabsList>
 									<TabsTrigger
-										value='insights'
+										value='analytics'
 										// className='dark:data-[state=active]:text-emphasis data-[state=active]:text-emphasis'
+									>
+										Analytics
+									</TabsTrigger>
+									<TabsTrigger
+										value='insights'
+										// className=' dark:data-[state=active]:text-emphasis data-[state=active]:text-emphasis'
+										onClick={() =>
+											heimdall.track('logs-tab-clicked', {
+												websiteId: website.id,
+											})
+										}
 									>
 										Insights
 									</TabsTrigger>
@@ -190,7 +201,7 @@ export const Dashboard = ({
 						</AnimatePresence>
 						<AnimatePresence>
 							<motion.div layout>
-								<TabsContent value='insights' className='space-y-4'>
+								<TabsContent value='analytics' className='space-y-4'>
 									<div className='grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4'>
 										<InsightCard
 											title={viCardSwitch}

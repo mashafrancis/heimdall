@@ -8,9 +8,11 @@ import { Toaster } from '@/components/ui/toaster';
 import { fontHeading, fontMono, fontNumeric, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
+// import '@/styles/syntax-highlighter.module.css';
 import Heimdall from '@heimdall-logs/tracker/react';
 
 import Analytics from '../components/analytics';
+
 
 const title = 'Heimdall';
 const description = 'Monitor your app performance.';
@@ -60,7 +62,7 @@ export default function RootLayout({
 			lang='en'
 			suppressHydrationWarning
 			className={cn(
-				'min-h-screen min-[100dvh] font-sans text-black',
+				'min-[100dvh] font-sans text-black',
 				fontSans.variable,
 				fontHeading.variable,
 				fontNumeric.variable,

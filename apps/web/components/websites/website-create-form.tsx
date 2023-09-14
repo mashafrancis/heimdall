@@ -21,7 +21,11 @@ import { z } from 'zod';
 
 import { Icons } from '../icons';
 
-export const WebsiteForm = () => {
+interface Props {
+	toggleDialog: (open: boolean) => void;
+}
+
+export const WebsiteForm = (props: Props) => {
 	const [isLoading, startTransition] = useTransition();
 	const { refresh } = useRouter();
 	const form = useForm<z.infer<typeof websiteFormSchema>>({
@@ -58,6 +62,7 @@ export const WebsiteForm = () => {
 						variant: 'destructive',
 					});
 				}
+				props.toggleDialog(false);
 				refresh();
 			} catch (e) {
 				toast({
@@ -100,11 +105,11 @@ export const WebsiteForm = () => {
 					name='title'
 					render={({ field }) => (
 						<FormItem className=''>
-							<FormLabel>MonitorCardDetails Title</FormLabel>
+							<FormLabel>Website Title</FormLabel>
 							{/* <FormMessage /> */}
 							<FormControl>
 								<Input
-									placeholder='Your MonitorCardDetails Title'
+									placeholder='Your Website Title'
 									{...field}
 									className=' '
 								/>
@@ -117,7 +122,7 @@ export const WebsiteForm = () => {
 					name='url'
 					render={({ field }) => (
 						<FormItem className=''>
-							<FormLabel>MonitorCardDetails URL</FormLabel>
+							<FormLabel>Website URL</FormLabel>
 							{/* <FormMessage /> */}
 							<FormControl>
 								<Input
@@ -137,7 +142,7 @@ export const WebsiteForm = () => {
 							<FormLabel>Your website @heimdall</FormLabel>
 							{/* <FormMessage /> */}
 							<FormControl>
-								<div className='flex items-center rounded-md  border border-input px-1 focus-within:outline-none'>
+								<div className='flex items-center rounded-md border border-input px-1 focus-within:outline-none'>
 									<span className=' flex h-10 items-center border-r px-2 text-sm'>
 										heimdall.com/
 									</span>
@@ -151,9 +156,11 @@ export const WebsiteForm = () => {
 						</FormItem>
 					)}
 				/>
-				<Button type='submit' disabled={isLoading}>
-					{isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
-					Submit Task
+				<Button type='submit' disabled={isLoading} aria-disabled={isLoading}>
+					{isLoading ? (
+						<Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+					) : null}
+					Add Website
 				</Button>
 			</form>
 		</Form>

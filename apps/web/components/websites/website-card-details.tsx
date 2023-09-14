@@ -46,7 +46,7 @@ export function WebsiteCardDetails({
 							alt='...'
 							height={32}
 							width={32}
-							className='border rounded-full shrink p-1'
+							className='border rounded-full shrink p-0.5'
 						/>
 						<div className=''>
 							<h3 className='text-base'>{site.title}</h3>
@@ -55,20 +55,6 @@ export function WebsiteCardDetails({
 							</p>
 						</div>
 					</div>
-					{/*<div className='flex items-center justify-between'>*/}
-					{/*	<h3 className='text-base md:text-lg'>{site.title}</h3>*/}
-					{/*	<MoreVertical*/}
-					{/*		className='cursor-pointer'*/}
-					{/*		size={18}*/}
-					{/*		onClick={() => {*/}
-					{/*			setIsOpen(true);*/}
-					{/*			setSelected(site.id);*/}
-					{/*		}}*/}
-					{/*	/>*/}
-					{/*</div>*/}
-					{/*<p className='text-xs md:text-sm text-muted-foreground truncate'>*/}
-					{/*	{site.url}*/}
-					{/*</p>*/}
 				</CardHeader>
 				<CardContent className='flex justify-between gap-2 p-4 pt-0 md:p-6 md:pt-3'>
 					<div className='flex items-center gap-2 text-lime-500'>
@@ -78,6 +64,14 @@ export function WebsiteCardDetails({
 							<span className='hidden md:inline-block'>Visitors</span>
 						</p>
 					</div>
+					{/*<MoreVertical*/}
+					{/*	className='cursor-pointer'*/}
+					{/*	size={18}*/}
+					{/*	onClick={() => {*/}
+					{/*		setIsOpen(true);*/}
+					{/*		setSelected(site.id);*/}
+					{/*	}}*/}
+					{/*/>*/}
 					{/*<NextLink*/}
 					{/*	className='text-muted-foreground'*/}
 					{/*	to={`/s/${site.id}`}*/}

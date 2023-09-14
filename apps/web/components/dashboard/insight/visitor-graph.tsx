@@ -149,7 +149,7 @@ export function Graph({
 									<a
 										href='https://heimdall.francismasha.com/docs'
 										target='_blank'
-										className=' text-blue-700 underline'
+										className=' text-primary underline'
 										rel='noreferrer'
 									>
 										docs

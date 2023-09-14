@@ -1,19 +1,22 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Button, ButtonProps } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from '@/components/ui/use-toast';
 import { WebsiteForm } from '@/components/websites/website-create-form';
-import { userWebsitesAtom, websiteFormAtom } from '@/jotai/store';
+import { userWebsitesAtom } from '@/jotai/store';
 import { useAtom } from 'jotai';
 
 import { Icons } from '../icons';
 
 export function WebsiteCreateButton({ variant, ...props }: ButtonProps) {
 	const [websites] = useAtom(userWebsitesAtom);
-	const [, setCreateWebsite] = useAtom(websiteFormAtom);
+	// const [, setCreateWebsite] = useAtom(websiteFormAtom);
+	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-	async function onClick() {
+	async function onDialogOpenChange(state: boolean) {
 		if (websites.length > 9) {
 			return toast({
 				title: 'Limit of 10 websites reached.',
@@ -21,19 +24,20 @@ export function WebsiteCreateButton({ variant, ...props }: ButtonProps) {
 				variant: 'destructive',
 			});
 		}
+		setIsDialogOpen(state);
 		// setCreateWebsite(true);
 	}
 
 	return (
-		<Dialog>
+		<Dialog onOpenChange={onDialogOpenChange} open={isDialogOpen}>
 			<DialogTrigger>
-				<Button onClick={onClick} {...props}>
+				<Button {...props}>
 					<Icons.add className='h-4 w-4 ' />
 					<span className='hidden md:block'>New Website</span>
 				</Button>
 			</DialogTrigger>
 			<DialogContent className='sm:max-w-[425px]'>
-				<WebsiteForm />
+				<WebsiteForm toggleDialog={setIsDialogOpen} />
 			</DialogContent>
 		</Dialog>
 	);
