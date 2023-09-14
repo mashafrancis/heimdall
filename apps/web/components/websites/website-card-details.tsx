@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { getFavicon } from '@/lib/utils';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
 import { User2 } from 'lucide-react';
 
@@ -24,17 +25,28 @@ export function WebsiteCardDetails({
 	setIsOpen,
 }: WebsiteProps) {
 	const [isLoading, setIsLoading] = useState(false);
+	const [favicon, setFavicon] = useState('');
+	// const favicon = getFavicon(site.url).then((favicon) => {
+	// 	return favicon;
+	// });
+
+	useEffect(() => {
+		getFavicon(site.url).then((favicon) => {
+			setFavicon(favicon);
+		});
+	}, []);
+
 	return (
 		<Link href={`/s/${site.id}`}>
 			<Card className='rounded-xl shadow-none @container/card hover:shadow-md'>
 				<CardHeader className='p-4 md:p-6 md:pb-3'>
 					<div className='flex items-center gap-2'>
 						<Image
-							src={logo}
+							src={favicon || logo}
 							alt='...'
 							height={32}
 							width={32}
-							className='border rounded-full shrink'
+							className='border rounded-full shrink p-1'
 						/>
 						<div className=''>
 							<h3 className='text-base'>{site.title}</h3>

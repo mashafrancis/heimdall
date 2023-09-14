@@ -77,8 +77,8 @@ const tailwindConfig = {
 					'Arial',
 					'sans-serif',
 				],
-				monospace: [
-					'var(--font-roboto-mono)',
+				mono: [
+					'var(--font-mono) !important',
 					'Roboto Mono',
 					'SFMono-Regular',
 					'Menlo',
@@ -87,6 +87,7 @@ const tailwindConfig = {
 					'Liberation Mono',
 					'Courier New',
 					'monospace',
+					...fontFamily.mono,
 				],
 			},
 			fontSize: {

@@ -24,9 +24,9 @@ export default async function APIKeysLayout({
 	const websites = userWebsites.concat(teamWebsites);
 
 	return (
-		<div className='flex min-h-screen flex-col bg-gray-50'>
+		<main className='flex min-h-screen flex-col bg-muted/50 pb-12'>
 			<div className='flex h-full'>
-				<main className='flex w-full flex-1 flex-col overflow-hidden'>
+				<div className='flex w-full flex-1 flex-col space-y-0 overflow-hidden'>
 					<MobileDashboardHeader
 						user={user}
 						items={dashboardConfig.projectNav}
@@ -40,8 +40,8 @@ export default async function APIKeysLayout({
 							{children}
 						</DashboardShell>
 					</div>
-				</main>
+				</div>
 			</div>
-		</div>
+		</main>
 	);
 }

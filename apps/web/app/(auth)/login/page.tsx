@@ -20,7 +20,7 @@ export default async function LoginPage() {
 
 	return (
 		<div className='container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0'>
-			<div className='hidden h-full bg-slate-100 lg:block' />
+			<div className='hidden h-full bg-muted lg:block' />
 			<div className={loginStyles.main} />
 			<RightSection activeStrategy={active} />
 			<BackLink className='absolute left-8 top-8 hidden md:flex' to='/'>
