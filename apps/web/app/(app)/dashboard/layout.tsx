@@ -48,6 +48,7 @@ export default async function DashboardWebsiteLayout({
 						/>
 						<SideNav items={dashboardConfig.sideNav} user={user} />
 						<main className='container'>{children}</main>
+						{/*<BottomNav />*/}
 						<BottomNavigation items={dashboardConfig.sideNav} />
 					</div>
 				</div>

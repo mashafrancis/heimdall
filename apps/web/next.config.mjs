@@ -29,6 +29,10 @@ const nextConfig = {
       source: '/api/heimdall',
       destination: env.NEXT_PUBLIC_API_URL,
     },
+    {
+      source: '/api/trace',
+      destination: 'http://localhost:4318/v1/traces',
+    },
   ],
   transpilePackages: ['@heimdall-logs/tracker', '@heimdall-logs/api'],
   devIndicators: {

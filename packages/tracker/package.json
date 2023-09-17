@@ -55,14 +55,14 @@
 		"@types/react": "^18.2.21",
 		"@types/testing-library__jest-dom": "^6.0.0",
 		"@vitest/browser": "^0.34.4",
-		"happy-dom": "^11.0.2",
+		"happy-dom": "^11.2.0",
 		"react": "^18.2.0",
 		"sinon": "^15.2.0",
 		"terser": "^5.19.4",
 		"tsup": "^7.2.0",
 		"typescript": "^5.2.2",
 		"vitest": "^0.34.4",
-		"webdriverio": "^8.16.5"
+		"webdriverio": "^8.16.7"
 	},
 	"peerDependencies": {
 		"react": "^16.8||^17||^18"

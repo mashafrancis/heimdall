@@ -80,7 +80,7 @@ export type GetInsightResponse = {
 	};
 };
 
-export type LoglibEvent = {
+export type HeimdallEvent = {
 	id: string;
 	timestamp: string;
 	event: 'hits' | string;
@@ -102,7 +102,7 @@ export type LoglibEvent = {
 	type?: string;
 };
 
-export type LoglibCustomEvent = {
+export type HeimdallCustomEvent = {
 	currentPath: string | undefined;
 	id: string;
 	timestamp: string;

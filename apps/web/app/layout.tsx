@@ -13,7 +13,6 @@ import Heimdall from '@heimdall-logs/tracker/react';
 
 import Analytics from '../components/analytics';
 
-
 const title = 'Heimdall';
 const description = 'Monitor your app performance.';
 
