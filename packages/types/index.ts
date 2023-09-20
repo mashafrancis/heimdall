@@ -124,6 +124,32 @@ export type HeimdallCustomEvent = {
 	sessionId: string;
 };
 
+export type HeimdallTraces = {
+	Timestamp: string;
+	TraceId: string;
+	SpanId: string;
+	ParentSpanId: string;
+	SpanName: string;
+	SpanKind: string;
+	ServiceName: string;
+	ResourceAttributes: Record<string, string>;
+	SpanAttributes: Record<string, string>;
+	Duration: string;
+	StatusCode: string;
+	StatusMessage: string;
+	Events: {
+		Timestamp: Array<string>;
+		Name: Array<string>;
+		Attributes: Array<Record<string, string>>;
+	};
+	Links: {
+		TraceId: Array<string>;
+		SpanId: Array<string>;
+		TraceState: Array<string>;
+		Attributes: Array<Record<string, string>>;
+	};
+};
+
 type StringOperator = 'is' | 'isNot' | 'contains' | 'notContains';
 type NumberOperator = 'lte' | 'gte' | 'lt' | 'gt' | 'is' | 'isNot';
 type DateOperator = 'lte' | 'gte' | 'lt' | 'gt' | 'is' | 'isNot';

@@ -76,6 +76,7 @@ export default function RootLayout({
 							id: 'heimdall',
 							consent: 'granted',
 							host: '/api/heimdall',
+							collector: '/api/trace',
 							// host: 'http://localhost:8000',
 							autoTrack: true,
 							// env: 'prod',

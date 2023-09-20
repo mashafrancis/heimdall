@@ -1,8 +1,7 @@
 'use client';
 
-import COUNTRIES from '@/lib/constants';
 import dayjs from '@/lib/dayjsTime';
-import { HeimdallCustomEvent } from '@heimdall-logs/types';
+import { HeimdallTraces } from '@heimdall-logs/types';
 import { ColumnDef } from '@tanstack/react-table';
 import {
 	ChevronDown,
@@ -11,7 +10,7 @@ import {
 	UnfoldVertical,
 } from 'lucide-react';
 
-export const columns: ColumnDef<HeimdallCustomEvent>[] = [
+export const columns: ColumnDef<HeimdallTraces>[] = [
 	{
 		id: 'expander',
 		header: () => <UnfoldVertical />,
@@ -19,24 +18,6 @@ export const columns: ColumnDef<HeimdallCustomEvent>[] = [
 			return (
 				<span onClick={() => row.toggleExpanded}>
 					{!row.getIsExpanded() ? <ChevronRight /> : <ChevronDown />}
-				</span>
-			);
-		},
-	},
-	{
-		id: 'eventName',
-		accessorKey: 'event',
-		header: ({ column }) => {
-			return (
-				<span
-					className='group flex items-center gap-2'
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
-					Event Name
-					<ChevronsUpDown
-						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
-						size={15}
-					/>
 				</span>
 			);
 		},
@@ -60,9 +41,9 @@ export const columns: ColumnDef<HeimdallCustomEvent>[] = [
 		},
 		cell: ({ row }) => {
 			const relativeTime = dayjs(
-				row.original.timestamp as unknown as string
+				row.original.Timestamp as unknown as string
 			).fromNow();
-			return dayjs(row.original.timestamp as unknown as string).fromNow();
+			return dayjs(row.original.Timestamp as unknown as string).fromNow();
 			// const diff =
 			// 	Date.now() - Date.parse(row.original.timestamp as unknown as string);
 			// const hours = Math.floor(diff / (1000 * 60 * 60));
@@ -85,15 +66,15 @@ export const columns: ColumnDef<HeimdallCustomEvent>[] = [
 		},
 	},
 	{
-		id: 'city',
-		accessorKey: 'city',
+		id: 'status',
+		accessorKey: 'StatusCode',
 		header: ({ column }) => {
 			return (
 				<span
 					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
-					City
+					Status
 					<ChevronsUpDown
 						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
@@ -103,36 +84,15 @@ export const columns: ColumnDef<HeimdallCustomEvent>[] = [
 		},
 	},
 	{
-		id: 'country',
-		accessorKey: 'country',
+		id: 'status_message',
+		accessorKey: 'StatusMessage',
 		header: ({ column }) => {
 			return (
 				<span
 					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
-					Country
-					<ChevronsUpDown
-						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
-						size={15}
-					/>
-				</span>
-			);
-		},
-		cell: ({ row }) => {
-			return COUNTRIES[row.original.country ?? ''] ?? row.original.country;
-		},
-	},
-	{
-		id: 'os',
-		accessorKey: 'os',
-		header: ({ column }) => {
-			return (
-				<span
-					className='group flex items-center gap-2'
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
-					OS
+					Message
 					<ChevronsUpDown
 						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
@@ -141,4 +101,61 @@ export const columns: ColumnDef<HeimdallCustomEvent>[] = [
 			);
 		},
 	},
+	// {
+	// 	id: 'city',
+	// 	accessorKey: 'city',
+	// 	header: ({ column }) => {
+	// 		return (
+	// 			<span
+	// 				className='group flex items-center gap-2'
+	// 				onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+	// 			>
+	// 				City
+	// 				<ChevronsUpDown
+	// 					className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
+	// 					size={15}
+	// 				/>
+	// 			</span>
+	// 		);
+	// 	},
+	// },
+	// {
+	// 	id: 'country',
+	// 	accessorKey: 'country',
+	// 	header: ({ column }) => {
+	// 		return (
+	// 			<span
+	// 				className='group flex items-center gap-2'
+	// 				onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+	// 			>
+	// 				Country
+	// 				<ChevronsUpDown
+	// 					className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
+	// 					size={15}
+	// 				/>
+	// 			</span>
+	// 		);
+	// 	},
+	// 	cell: ({ row }) => {
+	// 		return COUNTRIES[row.original.country ?? ''] ?? row.original.country;
+	// 	},
+	// },
+	// {
+	// 	id: 'os',
+	// 	accessorKey: 'os',
+	// 	header: ({ column }) => {
+	// 		return (
+	// 			<span
+	// 				className='group flex items-center gap-2'
+	// 				onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+	// 			>
+	// 				OS
+	// 				<ChevronsUpDown
+	// 					className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
+	// 					size={15}
+	// 				/>
+	// 			</span>
+	// 		);
+	// 	},
+	// },
 ];

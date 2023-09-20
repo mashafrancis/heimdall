@@ -3,10 +3,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import COUNTRIES from '@/lib/constants';
 import { fancyId } from '@/lib/utils';
-import { HeimdallCustomEvent } from '@heimdall-logs/types';
+import { HeimdallTraces } from '@heimdall-logs/types';
 import { Row } from '@tanstack/react-table';
 
-const renderSubComponent = ({ row }: { row: Row<HeimdallCustomEvent> }) => {
+const renderSubComponent = ({ row }: { row: Row<HeimdallTraces> }) => {
 	const data = row.original;
 	const automaticProperties = {
 		Browser: data.browser,

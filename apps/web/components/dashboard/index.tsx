@@ -2,6 +2,7 @@
 
 import React, { Fragment, useEffect, useState } from 'react';
 
+import Traces from '@/components/dashboard/traces';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { localSettingAtom } from '@/jotai/store';
@@ -206,219 +207,232 @@ export const Dashboard = ({
 						</AnimatePresence>
 						<AnimatePresence>
 							<motion.div layout>
-								<TabsContent value='analytics' className='space-y-4'>
-									<div className='grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4'>
-										<InsightCard
-											title={viCardSwitch}
-											Icon={User2}
-											data={
-												data
-													? viCardSwitch === 'New Visitors'
-														? data.insight.newVisitors
-														: viCardSwitch === 'Unique Visitors'
-														? data.insight.uniqueVisitors
-														: viCardSwitch === 'Retaining Visitors'
-														? data.insight.returningVisitor
+								<TrackClick
+									name='analytics-visited'
+									payload={{
+										websiteId: website.id,
+									}}
+								>
+									<TabsContent value='analytics' className='space-y-4'>
+										<div className='grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4'>
+											<InsightCard
+												title={viCardSwitch}
+												Icon={User2}
+												data={
+													data
+														? viCardSwitch === 'New Visitors'
+															? data.insight.newVisitors
+															: viCardSwitch === 'Unique Visitors'
+															? data.insight.uniqueVisitors
+															: viCardSwitch === 'Retaining Visitors'
+															? data.insight.returningVisitor
+															: { change: 0, current: 0 }
 														: { change: 0, current: 0 }
-													: { change: 0, current: 0 }
-											}
-											isLoading={isLoading}
-											tooltip={
-												viCardSwitch === 'New Visitors'
-													? 'The number of people visiting your website for the first time.'
-													: viCardSwitch === 'Unique Visitors'
-													? 'The total number of different people who visited your website.'
-													: viCardSwitch === 'Retaining Visitors'
-													? 'The number of visitors who returned to your website multiple times.'
-													: ''
-											}
-											BottomChildren={() => (
-												<div className=' cursor-pointer'>
-													<div>
-														<Popover>
-															<PopoverTrigger asChild>
-																<MoreHorizontal className='h-4 w-4' />
-															</PopoverTrigger>
-															<PopoverContent className='w-48 '>
-																<RadioGroup
-																	onValueChange={(
-																		v:
-																			| 'New Visitors'
-																			| 'Unique Visitors'
-																			| 'Retaining Visitors'
-																	) => {
-																		setViCardSwitch(v);
-																		heimdall.track('visitor-card-switched', {
-																			websiteId: website.id,
-																			switch: viCardSwitch,
-																		});
-																	}}
-																	defaultValue={viCardSwitch}
-																	className='grid gap-4'
-																>
-																	<div className='flex items-center space-x-2'>
-																		<RadioGroupItem
-																			value='Unique Visitors'
-																			id='r2'
-																		/>
-																		<Label htmlFor='r2'>Unique Visitors</Label>
-																	</div>
+												}
+												isLoading={isLoading}
+												tooltip={
+													viCardSwitch === 'New Visitors'
+														? 'The number of people visiting your website for the first time.'
+														: viCardSwitch === 'Unique Visitors'
+														? 'The total number of different people who visited your website.'
+														: viCardSwitch === 'Retaining Visitors'
+														? 'The number of visitors who returned to your website multiple times.'
+														: ''
+												}
+												BottomChildren={() => (
+													<div className=' cursor-pointer'>
+														<div>
+															<Popover>
+																<PopoverTrigger asChild>
+																	<MoreHorizontal className='h-4 w-4' />
+																</PopoverTrigger>
+																<PopoverContent className='w-48 '>
+																	<RadioGroup
+																		onValueChange={(
+																			v:
+																				| 'New Visitors'
+																				| 'Unique Visitors'
+																				| 'Retaining Visitors'
+																		) => {
+																			setViCardSwitch(v);
+																			heimdall.track('visitor-card-switched', {
+																				websiteId: website.id,
+																				switch: viCardSwitch,
+																			});
+																		}}
+																		defaultValue={viCardSwitch}
+																		className='grid gap-4'
+																	>
+																		<div className='flex items-center space-x-2'>
+																			<RadioGroupItem
+																				value='Unique Visitors'
+																				id='r2'
+																			/>
+																			<Label htmlFor='r2'>
+																				Unique Visitors
+																			</Label>
+																		</div>
 
-																	<div className='flex items-center space-x-2'>
-																		<RadioGroupItem
-																			value='New Visitors'
-																			id='r1'
-																		/>
-																		<Label htmlFor='r1'>New Visitors</Label>
-																	</div>
+																		<div className='flex items-center space-x-2'>
+																			<RadioGroupItem
+																				value='New Visitors'
+																				id='r1'
+																			/>
+																			<Label htmlFor='r1'>New Visitors</Label>
+																		</div>
 
-																	<div className='flex items-center space-x-2'>
-																		<RadioGroupItem
-																			value='Retaining Visitors'
-																			id='r3'
-																		/>
-																		<Label htmlFor='r3'>
-																			Retaining Visitors
-																		</Label>
-																	</div>
-																</RadioGroup>
-															</PopoverContent>
-														</Popover>
+																		<div className='flex items-center space-x-2'>
+																			<RadioGroupItem
+																				value='Retaining Visitors'
+																				id='r3'
+																			/>
+																			<Label htmlFor='r3'>
+																				Retaining Visitors
+																			</Label>
+																		</div>
+																	</RadioGroup>
+																</PopoverContent>
+															</Popover>
+														</div>
 													</div>
-												</div>
-											)}
-										/>
-										<InsightCard
-											title={'Views'}
-											Icon={Eye}
-											data={
-												data
-													? data.insight.totalPageViews
-													: { change: 0, current: 0 }
-											}
-											isLoading={isLoading}
-											tooltip='The total number of pages viewed. Repeated views of a single page are counted.'
-										/>
-										<InsightCard
-											title={'Average Time'}
-											Icon={TimerIcon}
-											data={
-												data
-													? data.insight.averageTime
-													: { change: 0, current: 0 }
-											}
-											valuePrefix={''}
-											isLoading={isLoading}
-											tooltip='The average amount of time visitors spend on your website.'
-										/>
-										<InsightCard
-											title={'Bounce Rate'}
-											valuePrefix={'%'}
-											Icon={Activity}
-											negative
-											data={
-												data
-													? data.insight.bounceRate
-													: { change: 0, current: 0 }
-											}
-											isLoading={isLoading}
-											tooltip=' The percentage of visitors who quickly exit your website without exploring further.'
-										/>
-									</div>
-									<div className='grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7'>
-										<Card className='md:col-span-4 shadow-none'>
-											{curTableTab === 'locations' ? (
-												<Fragment>
-													<CardHeader className='flex flex-row items-end gap-2'>
-														<CardTitle className='py-2'>Visitors Map</CardTitle>
-													</CardHeader>
-													<CardContent
-														className={cn(
-															curTableTab === 'locations' && 'zoom-in-95'
-														)}
-													>
-														<LocationMap
-															data={data ? data.data.locations.country : []}
-														/>
-													</CardContent>
-												</Fragment>
-											) : (
-												<Tabs defaultValue='visitors' className=''>
-													<CardHeader className=' flex flex-row items-center justify-between'>
-														<CardTitle className='text-base'>
-															<TabsList className=''>
-																<TabsTrigger value='visitors'>
-																	Visitors
-																</TabsTrigger>
-																<TabsTrigger value='sessions'>
-																	Sessions
-																</TabsTrigger>
-															</TabsList>
-														</CardTitle>
-														<div className=' flex items-center gap-2'>
-															<Tabs
-																defaultValue={
-																	isBar ? 'bar-graph' : 'line-graph'
-																}
-																onValueChange={(v) =>
-																	setIsBar(v === 'bar-graph')
-																}
-																value={isBar ? 'bar-graph' : 'line-graph'}
-															>
+												)}
+											/>
+											<InsightCard
+												title={'Views'}
+												Icon={Eye}
+												data={
+													data
+														? data.insight.totalPageViews
+														: { change: 0, current: 0 }
+												}
+												isLoading={isLoading}
+												tooltip='The total number of pages viewed. Repeated views of a single page are counted.'
+											/>
+											<InsightCard
+												title={'Average Time'}
+												Icon={TimerIcon}
+												data={
+													data
+														? data.insight.averageTime
+														: { change: 0, current: 0 }
+												}
+												valuePrefix={''}
+												isLoading={isLoading}
+												tooltip='The average amount of time visitors spend on your website.'
+											/>
+											<InsightCard
+												title={'Bounce Rate'}
+												valuePrefix={'%'}
+												Icon={Activity}
+												negative
+												data={
+													data
+														? data.insight.bounceRate
+														: { change: 0, current: 0 }
+												}
+												isLoading={isLoading}
+												tooltip=' The percentage of visitors who quickly exit your website without exploring further.'
+											/>
+										</div>
+										<div className='grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7'>
+											<Card className='md:col-span-4 shadow-none'>
+												{curTableTab === 'locations' ? (
+													<Fragment>
+														<CardHeader className='flex flex-row items-end gap-2'>
+															<CardTitle className='py-2'>
+																Visitors Map
+															</CardTitle>
+														</CardHeader>
+														<CardContent
+															className={cn(
+																curTableTab === 'locations' && 'zoom-in-95'
+															)}
+														>
+															<LocationMap
+																data={data ? data.data.locations.country : []}
+															/>
+														</CardContent>
+													</Fragment>
+												) : (
+													<Tabs defaultValue='visitors' className=''>
+														<CardHeader className=' flex flex-row items-center justify-between'>
+															<CardTitle className='text-base'>
 																<TabsList className=''>
-																	<TabsTrigger value='line-graph'>
-																		<LineChart size={18} />
+																	<TabsTrigger value='visitors'>
+																		Visitors
 																	</TabsTrigger>
-																	<TabsTrigger value='bar-graph'>
-																		<BarChart size={18} />
+																	<TabsTrigger value='sessions'>
+																		Sessions
 																	</TabsTrigger>
 																</TabsList>
-															</Tabs>
-														</div>
-													</CardHeader>
-													<CardContent>
-														<div className='pl-2'>
-															<TabsContent
-																value='visitors'
-																className='rounded-lg'
-															>
-																<Graph
-																	bar={isBar}
-																	data={
-																		data ? data.graph.uniqueVisitorsByDate : []
+															</CardTitle>
+															<div className=' flex items-center gap-2'>
+																<Tabs
+																	defaultValue={
+																		isBar ? 'bar-graph' : 'line-graph'
 																	}
-																	name='Visitors'
-																	Icon={Users2}
-																	isLoading={isLoading}
-																	setTimeRange={setTimeRange}
-																/>
-															</TabsContent>
-															<TabsContent value='sessions' className=''>
-																<Graph
-																	data={
-																		data ? data.graph.uniqueSessionByDate : []
+																	onValueChange={(v) =>
+																		setIsBar(v === 'bar-graph')
 																	}
-																	name='Sessions'
-																	Icon={Laptop2}
-																	isLoading={isLoading}
-																	setTimeRange={setTimeRange}
-																	bar={isBar}
-																/>
-															</TabsContent>
-														</div>
-													</CardContent>
-												</Tabs>
-											)}
-										</Card>
-										<InsightTables
-											isLoading={isLoading}
-											filter={filter}
-											data={data}
-											websiteUrl={website.url}
-											setCurrentTableTab={setCurTableTab}
-										/>
-									</div>
-								</TabsContent>
+																	value={isBar ? 'bar-graph' : 'line-graph'}
+																>
+																	<TabsList className=''>
+																		<TabsTrigger value='line-graph'>
+																			<LineChart size={18} />
+																		</TabsTrigger>
+																		<TabsTrigger value='bar-graph'>
+																			<BarChart size={18} />
+																		</TabsTrigger>
+																	</TabsList>
+																</Tabs>
+															</div>
+														</CardHeader>
+														<CardContent>
+															<div className='pl-2'>
+																<TabsContent
+																	value='visitors'
+																	className='rounded-lg'
+																>
+																	<Graph
+																		bar={isBar}
+																		data={
+																			data
+																				? data.graph.uniqueVisitorsByDate
+																				: []
+																		}
+																		name='Visitors'
+																		Icon={Users2}
+																		isLoading={isLoading}
+																		setTimeRange={setTimeRange}
+																	/>
+																</TabsContent>
+																<TabsContent value='sessions' className=''>
+																	<Graph
+																		data={
+																			data ? data.graph.uniqueSessionByDate : []
+																		}
+																		name='Sessions'
+																		Icon={Laptop2}
+																		isLoading={isLoading}
+																		setTimeRange={setTimeRange}
+																		bar={isBar}
+																	/>
+																</TabsContent>
+															</div>
+														</CardContent>
+													</Tabs>
+												)}
+											</Card>
+											<InsightTables
+												isLoading={isLoading}
+												filter={filter}
+												data={data}
+												websiteUrl={website.url}
+												setCurrentTableTab={setCurTableTab}
+											/>
+										</div>
+									</TabsContent>
+								</TrackClick>
 
 								<TrackClick
 									name='event-visited'
@@ -431,6 +445,21 @@ export const Dashboard = ({
 											startDate={timeRange.startDate}
 											endDate={timeRange.endDate}
 											websiteId={website.id}
+										/>
+									</TabsContent>
+								</TrackClick>
+
+								<TrackClick
+									name='logs-visited'
+									payload={{
+										websiteId: website.id,
+									}}
+								>
+									<TabsContent value='logs'>
+										<Traces
+											startDate={timeRange.startDate}
+											endDate={timeRange.endDate}
+											websiteId={'Heimdall'}
 										/>
 									</TabsContent>
 								</TrackClick>

@@ -16,6 +16,7 @@ export type Config = {
 	consent: 'granted' | 'denied';
 	useServerPath?: boolean;
 	useBeacon?: boolean;
+	collector?: string;
 };
 export type ServerEvents = {
 	id: string;

@@ -3,8 +3,7 @@ import { schema } from '@heimdall-logs/db';
 import { sql } from 'drizzle-orm';
 
 import { convertToUTC } from '../lib/utils';
-import { EventRes } from '../type';
-import { HeimdallEvent } from '../type';
+import { EventRes, HeimdallEvent, TraceRes } from '../type';
 import { client } from './clickhouse';
 import { db } from './drizzle';
 
@@ -45,6 +44,17 @@ export const customEventsQuery = (
      AND timestamp <= '${endDate}'
      AND websiteId = '${websiteId}'
      AND event != 'hits'`;
+
+export const tracesQuery = (
+	startDate: string,
+	endDate: string,
+	websiteId: string
+) =>
+	`select *
+   from heimdall_logs.otel_traces
+   WHERE Timestamp >= '${startDate}'
+     AND Timestamp <= '${endDate}'
+     AND ServiceName = '${websiteId}'`;
 
 const createEvent = () => {
 	return async ({
@@ -262,6 +272,74 @@ async function getCustomEventData(
 	};
 }
 
+async function getTracesData(
+	startDateObj: Date,
+	endDateObj: Date,
+	websiteId: string
+) {
+	return {
+		sqlite: async () => {
+			const event = schema.events;
+			return await db
+				.select()
+				.from(event)
+				.where(
+					sql`${event.websiteId} =
+          ${websiteId}
+          and
+          event
+          !=
+          'hits'
+          and
+          ${event.timestamp}
+          >=
+          ${new Date(startDateObj.getTime())}
+          and
+          ${event.timestamp}
+          <=
+          ${new Date(endDateObj).getTime()}`
+				)
+				.then((res) =>
+					res.map((event) => {
+						const { properties, timestamp, ...rest } = event;
+						return {
+							...rest,
+							...properties,
+							timestamp: timestamp.toISOString().slice(0, 19).replace('T', ' '),
+						};
+					})
+				);
+		},
+		clickhouse: async () => {
+			return await client
+				.query({
+					query: tracesQuery(
+						convertToUTC(startDateObj),
+						convertToUTC(endDateObj),
+						websiteId
+					),
+					format: 'JSONEachRow',
+				})
+				.then(async (res) => (await res.json()) as TraceRes[]);
+			// .then((res) =>
+			// 	res.map((s) => {
+			// 		const properties = JSON.parse(s.properties);
+			// 		return {
+			// 			...properties,
+			// 			id: s.id,
+			// 			// event: s.event,
+			// 			// sessionId: s.sessionId,
+			// 			// websiteId: s.websiteId,
+			// 			// visitorId: s.visitorId,
+			// 			timestamp: s.Timestamp,
+			// 			duration: properties.duration ?? 0,
+			// 		};
+			// 	})
+			// );
+		},
+	};
+}
+
 export function heimdallDb(db: 'sqlite' | 'clickhouse') {
 	return {
 		async insertEvent(
@@ -294,6 +372,14 @@ export function heimdallDb(db: 'sqlite' | 'clickhouse') {
 				startDateObj,
 				endDateObj,
 				websiteId
+			);
+			return await query[db]();
+		},
+		async getTraces(startDateObj: Date, endDateObj: Date, websiteId: string) {
+			const query = await getTracesData(startDateObj, endDateObj, websiteId);
+			console.log(
+				'Class: , Function: getTraces, Line 380 query():',
+				await query[db]()
 			);
 			return await query[db]();
 		},

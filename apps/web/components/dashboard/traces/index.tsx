@@ -1,7 +1,7 @@
 'use client';
 
 import { fetcher } from '@/lib/utils';
-import { HeimdallCustomEvent } from '@heimdall-logs/types';
+import { HeimdallTraces } from '@heimdall-logs/types';
 import { env } from 'env.mjs';
 import useSWR from 'swr';
 
@@ -9,7 +9,7 @@ import { columns } from './column';
 import { renderSubComponent } from './detail-modal';
 import { DataTable } from './table-data';
 
-const Events = ({
+const Traces = ({
 	startDate,
 	endDate,
 	websiteId,
@@ -19,8 +19,8 @@ const Events = ({
 	websiteId: string;
 }) => {
 	const url = env.NEXT_PUBLIC_API_URL;
-	const { data, isLoading } = useSWR<HeimdallCustomEvent[]>(
-		`${url}/events?websiteId=${websiteId}&startDate=${startDate}&endDate=${endDate}`,
+	const { data, isLoading } = useSWR<HeimdallTraces[]>(
+		`${url}/traces?websiteId=${websiteId}&startDate=${startDate}&endDate=${endDate}`,
 		fetcher
 	);
 	return (
@@ -34,4 +34,4 @@ const Events = ({
 		</div>
 	);
 };
-export default Events;
+export default Traces;

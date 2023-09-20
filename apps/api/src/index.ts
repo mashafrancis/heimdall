@@ -156,6 +156,23 @@ app.get('/events', async (c) => {
 	}
 });
 
+//TODO: should be changed the json to be parsed from clickhouse than js
+app.get('/traces', async (c) => {
+	const startDateObj = new Date(c.req.query('startDate'));
+	const endDateObj = new Date(c.req.query('endDate'));
+	const websiteId = c.req.query('websiteId');
+	try {
+		const res = await eventDB.getTraces(startDateObj, endDateObj, websiteId);
+		const events = res.sort(
+			(a, b) =>
+				new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+		);
+		return c.json(events, 200);
+	} catch {
+		return c.json(null, 500);
+	}
+});
+
 //api/v1
 app.use('/v1/*', async (_, next) => {
 	return await next();

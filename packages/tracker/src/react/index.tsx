@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import { heimdall } from '../lib';
 import { record } from '../record';
+import { trace } from '../trace';
 import { Config, Internal } from '../types';
 
 interface Props {
@@ -25,6 +26,7 @@ declare global {
 function Heimdall({ config }: Props) {
 	useEffect(() => {
 		record(config);
+		trace(config);
 	}, []);
 	return null;
 }

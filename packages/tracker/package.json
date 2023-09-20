@@ -1,6 +1,6 @@
 {
 	"name": "@heimdall-logs/tracker",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "A simple tracker for heimdall",
 	"main": "./dist/index.js",
 	"packageManager": "pnpm@8.6.10",
@@ -50,14 +50,22 @@
 		"@changesets/changelog-git": "^0.1.14",
 		"@changesets/changelog-github": "^0.4.8",
 		"@changesets/cli": "^2.26.2",
+		"@opentelemetry/api": "1.4.1",
+		"@opentelemetry/auto-instrumentations-web": "0.31.0",
+		"@opentelemetry/core": "1.13.0",
+		"@opentelemetry/exporter-trace-otlp-http": "0.34.0",
+		"@opentelemetry/instrumentation": "0.34.0",
+		"@opentelemetry/sdk-trace-base": "1.13.0",
+		"@opentelemetry/sdk-trace-web": "1.8.0",
+		"@opentelemetry/semantic-conventions": "1.13.0",
 		"@types/jest": "^29.5.5",
-		"@types/node": "^20.6.2",
+		"@types/node": "^20.6.3",
 		"@types/react": "^18.2.22",
 		"@types/testing-library__jest-dom": "^6.0.0",
 		"@vitest/browser": "^0.34.4",
-		"happy-dom": "^11.2.0",
+		"happy-dom": "^12.1.2",
 		"react": "^18.2.0",
-		"sinon": "^15.2.0",
+		"sinon": "^16.0.0",
 		"terser": "^5.19.4",
 		"tsup": "^7.2.0",
 		"typescript": "^5.2.2",
@@ -69,5 +77,8 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"dependencies": {
+		"@opentelemetry/resources": "1.13.0"
 	}
 }
