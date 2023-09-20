@@ -28,7 +28,7 @@ app.use('*', cors());
 logger.configureLogger(
 	{
 		prettyPrint: Boolean({
-			doc: 'Weather the logger should be configured to pretty print the output',
+			doc: 'Whether the logger should be configured to pretty print the output',
 			format: 'Boolean',
 			default: true,
 			nullable: false,
