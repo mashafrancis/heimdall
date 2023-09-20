@@ -107,11 +107,16 @@ export const Dashboard = ({
 				>
 					<Tabs defaultValue='analytics' className='space-y-4'>
 						{!isPublic ? (
-							<div className=' flex items-center justify-between'>
-								<TabsList>
+							<div className='flex items-center justify-end'>
+								<TabsList className='flex-1 md:flex-none border-b'>
 									<TabsTrigger
 										value='analytics'
 										// className='dark:data-[state=active]:text-emphasis data-[state=active]:text-emphasis'
+										onClick={() =>
+											heimdall.track('analytics-tab-clicked', {
+												websiteId: website.id,
+											})
+										}
 									>
 										Analytics
 									</TabsTrigger>
@@ -119,7 +124,7 @@ export const Dashboard = ({
 										value='insights'
 										// className=' dark:data-[state=active]:text-emphasis data-[state=active]:text-emphasis'
 										onClick={() =>
-											heimdall.track('logs-tab-clicked', {
+											heimdall.track('insights-tab-clicked', {
 												websiteId: website.id,
 											})
 										}
@@ -151,7 +156,16 @@ export const Dashboard = ({
 								</TabsList>
 							</div>
 						) : null}
-						<div className=' flex justify-between'>
+						<div className=' flex justify-between items-center'>
+							<div className=' flex flex-col items-end'>
+								<div className=' flex items-center gap-1'>
+									<div className=' h-2.5 w-2.5 animate-pulse rounded-full bg-gradient-to-tr from-lime-500 to-lime-700'></div>
+									<p className=' bg-gradient-to-tr from-lime-600 to-lime-800 bg-clip-text font-mono text-sm font-medium text-transparent'>
+										{data ? data.data.onlineVisitors : 0}
+										<span className='pl-1 font-sans'>Online</span>
+									</p>
+								</div>
+							</div>
 							<div
 								className=' flex items-center gap-2'
 								onClick={() =>
@@ -166,15 +180,6 @@ export const Dashboard = ({
 									timeRange={timeRange}
 									customTime={customTime}
 								/>
-							</div>
-							<div className=' flex flex-col items-end'>
-								<div className=' flex items-center gap-1'>
-									<div className=' h-2.5 w-2.5 animate-pulse rounded-full bg-gradient-to-tr from-lime-500 to-lime-700'></div>
-									<p className=' bg-gradient-to-tr from-lime-600 to-lime-800 bg-clip-text font-mono text-sm font-medium text-transparent'>
-										{data ? data.data.onlineVisitors : 0}
-										<span className='pl-1 font-sans'>Online</span>
-									</p>
-								</div>
 							</div>
 						</div>
 						<AnimatePresence>

@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 
 import BottomNavigation from '@/components/bottom-navigation';
 import { MobileDashboardHeader } from '@/components/header';
@@ -33,26 +33,24 @@ export default async function DashboardWebsiteLayout({
 	const websites = userWebsites.concat(teamWebsites);
 
 	return (
-		<Suspense fallback={null}>
+		<>
 			<StoreSetter store='website' data={websites} />
 			<StoreSetter store='user' data={user} />
 			<StoreSetter store='teamWebsites' data={teamWebsites} />
 			<StoreSetter store='userWebsites' data={userWebsites} />
 			<StoreSetter store='teams' data={teams} />
 			<div className='flex min-h-screen flex-col bg-muted/50 pb-12'>
-				<div className='flex h-full'>
-					<div className='flex w-full flex-1 flex-col space-y-0 overflow-hidden'>
-						<MobileDashboardHeader
-							user={user}
-							items={dashboardConfig.projectNav}
-						/>
-						<SideNav items={dashboardConfig.sideNav} user={user} />
-						<main className='container'>{children}</main>
-						{/*<BottomNav />*/}
-						<BottomNavigation items={dashboardConfig.sideNav} />
-					</div>
+				<div className='flex w-full h-full flex-1 flex-col space-y-0 overflow-hidden'>
+					<MobileDashboardHeader
+						user={user}
+						items={dashboardConfig.projectNav}
+					/>
+					<SideNav items={dashboardConfig.sideNav} user={user} />
+					<main className='container'>{children}</main>
+					{/*<BottomNav />*/}
+					<BottomNavigation items={dashboardConfig.sideNav} />
 				</div>
 			</div>
-		</Suspense>
+		</>
 	);
 }

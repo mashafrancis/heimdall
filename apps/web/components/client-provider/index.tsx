@@ -7,11 +7,6 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import ErrorBoundaryPage from '@/components/error-boundary-page';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
-// if (typeof window !== 'undefined') {
-// 	// const collector = getCookie('otelCollectorUrl')?.toString() || '';
-// 	FrontendTracer('http://localhost:4318/v1/traces');
-// }
-
 export function ClientProvider({ children }: { children: ReactNode }) {
 	return (
 		<ErrorBoundary

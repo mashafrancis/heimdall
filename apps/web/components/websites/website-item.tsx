@@ -27,14 +27,19 @@ export default function WebSiteItem({
 					<p className='text-xs text-muted-foreground'>{site.url}</p>
 				</div>
 			</div>
-			<MoreVertical
-				className='cursor-pointer col-span-1'
-				size={18}
-				onClick={() => {
-					setIsOpen(true);
-					setSelected(site.id);
-				}}
-			/>
+			<div className='flex flex-row items-center gap-4'>
+				<div className='flex items-center justify-center border-4 border-secondary rounded-full h-8 w-8'>
+					<span className='text-xs font-light'>100</span>
+				</div>
+				<MoreVertical
+					className='cursor-pointer col-span-1'
+					size={18}
+					onClick={() => {
+						setIsOpen(true);
+						setSelected(site.id);
+					}}
+				/>
+			</div>
 		</div>
 	);
 }

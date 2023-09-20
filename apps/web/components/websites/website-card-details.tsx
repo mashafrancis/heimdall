@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { useEffect, useState } from 'react';
 
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { getFavicon } from '@/lib/utils';
 import { Website as WebsiteType } from '@heimdall-logs/types/models';
@@ -38,22 +38,25 @@ export function WebsiteCardDetails({
 
 	return (
 		<Link href={`/s/${site.id}`}>
-			<Card className='rounded-xl shadow-none @container/card hover:shadow-md'>
-				<CardHeader className='p-4 md:p-6 md:pb-3'>
+			<Card className='rounded-xl shadow-none hover:shadow-md'>
+				<CardHeader className='p-4 md:p-6 md:pb-3 flex justify-between flex-row'>
 					<div className='flex items-center gap-2'>
 						<Image
 							src={favicon || logo}
 							alt='...'
-							height={32}
-							width={32}
+							height={42}
+							width={42}
 							className='border rounded-full shrink p-0.5'
 						/>
 						<div className=''>
-							<h3 className='text-base'>{site.title}</h3>
+							<CardTitle className='text-lg'>{site.title}</CardTitle>
 							<p className='text-sm text-muted-foreground truncate'>
 								{site.url}
 							</p>
 						</div>
+					</div>
+					<div className='flex items-center justify-center border-4 border-secondary rounded-full h-8 w-8'>
+						<span className='text-xs font-light'>100</span>
 					</div>
 				</CardHeader>
 				<CardContent className='flex justify-between gap-2 p-4 pt-0 md:p-6 md:pt-3'>
@@ -64,18 +67,6 @@ export function WebsiteCardDetails({
 							<span className='hidden md:inline-block'>Visitors</span>
 						</p>
 					</div>
-					{/*<MoreVertical*/}
-					{/*	className='cursor-pointer'*/}
-					{/*	size={18}*/}
-					{/*	onClick={() => {*/}
-					{/*		setIsOpen(true);*/}
-					{/*		setSelected(site.id);*/}
-					{/*	}}*/}
-					{/*/>*/}
-					{/*<NextLink*/}
-					{/*	className='text-muted-foreground'*/}
-					{/*	to={`/s/${site.id}`}*/}
-					{/*></NextLink>*/}
 				</CardContent>
 			</Card>
 		</Link>

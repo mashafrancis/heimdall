@@ -71,6 +71,8 @@ import { TeamWebsiteModal } from './team-website';
 
 /* eslint-disable react-hooks/rules-of-hooks */
 
+/* eslint-disable react-hooks/rules-of-hooks */
+
 export const columns: ColumnDef<TeamMember>[] = [
 	{
 		id: 'name',

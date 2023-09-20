@@ -38,6 +38,8 @@ logger.configureLogger(
 	true
 );
 
+app.get('/ping', (c) => c.text('pong'));
+
 app.post('/', async (c) => {
 	const body = await c.req.json();
 	const headers = Object.fromEntries(c.req.headers);

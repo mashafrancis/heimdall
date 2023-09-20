@@ -31,7 +31,7 @@ const nextConfig = {
     },
     {
       source: '/api/trace',
-      destination: 'http://localhost:4318/v1/traces',
+      destination: env.NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT,
     },
   ],
   transpilePackages: ['@heimdall-logs/tracker', '@heimdall-logs/api'],
