@@ -1,4 +1,5 @@
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
+import { ZoneContextManager } from '@opentelemetry/context-zone';
 import {
 	CompositePropagator,
 	W3CBaggagePropagator,
@@ -18,7 +19,6 @@ import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 import { Config } from './types';
 
 export function trace({ collector, id }: Partial<Config>) {
-	console.log('Class: trace, Function: trace, Line 21 ():', collector, id);
 	let resource = new Resource({
 		[SemanticResourceAttributes.SERVICE_NAME]: id ?? 'Heimdall',
 	});
@@ -41,10 +41,10 @@ export function trace({ collector, id }: Partial<Config>) {
 		)
 	);
 
-	// const contextManager = new ZoneContextManager();
+	const contextManager = new ZoneContextManager();
 
 	provider.register({
-		// contextManager,
+		contextManager,
 		propagator: new CompositePropagator({
 			propagators: [
 				new W3CBaggagePropagator(),

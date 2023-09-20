@@ -197,7 +197,7 @@ importers:
         specifier: 0.0.1
         version: link:../../packages/db
       '@heimdall-logs/tracker':
-        specifier: 0.0.3
+        specifier: 0.0.4
         version: link:../../packages/tracker
       '@heroicons/react':
         specifier: 2.0.18
@@ -854,6 +854,9 @@ importers:
       '@opentelemetry/auto-instrumentations-web':
         specifier: 0.33.1
         version: 0.33.1(@opentelemetry/api@1.6.0)(zone.js@0.11.4)
+      '@opentelemetry/context-zone':
+        specifier: 1.17.0
+        version: 1.17.0(@opentelemetry/api@1.6.0)
       '@opentelemetry/core':
         specifier: 1.17.0
         version: 1.17.0(@opentelemetry/api@1.6.0)

@@ -377,10 +377,6 @@ export function heimdallDb(db: 'sqlite' | 'clickhouse') {
 		},
 		async getTraces(startDateObj: Date, endDateObj: Date, websiteId: string) {
 			const query = await getTracesData(startDateObj, endDateObj, websiteId);
-			console.log(
-				'Class: , Function: getTraces, Line 380 query():',
-				await query[db]()
-			);
 			return await query[db]();
 		},
 	};

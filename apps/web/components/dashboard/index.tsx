@@ -459,7 +459,7 @@ export const Dashboard = ({
 										<Traces
 											startDate={timeRange.startDate}
 											endDate={timeRange.endDate}
-											websiteId={'Heimdall'}
+											websiteId={website.id}
 										/>
 									</TabsContent>
 								</TrackClick>

@@ -20,5 +20,6 @@ dayjs.extend(localizedFormat);
 dayjs.extend(isSameOrBefore);
 dayjs.extend(duration);
 dayjs.extend(objectSupport);
+dayjs.tz.guess();
 
 export default dayjs;

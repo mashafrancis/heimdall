@@ -10,6 +10,7 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table';
+import { fancyId } from '@/lib/utils';
 import {
 	ColumnDef,
 	ColumnFiltersState,
@@ -93,7 +94,7 @@ function DataTable<TData, TValue>({
 			<p className=' my-2 text-sm'>
 				Showing <strong>{table.getRowModel().rows?.length}</strong> of
 				<strong> {data.length} </strong>
-				events
+				traces
 			</p>
 			<motion.div className='scrollbar-hide rounded-xl border bg-card dark:border-gray-800'>
 				<div className='flex items-center justify-between px-2 py-4'>
@@ -113,10 +114,10 @@ function DataTable<TData, TValue>({
 				<Table className='scrollbar-hide'>
 					<TableHeader>
 						{table.getHeaderGroups().map((headerGroup) => (
-							<TableRow>
+							<TableRow key={fancyId()}>
 								{headerGroup.headers.map((header) => {
 									return (
-										<TableHead key={header.id}>
+										<TableHead key={fancyId()}>
 											{header.isPlaceholder
 												? null
 												: (flexRender(
