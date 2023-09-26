@@ -4,10 +4,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const {
 	OTLPTraceExporter,
-} = require('@opentelemetry/exporter-trace-otlp-grpc');
-const {
-	OTLPMetricExporter,
-} = require('@opentelemetry/exporter-metrics-otlp-grpc');
+} = require('@opentelemetry/exporter-trace-otlp-http');
+
 const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 const {
 	awsEc2Detector,
@@ -27,12 +25,33 @@ const {
 const {
 	SemanticResourceAttributes,
 } = require('@opentelemetry/semantic-conventions');
+const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
+const {
+	CompositePropagator,
+	W3CBaggagePropagator,
+	W3CTraceContextPropagator,
+} = require('@opentelemetry/core');
+
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR);
+
+const COLLECTOR_STRING = 'https://otelcol.francismasha.com/v1/traces';
+
+const heimdallExporter = new OTLPTraceExporter({
+	url: COLLECTOR_STRING,
+	// headers: {
+	// 	'content-type': 'application/json',
+	// },
+});
 
 const sdk = new opentelemetry.NodeSDK({
 	resource: new Resource({
-		[SemanticResourceAttributes.SERVICE_NAME]: 'Heimdall',
+		[SemanticResourceAttributes.SERVICE_NAME]: 'heimdall-server',
 	}),
-	traceExporter: new OTLPTraceExporter(),
+	traceExporter: heimdallExporter,
+	// Configure the propagator to enable context propagation between services using the W3C Trace Headers
+	textMapPropagator: new CompositePropagator({
+		propagators: [new W3CBaggagePropagator(), new W3CTraceContextPropagator()],
+	}),
 	instrumentations: [
 		getNodeAutoInstrumentations({
 			'@opentelemetry/instrumentation-fs': {
@@ -70,22 +89,31 @@ const sdk = new opentelemetry.NodeSDK({
 						'request.path': request.url || request.path,
 					};
 				},
+
+				// /^(https?:\\/\\/)?([\\da-z\\.-]+)(\\/[\\d|\\w]{2})(\\/api\\/traces)/
+
+				ignoreIncomingRequestHook: (req) => {
+					// Ignore routes to avoid the trace capture, e.g., RegEx to ignore the incoming route /api/telemetry
+					const isIgnoredRoute = !!req.url.match(/\/api\/telemetry/);
+					return isIgnoredRoute;
+				},
 			},
 		}),
 	],
-	metricReader: new PeriodicExportingMetricReader({
-		exporter: new OTLPMetricExporter(),
-	}),
-	resourceDetectors: [
-		containerDetector,
-		envDetector,
-		hostDetector,
-		osDetector,
-		processDetector,
-		awsEksDetector,
-		awsEc2Detector,
-		gcpDetector,
-	],
+	autoDetectResources: true,
+	// metricReader: new PeriodicExportingMetricReader({
+	// 	exporter: new OTLPMetricExporter(),
+	// }),
+	// resourceDetectors: [
+	// 	containerDetector,
+	// 	envDetector,
+	// 	hostDetector,
+	// 	osDetector,
+	// 	processDetector,
+	// 	awsEksDetector,
+	// 	awsEc2Detector,
+	// 	gcpDetector,
+	// ],
 });
 
 sdk.start();
