@@ -17,6 +17,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { usageAtom } from '@/jotai/store';
 import {
+	getLast15Minutes,
 	getLast24Hour,
 	getLastNinetyDays,
 	getLastSevenDays,
@@ -124,6 +125,13 @@ export const DatePicker = ({
 	function setTime(value: string) {
 		setCustomTime(false);
 		switch (value) {
+			case '15min':
+				setTimeRange({
+					startDate: getLast15Minutes(),
+					endDate: new Date(),
+					stringValue: '15min',
+				});
+				break;
 			case '24hr':
 				setTimeRange({
 					startDate: getLast24Hour(),
@@ -194,6 +202,7 @@ export const DatePicker = ({
 
 				<SelectContent>
 					{/* <SelectLabel>Choose Range</SelectLabel> */}
+					<SelectItem value={'15min'}>Last 15 Hours</SelectItem>
 					<SelectItem value={'24hr'}>Last 24 Hours</SelectItem>
 					<SelectItem value='yesterday'>Yesterday</SelectItem>
 					<Separator className='my-2' />

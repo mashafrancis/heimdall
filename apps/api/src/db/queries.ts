@@ -56,6 +56,13 @@ export const tracesQuery = (
      AND Timestamp <= '${endDate}'
      AND ServiceName = '${websiteId}'`;
 
+export const dummyTracesQuery = (startDate: string, endDate: string) =>
+	`select *
+   from heimdall_logs.demo_otel_traces
+   WHERE Timestamp >= '${startDate}'
+     AND Timestamp <= '${endDate}'
+   LIMIT 1000`;
+
 const createEvent = () => {
 	return async ({
 		id,
@@ -313,10 +320,10 @@ async function getTracesData(
 		clickhouse: async () => {
 			return await client
 				.query({
-					query: tracesQuery(
+					query: dummyTracesQuery(
 						convertToUTC(startDateObj),
-						convertToUTC(endDateObj),
-						websiteId
+						convertToUTC(endDateObj)
+						// websiteId
 					),
 					format: 'JSONEachRow',
 				})

@@ -60,8 +60,6 @@ export function trace({ collector, id }: Partial<Config>) {
 		// contextManager: new ZoneContextManager(),
 	});
 
-	console.log(`Registering Otel ${new Date().getMilliseconds()}`);
-
 	registerInstrumentations({
 		tracerProvider: provider,
 		instrumentations: [

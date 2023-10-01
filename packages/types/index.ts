@@ -137,6 +137,8 @@ export type HeimdallTraces = {
 	Duration: string;
 	StatusCode: string;
 	StatusMessage: string;
+	ScopeName: string;
+	ScopeVersion: string;
 	Events: {
 		Timestamp: Array<string>;
 		Name: Array<string>;

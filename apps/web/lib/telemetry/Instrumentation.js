@@ -31,6 +31,9 @@ const {
 	W3CBaggagePropagator,
 	W3CTraceContextPropagator,
 } = require('@opentelemetry/core');
+const {
+	OTLPMetricExporter,
+} = require('@opentelemetry/exporter-metrics-otlp-grpc');
 
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR);
 
@@ -101,19 +104,19 @@ const sdk = new opentelemetry.NodeSDK({
 		}),
 	],
 	autoDetectResources: true,
-	// metricReader: new PeriodicExportingMetricReader({
-	// 	exporter: new OTLPMetricExporter(),
-	// }),
-	// resourceDetectors: [
-	// 	containerDetector,
-	// 	envDetector,
-	// 	hostDetector,
-	// 	osDetector,
-	// 	processDetector,
-	// 	awsEksDetector,
-	// 	awsEc2Detector,
-	// 	gcpDetector,
-	// ],
+	metricReader: new PeriodicExportingMetricReader({
+		exporter: new OTLPMetricExporter(),
+	}),
+	resourceDetectors: [
+		containerDetector,
+		envDetector,
+		hostDetector,
+		osDetector,
+		processDetector,
+		awsEksDetector,
+		awsEc2Detector,
+		gcpDetector,
+	],
 });
 
 sdk.start();

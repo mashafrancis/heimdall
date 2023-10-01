@@ -2,7 +2,11 @@ import { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const tailwindConfig = {
-	content: ['./components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}'],
+	content: [
+		'./components/**/*.{ts,tsx}',
+		'./app/**/*.{ts,tsx}',
+		'./node_modules/@almond-ui/core/src/theme/styles/*.ts',
+	],
 	darkMode: ['class'],
 	theme: {
 		container: {
@@ -211,6 +215,7 @@ const tailwindConfig = {
 	plugins: [
 		require('tailwindcss-animate'),
 		require('@tailwindcss/typography'),
+		require('tailwind-scrollbar')({ nocompatible: true }),
 		require('@tailwindcss/container-queries'),
 	],
 } satisfies Config;

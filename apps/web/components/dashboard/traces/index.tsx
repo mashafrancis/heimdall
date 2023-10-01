@@ -23,6 +23,7 @@ const Traces = ({
 		`${url}/traces?websiteId=${websiteId}&startDate=${startDate}&endDate=${endDate}`,
 		fetcher
 	);
+
 	return (
 		<div className='no-scrollbar'>
 			<DataTable

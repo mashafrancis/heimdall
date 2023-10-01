@@ -44,25 +44,27 @@ export function WebsiteCardDetails({
 						<Image
 							src={favicon || logo}
 							alt='...'
-							height={42}
-							width={42}
+							height={32}
+							width={32}
 							className='border rounded-full shrink p-0.5'
 						/>
 						<div className=''>
-							<CardTitle className='text-lg'>{site.title}</CardTitle>
-							<p className='text-sm text-muted-foreground truncate'>
+							<CardTitle className='text-base font-normal'>
+								{site.title}
+							</CardTitle>
+							<p className='text-xs text-muted-foreground truncate'>
 								{site.url}
 							</p>
 						</div>
 					</div>
-					<div className='flex items-center justify-center border-4 border-secondary rounded-full h-8 w-8'>
+					<div className='flex items-center justify-center border-2 border-secondary rounded-full h-8 w-8'>
 						<span className='text-xs font-light'>100</span>
 					</div>
 				</CardHeader>
 				<CardContent className='flex justify-between gap-2 p-4 pt-0 md:p-6 md:pt-3'>
 					<div className='flex items-center gap-2 text-lime-500'>
 						<User2 size={20} />
-						<p className='text-sm slashed-zero'>
+						<p className='text-xs slashed-zero'>
 							{visitors}{' '}
 							<span className='hidden md:inline-block'>Visitors</span>
 						</p>

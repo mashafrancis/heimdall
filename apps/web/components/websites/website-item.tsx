@@ -28,7 +28,7 @@ export default function WebSiteItem({
 				</div>
 			</div>
 			<div className='flex flex-row items-center gap-4'>
-				<div className='flex items-center justify-center border-4 border-secondary rounded-full h-8 w-8'>
+				<div className='flex items-center justify-center border-2 border-secondary rounded-full h-8 w-8'>
 					<span className='text-xs font-light'>100</span>
 				</div>
 				<MoreVertical

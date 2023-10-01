@@ -24,14 +24,14 @@ export const columns: ColumnDef<HeimdallTraces>[] = [
 	},
 	{
 		id: 'timestamp',
-		accessorKey: 'timestamp',
+		accessorKey: 'Timestamp',
 		header: ({ column }) => {
 			return (
 				<span
 					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
-					Time
+					Start time
 					<ChevronsUpDown
 						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
@@ -50,25 +50,7 @@ export const columns: ColumnDef<HeimdallTraces>[] = [
 		},
 	},
 	{
-		id: 'status',
-		accessorKey: 'StatusCode',
-		header: ({ column }) => {
-			return (
-				<span
-					className='group flex items-center gap-2'
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
-					Status
-					<ChevronsUpDown
-						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
-						size={15}
-					/>
-				</span>
-			);
-		},
-	},
-	{
-		id: 'request',
+		id: 'span_name',
 		accessorKey: 'SpanName',
 		header: ({ column }) => {
 			return (
@@ -76,7 +58,7 @@ export const columns: ColumnDef<HeimdallTraces>[] = [
 					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
-					Request
+					Name
 					<ChevronsUpDown
 						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
@@ -86,15 +68,33 @@ export const columns: ColumnDef<HeimdallTraces>[] = [
 		},
 	},
 	{
-		id: 'status_message',
-		accessorKey: 'StatusMessage',
+		id: 'duration',
+		accessorKey: 'Duration',
 		header: ({ column }) => {
 			return (
 				<span
 					className='group flex items-center gap-2'
 					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
 				>
-					Message
+					Response time
+					<ChevronsUpDown
+						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
+						size={15}
+					/>
+				</span>
+			);
+		},
+	},
+	{
+		id: 'service_name',
+		accessorKey: 'ServiceName',
+		header: ({ column }) => {
+			return (
+				<span
+					className='group flex items-center gap-2'
+					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+				>
+					Service
 					<ChevronsUpDown
 						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
 						size={15}
