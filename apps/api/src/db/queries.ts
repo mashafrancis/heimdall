@@ -54,7 +54,8 @@ export const tracesQuery = (
    from heimdall_logs.otel_traces
    WHERE Timestamp >= '${startDate}'
      AND Timestamp <= '${endDate}'
-     AND ServiceName = '${websiteId}'`;
+     AND ServiceName = '${websiteId}'
+   LIMIT 100`;
 
 export const dummyTracesQuery = (startDate: string, endDate: string) =>
 	`select *
@@ -320,10 +321,10 @@ async function getTracesData(
 		clickhouse: async () => {
 			return await client
 				.query({
-					query: dummyTracesQuery(
+					query: tracesQuery(
 						convertToUTC(startDateObj),
-						convertToUTC(endDateObj)
-						// websiteId
+						convertToUTC(endDateObj),
+						websiteId
 					),
 					format: 'JSONEachRow',
 				})

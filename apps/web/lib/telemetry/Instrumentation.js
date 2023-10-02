@@ -103,10 +103,10 @@ const sdk = new opentelemetry.NodeSDK({
 			},
 		}),
 	],
-	autoDetectResources: true,
-	metricReader: new PeriodicExportingMetricReader({
-		exporter: new OTLPMetricExporter(),
-	}),
+	// autoDetectResources: true,
+	// metricReader: new PeriodicExportingMetricReader({
+	// 	exporter: new OTLPMetricExporter(),
+	// }),
 	resourceDetectors: [
 		containerDetector,
 		envDetector,

@@ -26,7 +26,7 @@ declare global {
 function Heimdall({ config }: Props) {
 	useEffect(() => {
 		record(config);
-		trace(config);
+		trace(config).then(() => console.log('trace setup successful'));
 	}, []);
 	return null;
 }

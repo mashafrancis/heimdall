@@ -99,7 +99,7 @@ function DataTable<TData, TValue>({
 			<motion.div className='scrollbar-hide rounded-xl border bg-card dark:border-gray-800'>
 				<div className='flex items-center justify-between px-2 py-4'>
 					<Input
-						placeholder='Search Events...'
+						placeholder='Search Traces...'
 						value={
 							(table.getColumn('eventName')?.getFilterValue() as string) ?? ''
 						}

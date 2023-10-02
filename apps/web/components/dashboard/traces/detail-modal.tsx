@@ -17,7 +17,7 @@ const renderSubComponent = ({ row }: { row: Row<HeimdallTraces> }) => {
 		'Parent span ID': data.ParentSpanId,
 		'Instrumentation scope': data.ScopeName,
 		'Instrumentation scope version': data.ScopeVersion,
-		Events: data.Events,
+		Events: data['Events.Attributes'].length,
 		Status: data.StatusCode,
 		'Status message': data.StatusMessage,
 	};

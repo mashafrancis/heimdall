@@ -1,6 +1,6 @@
 export type Config = {
 	/** The ID of the tracker instance */
-	id?: string;
+	id: string;
 	/** Whether to automatically track events. Currently only supports click events with onclick handlers or clicks on a button. */
 	autoTrack: boolean;
 	/** Whether to enable debug logging. */

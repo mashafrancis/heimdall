@@ -10,15 +10,23 @@ import {
 	UnfoldVertical,
 } from 'lucide-react';
 
+function removeQueryString(url: string | URL) {
+	const urlObj = new URL(url);
+	urlObj.search = '';
+	return urlObj.toString();
+}
+
 export const columns: ColumnDef<HeimdallTraces>[] = [
 	{
 		id: 'expander',
 		header: () => <UnfoldVertical />,
 		cell: ({ row }) => {
 			return (
-				<span onClick={() => row.toggleExpanded}>
-					{!row.getIsExpanded() ? <ChevronRight /> : <ChevronDown />}
-				</span>
+				<div className='flex w-[6px] flex-row'>
+					<span onClick={() => row.toggleExpanded}>
+						{!row.getIsExpanded() ? <ChevronRight /> : <ChevronDown />}
+					</span>
+				</div>
 			);
 		},
 	},
@@ -27,16 +35,18 @@ export const columns: ColumnDef<HeimdallTraces>[] = [
 		accessorKey: 'Timestamp',
 		header: ({ column }) => {
 			return (
-				<span
-					className='group flex items-center gap-2'
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
-					Start time
-					<ChevronsUpDown
-						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
-						size={15}
-					/>
-				</span>
+				<div className='flex w-[100px] flex-row'>
+					<span
+						className='group flex items-center gap-2'
+						onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+					>
+						Start time
+						<ChevronsUpDown
+							className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
+							size={15}
+						/>
+					</span>
+				</div>
 			);
 		},
 		cell: ({ row }) => {
@@ -54,16 +64,28 @@ export const columns: ColumnDef<HeimdallTraces>[] = [
 		accessorKey: 'SpanName',
 		header: ({ column }) => {
 			return (
-				<span
-					className='group flex items-center gap-2'
-					onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-				>
-					Name
-					<ChevronsUpDown
-						className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
-						size={15}
-					/>
-				</span>
+				<div className='flex w-[350px] flex-row'>
+					<span
+						className='group flex items-center gap-2'
+						onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+					>
+						Name
+						<ChevronsUpDown
+							className='mr-2 opacity-0 transition-all ease-in-out group-hover:opacity-100'
+							size={15}
+						/>
+					</span>
+				</div>
+			);
+		},
+		cell: ({ row }) => {
+			return (
+				<div className='flex w-[350px] flex-col'>
+					<div className='text-sm'>{row.original.SpanName}</div>
+					<div className='text-xs text-muted-foreground'>
+						{removeQueryString(row.original.SpanAttributes?.['http.url'])}
+					</div>
+				</div>
 			);
 		},
 	},
@@ -82,6 +104,11 @@ export const columns: ColumnDef<HeimdallTraces>[] = [
 						size={15}
 					/>
 				</span>
+			);
+		},
+		cell: ({ row }) => {
+			return (
+				<div className='text-sm'>{+row.original.Duration / 1000_000} ms</div>
 			);
 		},
 	},

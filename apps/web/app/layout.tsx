@@ -8,10 +8,10 @@ import { Toaster } from '@/components/ui/toaster';
 import { fontHeading, fontMono, fontNumeric, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
+import Heimdall from '@heimdall-logs/tracker/react';
 
 // import '@/styles/syntax-highlighter.module.css';
 import Analytics from '../components/analytics';
-
 
 const title = 'Heimdall';
 const description = 'Monitor your app performance.';
@@ -71,18 +71,18 @@ export default function RootLayout({
 			<body className='antialiased'>
 				<ClientProvider>
 					{children}
-					{/*<Heimdall*/}
-					{/*	config={{*/}
-					{/*		id: 'heimdall',*/}
-					{/*		consent: 'granted',*/}
-					{/*		host: '/api/heimdall',*/}
-					{/*		collector: '/api/trace',*/}
-					{/*		// host: 'http://localhost:8000',*/}
-					{/*		autoTrack: true,*/}
-					{/*		// env: 'prod',*/}
-					{/*		// debug: true,*/}
-					{/*	}}*/}
-					{/*/>*/}
+					<Heimdall
+						config={{
+							id: 'heimdall',
+							consent: 'granted',
+							host: '/api/heimdall',
+							collector: '/api/trace',
+							// host: 'http://localhost:8000',
+							autoTrack: true,
+							// env: 'prod',
+							// debug: true,
+						}}
+					/>
 					<Toaster />
 					<Analytics />
 					<TailwindIndicator />

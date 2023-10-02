@@ -16,21 +16,17 @@ import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 
+import { SessionIdProcessor } from './session-id-processor';
 import { Config } from './types';
 
 const COLLECTOR_STRING = 'https://otelcol.francismasha.com/v1/traces';
 
-export function trace({ collector, id }: Partial<Config>) {
-	let resource = new Resource({
-		[SemanticResourceAttributes.SERVICE_NAME]: id ?? 'Heimdall',
-		[SemanticResourceAttributes.SERVICE_VERSION]: '0.0.1',
-	});
+export async function trace({ collector, id }: Partial<Config>) {
+	const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
-	const heimdallExporter = new OTLPTraceExporter({
-		url: collector || COLLECTOR_STRING,
-		// headers: {
-		// 	'content-type': 'application/json',
-		// },
+	let resource = new Resource({
+		[SemanticResourceAttributes.SERVICE_NAME]: id,
+		[SemanticResourceAttributes.SERVICE_VERSION]: '0.0.1',
 	});
 
 	// Setup Propagator
@@ -46,6 +42,7 @@ export function trace({ collector, id }: Partial<Config>) {
 	const detectedResources = detectResourcesSync({
 		detectors: [browserDetector],
 	});
+
 	resource = resource.merge(detectedResources);
 	const provider = new WebTracerProvider({
 		resource,
@@ -53,11 +50,23 @@ export function trace({ collector, id }: Partial<Config>) {
 
 	// Uncomment this to enable debugging using consoleExporter
 	// provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
-	provider.addSpanProcessor(new BatchSpanProcessor(heimdallExporter));
+	provider.addSpanProcessor(new SessionIdProcessor());
+	provider.addSpanProcessor(
+		new BatchSpanProcessor(
+			new OTLPTraceExporter({
+				url: collector || COLLECTOR_STRING,
+				// headers: {
+				// 	'content-type': 'application/json',
+				// },
+			})
+		)
+	);
+
+	const contextManager = new ZoneContextManager();
 
 	provider.register({
+		contextManager,
 		propagator,
-		// contextManager: new ZoneContextManager(),
 	});
 
 	registerInstrumentations({
