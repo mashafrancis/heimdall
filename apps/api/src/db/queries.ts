@@ -50,11 +50,13 @@ export const tracesQuery = (
 	endDate: string,
 	websiteId: string
 ) =>
-	`select *
-   from heimdall_logs.otel_traces
+	`SELECT *
+   FROM heimdall_logs.otel_traces
    WHERE Timestamp >= '${startDate}'
      AND Timestamp <= '${endDate}'
      AND ServiceName = '${websiteId}'
+     AND SpanName != 'click'
+   ORDER BY Timestamp DESC
    LIMIT 100`;
 
 export const dummyTracesQuery = (startDate: string, endDate: string) =>
@@ -62,7 +64,8 @@ export const dummyTracesQuery = (startDate: string, endDate: string) =>
    from heimdall_logs.demo_otel_traces
    WHERE Timestamp >= '${startDate}'
      AND Timestamp <= '${endDate}'
-   LIMIT 1000`;
+   ORDER BY Timestamp DESC
+   LIMIT 50`;
 
 const createEvent = () => {
 	return async ({
