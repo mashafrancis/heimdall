@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import COUNTRIES from "@/lib/constants";
-import { GetVitalsResponse } from "@loglib/types";
+import { GetVitalsResponse } from "@heimdall-logs/types";
 import { Asterisk, Link2Icon, MapPin, MonitorSmartphone, PanelTop } from "lucide-react";
 import ReactCountryFlag from "react-country-flag";
 import { InsightTable } from "../insight/table";

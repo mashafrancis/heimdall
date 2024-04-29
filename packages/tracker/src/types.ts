@@ -31,7 +31,7 @@ export type Config = {
 	 * You can set it globally here,
 	 * or You can change the user consent
 	 * using the setConsent method exported from the tracker..
-	 * @example import {setConsent} from "@loglib/tracker"
+	 * @example import {setConsent} from "@heimdall-logs/tracker"
 	 * setConsent("granted") */
 	consent?: 'granted' | 'denied';
 	useServerPath?: boolean;

@@ -5,8 +5,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useIsMobile } from "@/hooks/use-viewport";
 import { cn, fetcher } from "@/lib/utils";
-import { GetVitalsResponse } from "@loglib/types";
-import { Website } from "@loglib/types/models";
+import { GetVitalsResponse } from "@heimdall-logs/types";
+import { Website } from "@heimdall-logs/types/models";
 import { ArrowDown, ArrowUpIcon, ArrowUpLeftFromCircle, BarChart, ExternalLinkIcon, GaugeCircle, LineChart, Monitor, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -220,9 +220,9 @@ export const UpdateTrackerDialog = ({ trigger }: { trigger: boolean }) => {
                             border: "none",
                         }}
                     >
-                        pnpm i @loglib/tracker@latest
+                        pnpm i @heimdall-logs/tracker@latest
                     </SyntaxHighlighter>
-                    <CopyToClipboard text="pnpm i @loglib/tracker@latest" />
+                    <CopyToClipboard text="pnpm i @heimdall-logs/tracker@latest" />
                 </div>
             </DialogContent>
         </Dialog>
