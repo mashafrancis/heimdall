@@ -8,10 +8,10 @@ import million from 'million/compiler';
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['libsql'],
-    logging: {
-      level: 'verbose',
-      fullUrl: true,
-    }
+  },
+  logging: {
+    level: 'verbose',
+    fullUrl: true,
   },
   reactStrictMode: true,
   swcMinify: true,

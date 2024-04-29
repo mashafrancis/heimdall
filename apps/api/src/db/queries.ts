@@ -28,7 +28,7 @@ export const hitsQuery = (
           JSONExtract(properties, 'os', 'String')             as os,
           event,
           timestamp
-   from heimdall_logs.event
+   from default.event
    WHERE ${
 			startDate && `timestamp >= '${startDate}' AND`
 		} timestamp <= '${endDate}' AND websiteId = '${websiteId}' AND event = 'hits'`;
@@ -39,7 +39,7 @@ export const customEventsQuery = (
 	websiteId: string
 ) =>
 	`select *
-   from heimdall_logs.event
+   from default.event
    WHERE timestamp >= '${startDate}'
      AND timestamp <= '${endDate}'
      AND websiteId = '${websiteId}'
@@ -51,7 +51,7 @@ export const tracesQuery = (
 	websiteId: string
 ) =>
 	`SELECT *
-   FROM heimdall_logs.otel_traces
+   FROM default.otel_traces
    WHERE Timestamp >= '${startDate}'
      AND Timestamp <= '${endDate}'
      AND ServiceName = '${websiteId}'
@@ -61,7 +61,7 @@ export const tracesQuery = (
 
 export const dummyTracesQuery = (startDate: string, endDate: string) =>
 	`select *
-   from heimdall_logs.demo_otel_traces
+   from default.demo_otel_traces
    WHERE Timestamp >= '${startDate}'
      AND Timestamp <= '${endDate}'
    ORDER BY Timestamp DESC
@@ -127,7 +127,7 @@ const createEvent = () => {
 				} else {
 					await client
 						.insert({
-							table: 'heimdall_logs.event',
+							table: 'default.event',
 							values: [value],
 							format: 'JSONEachRow',
 						})
