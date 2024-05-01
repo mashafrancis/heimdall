@@ -21,8 +21,6 @@
     "@hono/node-server": "1.11.1",
     "@libsql/client": "0.6.0",
     "@t3-oss/env-core": "^0.10.1",
-    "@types/request-ip": "^0.0.41",
-    "@types/tar": "^6.1.13",
     "@vercel/kv": "^1.0.1",
     "detect-browser": "^5.3.0",
     "dotenv": "^16.4.5",
@@ -39,7 +37,9 @@
     "zod": "^3.23.5"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.6"
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/request-ip": "^0.0.41",
+    "@types/tar": "^6.1.13"
   },
   "exports": {
     ".": {

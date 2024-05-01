@@ -9,7 +9,7 @@
     ".": "./index.ts",
     "./models": "./models.ts"
   },
-  "dependencies": {
+  "devDependencies": {
     "@heimdall-logs/db": "workspace:*"
   }
 }

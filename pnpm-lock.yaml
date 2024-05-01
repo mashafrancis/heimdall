@@ -56,12 +56,6 @@ importers:
       '@t3-oss/env-core':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.5)
-      '@types/request-ip':
-        specifier: ^0.0.41
-        version: 0.0.41
-      '@types/tar':
-        specifier: ^6.1.13
-        version: 6.1.13
       '@vercel/kv':
         specifier: ^1.0.1
         version: 1.0.1
@@ -108,6 +102,12 @@ importers:
       '@types/jsonwebtoken':
         specifier: ^9.0.6
         version: 9.0.6
+      '@types/request-ip':
+        specifier: ^0.0.41
+        version: 0.0.41
+      '@types/tar':
+        specifier: ^6.1.13
+        version: 6.1.13
 
   apps/web:
     dependencies:
@@ -222,9 +222,6 @@ importers:
       '@tanstack/react-table':
         specifier: ^8.16.0
         version: 8.16.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@types/react-syntax-highlighter':
-        specifier: ^15.5.11
-        version: 15.5.11
       '@vercel/analytics':
         specifier: ^1.2.2
         version: 1.2.2(next@14.2.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -364,6 +361,9 @@ importers:
       '@types/react-modal':
         specifier: ^3.16.3
         version: 3.16.3
+      '@types/react-syntax-highlighter':
+        specifier: ^15.5.11
+        version: 15.5.11
       cssnano:
         specifier: ^7.0.1
         version: 7.0.1(postcss@8.4.38)
@@ -508,7 +508,7 @@ importers:
   packages/tsconfig: {}
 
   packages/types:
-    dependencies:
+    devDependencies:
       '@heimdall-logs/db':
         specifier: workspace:*
         version: link:../db
