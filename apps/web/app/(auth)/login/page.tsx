@@ -6,6 +6,7 @@ import { Icons } from '@/components/icons'
 import { UserAuthForm } from '@/components/user-auth-form'
 import { env } from '@/env.mjs'
 import loginStyles from '@/styles/login.module.css'
+import { Suspense } from 'react'
 
 export default function LoginPage() {
   const active = {
@@ -29,7 +30,12 @@ export default function LoginPage() {
             <p className="text-sm text-muted-foreground">
               to continue to Heimdall
             </p>
-            <UserAuthForm activeStrategy={active} className="mt-12 w-[400px]" />
+            <Suspense fallback={<div>Loading...</div>}>
+              <UserAuthForm
+                activeStrategy={active}
+                className="mt-12 w-[400px]"
+              />
+            </Suspense>
           </div>
         </div>
       </div>

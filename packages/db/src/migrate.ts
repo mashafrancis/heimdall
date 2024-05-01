@@ -1,4 +1,3 @@
-import { logger } from '@heimdall-logs/logger'
 import { createClient } from '@libsql/client'
 import 'dotenv/config'
 import { drizzle } from 'drizzle-orm/libsql'
@@ -26,10 +25,10 @@ async function main() {
 
 main()
   .then(() => {
-    logger.info('✅: [Migration Complete]')
+    console.info('✅: [Migration Complete]')
     process.exit(0)
   })
   .catch((e) => {
-    logger.error(`${e}, '❗️:[Migration Failed]`)
+    console.error(`${e}, '❗️:[Migration Failed]`)
     process.exit(1)
   })

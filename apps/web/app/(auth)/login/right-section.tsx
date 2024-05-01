@@ -1,6 +1,7 @@
 import { BackLink } from '@/components/arrow-button'
 import { Icons } from '@/components/icons'
 import { UserAuthForm } from '@/components/user-auth-form'
+import { Suspense } from 'react'
 
 interface Props {
   activeStrategy: {
@@ -33,7 +34,9 @@ export default function RightSection({ activeStrategy }: Props) {
         </div>
 
         <div className="absolute left-0 top-[625px] h-12 w-56">
-          <UserAuthForm activeStrategy={activeStrategy} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <UserAuthForm activeStrategy={activeStrategy} />
+          </Suspense>
         </div>
       </div>
     </>

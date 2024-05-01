@@ -1,4 +1,3 @@
-import { logger } from '@heimdall-logs/logger'
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
@@ -25,32 +24,17 @@ const app = new Hono()
 app.use('*', appLogger())
 app.use('*', cors())
 
-logger.configureLogger(
-  {
-    prettyPrint: Boolean({
-      doc: 'Whether the logger should be configured to pretty print the output',
-      format: 'Boolean',
-      default: true,
-      nullable: false,
-      env: 'PRETTY_PRINT_LOG',
-    }),
-  },
-  true,
-)
-
 app.get('/ping', (c) => c.text('pong'))
 
 app.post('/', async (c) => {
   const body = await c.req.json()
   const headers = Object.fromEntries(c.req.headers)
   const query = c.req.query()
-  logger.info('body', body)
   if (!body.path) {
     return c.json(null, 200)
   }
   const path: Path = body.path
   const res = await router({ path, rawBody: body, req: { headers, query } })
-  logger.info(path, res)
   return c.json(null, res.status)
 })
 
@@ -276,15 +260,12 @@ app.get('/v1/insight', async (c) => {
   const duration = endDateObj.getTime() - startDateObj.getTime()
   const pastEndDateObj = new Date(startDateObj.getTime() - duration)
   try {
-    const tick = performance.now()
     let [events, lastEvents] = await retryFunction(
       eventDB.getHits,
       [startDateObj, endDateObj, pastEndDateObj, websiteId],
       3,
       4,
     )
-    const tack = performance.now()
-    logger.info(`${tack - tick}} ms taken to query`)
     const filters = JSON.parse(queries.data.filter) as Filter<HeimdallEvent>[]
     filters.length &&
       filters.forEach((f) => {
@@ -321,6 +302,6 @@ serve(
     port: 8000,
   },
   (info) => {
-    logger.info(`The app has started successfully ${info.port}}`)
+    console.info(`The app has started successfully ${info.port}}`)
   },
 )

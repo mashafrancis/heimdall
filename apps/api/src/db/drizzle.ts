@@ -1,5 +1,4 @@
 import { schema } from '@heimdall-logs/db'
-import { logger } from '@heimdall-logs/logger'
 import { createClient } from '@libsql/client'
 import { drizzle } from 'drizzle-orm/libsql'
 
@@ -11,7 +10,7 @@ export const getDbUrl = () => {
   const dbPath = `file:${dir
     .slice(0, dir.length - 2)
     .join('/')}/packages/db/db.sqlite`
-  logger.info(`[Database] ${dbPath}}`)
+  console.info(`[Database] ${dbPath}}`)
   return dbPath
 }
 

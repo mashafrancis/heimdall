@@ -27,7 +27,6 @@
     "zod": "^3.23.5"
   },
   "devDependencies": {
-    "@heimdall-logs/config": "workspace:*",
-    "@heimdall-logs/logger": "workspace:*"
+    "@heimdall-logs/config": "workspace:*"
   }
 }

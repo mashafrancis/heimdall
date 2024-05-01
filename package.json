@@ -6,7 +6,6 @@
     "name": "Francis Masha",
     "email": "francismasha96@gmail.com"
   },
-  "workspaces": ["packages/*", "apps/*", "packages/email/*"],
   "scripts": {
     "build": "turbo build --log-order=grouped",
     "dev": "turbo run dev --parallel",
