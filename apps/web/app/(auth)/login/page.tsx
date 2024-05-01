@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+// 'use client'
 
 import RightSection from '@/app/(auth)/login/right-section'
 import { BackLink } from '@/components/arrow-button'
@@ -7,12 +7,7 @@ import { UserAuthForm } from '@/components/user-auth-form'
 import { env } from '@/env.mjs'
 import loginStyles from '@/styles/login.module.css'
 
-export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Login to your account',
-}
-
-export default async function LoginPage() {
+export default function LoginPage() {
   const active = {
     github: false,
     google: !!env.GOOGLE_CLIENT_ID,

@@ -1,4 +1,3 @@
-import million from 'million/compiler'
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
  * for Docker builds.
@@ -46,9 +45,4 @@ const nextConfig = {
   },
 }
 
-export default million.next(nextConfig, {
-  auto: {
-    rsc: true,
-    threshold: 0.5,
-  },
-})
+export default nextConfig

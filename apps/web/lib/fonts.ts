@@ -32,17 +32,6 @@ export const fontSans = localFont({
   variable: '--font-sans',
 })
 
-// export const fontSans = FontSans({
-// 	subsets: ['latin'],
-// 	variable: '--font-sans',
-// });
-
-// Font files can be collocated inside `pages`
-export const fontHeading = localFont({
-  src: '../assets/fonts/sf-pro-text-medium-webfont.woff2',
-  variable: '--font-heading',
-})
-
 export const fontNumeric = FontNumeric({
   subsets: ['latin'],
   weight: '400',

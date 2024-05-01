@@ -46,7 +46,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "@react-email/components": "0.0.16",
+    "@react-email/components": "0.0.17",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.13",
@@ -69,7 +69,6 @@
     "jsonwebtoken": "^9.0.2",
     "kysely": "^0.27.3",
     "lucide-react": "^0.376.0",
-    "million": "3.0.6",
     "next": "^14.2.3",
     "next-auth": "^4.24.7",
     "next-themes": "^0.3.0",
@@ -91,7 +90,7 @@
     "tailwindcss": "^3.4.3",
     "use-delayed-render": "^0.0.7",
     "web-vitals": "^3.5.2",
-    "zod": "^3.23.4"
+    "zod": "^3.23.5"
   },
   "devDependencies": {
     "@heimdall-logs/types": "workspace:*",
@@ -102,8 +101,6 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-modal": "^3.16.3",
     "cssnano": "^7.0.1",
-    "eslint-config-next": "^14.2.3",
-    "eslint-plugin-tailwindcss": "^3.15.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.5"
   }
