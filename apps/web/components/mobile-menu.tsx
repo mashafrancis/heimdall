@@ -6,7 +6,6 @@ import { JSX, SVGProps, useEffect, useState } from 'react'
 
 import { cn, lockScroll } from '@/lib/utils'
 import styles from '@/styles/mobile-menu.module.css'
-import { LogOutIcon } from 'lucide-react'
 import { User } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import useDelayedRender from 'use-delayed-render'

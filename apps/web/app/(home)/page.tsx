@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import ExpandingArrow from '@/components/expanding-arrow'
-import { H3, H5 } from '@/components/typography'
+import { H3 } from '@/components/typography'
 import { buttonVariants } from '@/components/ui/button'
 import { getCurrentUser } from '@/lib/session'
 import { cn } from '@/lib/utils'

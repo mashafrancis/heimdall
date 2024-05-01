@@ -1,9 +1,9 @@
 import fs from 'fs'
 import https from 'https'
-import ora from 'ora'
 import path from 'path'
-import tar from 'tar'
 import zlib from 'zlib'
+import ora from 'ora'
+import tar from 'tar'
 
 export const download = (dest = './geo') => {
   if (process.env.VERCEL) {

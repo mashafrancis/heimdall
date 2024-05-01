@@ -2,7 +2,7 @@ import { env } from '@/env.mjs'
 import { createClient } from '@clickhouse/client'
 
 export const client = createClient({
-  host: env.CLICKHOUSE_HOST,
+  url: env.CLICKHOUSE_HOST,
   password: env.CLICKHOUSE_PASSWORD,
   username: env.CLICKHOUSE_USERNAME,
   database: env.CLICKHOUSE_DB,

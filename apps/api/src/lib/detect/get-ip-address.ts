@@ -1,6 +1,4 @@
 import requestIp from 'request-ip'
-
-import { env } from '../../../env'
 import { ApiRequest } from '../../routes/type'
 
 export function getIpAddress(req: ApiRequest) {

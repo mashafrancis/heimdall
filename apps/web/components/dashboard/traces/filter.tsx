@@ -156,7 +156,7 @@ export const EventFilter = ({
                 variant="outline"
                 pressed={!!activeFilter.find((f) => f.title === filter.title)}
                 onPressedChange={(pressed) => {
-                  // rome-ignore lint/style/noNonNullAssertion: <explanation>
+                  // biome-ignore lint/style/noNonNullAssertion: <explanation>
                   const selectedFilter = filteData.find(
                     (f) => f.title === filter.title,
                   )!

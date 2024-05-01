@@ -1,7 +1,5 @@
 'use client'
 
-import * as React from 'react'
-
 import { Icons } from '@/components/icons'
 import { ButtonProps, buttonVariants } from '@/components/ui/button'
 import { toast } from '@/components/ui/use-toast'

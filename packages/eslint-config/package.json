@@ -3,8 +3,5 @@
   "license": "MIT",
   "version": "0.0.1",
   "private": true,
-  "devDependencies": {
-    "@vercel/style-guide": "^6.0.0",
-    "eslint-config-turbo": "^1.13.3"
-  }
+  "devDependencies": {}
 }

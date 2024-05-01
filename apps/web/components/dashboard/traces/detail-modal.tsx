@@ -1,6 +1,4 @@
 'use client'
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { fancyId } from '@/lib/utils'
 import { HeimdallTraces } from '@heimdall-logs/types'
 import { Row } from '@tanstack/react-table'

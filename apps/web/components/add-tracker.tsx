@@ -183,7 +183,7 @@ export const AddTracker = ({
       )
       if (!snippet) {
         setSelected(
-          // rome-ignore lint/style/noNonNullAssertion: <explanation>
+          // biome-ignore lint/style/noNonNullAssertion: <explanation>
           snippets.find(
             (snippet) =>
               snippet.name === `${selectedFramework}-${selectedLang}`,

@@ -1,6 +1,4 @@
 'use client'
-
-import * as React from 'react'
 import { ReactNode, useState } from 'react'
 
 import { Overlay, Sidebar, SidebarState, useSidebar } from '@almond-ui/core'

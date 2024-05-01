@@ -1,5 +1,5 @@
-import maxmind, { CityResponse, Reader } from 'maxmind'
 import path from 'path'
+import maxmind, { CityResponse, Reader } from 'maxmind'
 
 import { ApiRequest } from '../../routes/type'
 

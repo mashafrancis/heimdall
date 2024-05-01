@@ -1,19 +1,12 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-
-import * as React from 'react'
-import { Fragment } from 'react'
-
-import { Icons } from '@/components/icons'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { absoluteUrl, cn } from '@/lib/utils'
-import { Teams } from '@/server/query'
-import { SidebarNavItem, TeamNavItem } from '@/types'
 import { Plus } from 'lucide-react'
 import { For } from 'million/react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 interface DashboardNavProps {
   teams: any

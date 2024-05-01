@@ -1,7 +1,7 @@
 'use client'
 
 import dayjs from '@/lib/dayjsTime'
-import { durationToReadableUnits, formatDate } from '@/lib/utils'
+import { durationToReadableUnits } from '@/lib/utils'
 import { HeimdallTraces } from '@heimdall-logs/types'
 import { ColumnDef } from '@tanstack/react-table'
 import {

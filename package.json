@@ -13,9 +13,10 @@
     "build:web": "turbo --filter web build",
     "dev:tracker": "turbo --filter \"./packages/*\" dev",
     "dev": "turbo run dev --concurrency 12",
-    "lint": "turbo run lint -- --fix",
-    "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "format": "biome format --write .",
+    "format:fix": "biome format --apply .",
+    "lint": "turbo lint && manypkg check",
+    "lint:fix": "biome lint --apply .",
     "clean": "turbo run clean && rm -rf node_modules",
     "ui:add": "pnpm --filter web ui:add",
     "typecheck": "turbo typecheck",
@@ -56,25 +57,14 @@
     }
   },
   "dependencies": {
-    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
-    "@commitlint/config-conventional": "^19.2.2",
-    "@heimdall-logs/tsconfig": "workspace:*",
     "@manypkg/cli": "^0.21.4",
-    "@prisma/client": "^5.13.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.12.7",
     "dotenv-cli": "^7.4.1",
-    "eslint": "^9.1.1",
     "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "pretty-quick": "^4.0.0",
-    "tailwindcss": "^3.4.3",
     "tsup": "^8.0.2",
-    "tsx": "^4.7.3",
     "turbo": "^1.13.3",
-    "typescript": "^5.4.5",
-    "vitest": "^1.5.2"
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.1"

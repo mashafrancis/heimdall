@@ -1,7 +1,8 @@
 import { browserName, detectOS } from 'detect-browser'
-import isbot from 'isbot'
+// import { isbot } from 'isbot'
 import { z } from 'zod'
 
+import { isbot } from 'isbot'
 import { client } from '../db/clickhouse'
 import { apiResponse } from '../lib/api-response'
 import { getDevice } from '../lib/detect/get-device'

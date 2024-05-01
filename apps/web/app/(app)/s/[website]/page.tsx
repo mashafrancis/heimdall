@@ -1,7 +1,5 @@
 import { redirect } from 'next/navigation'
 
-import React from 'react'
-
 import { Dashboard } from '@/components/dashboard'
 import { db } from '@/lib/db'
 import { generateToken } from '@/lib/generate-token'

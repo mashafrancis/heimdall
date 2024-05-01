@@ -36,7 +36,6 @@ import {
   Settings,
   Trash,
   Twitter,
-  Users,
   Users2,
   Wallet,
   Webhook,

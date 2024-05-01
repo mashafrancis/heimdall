@@ -1,5 +1,5 @@
 import { browserName, detectOS } from 'detect-browser'
-import isbot from 'isbot'
+import { isbot } from 'isbot'
 import { z } from 'zod'
 
 import { eventDB } from '../db'

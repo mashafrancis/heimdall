@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import Traces from '@/components/dashboard/traces'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
