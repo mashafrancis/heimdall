@@ -3,7 +3,9 @@ import type { ReactNode } from 'react'
 import { ClientProvider } from '@/components/client-provider'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/toaster'
-import { fontMono, fontNumeric, fontSans } from '@/lib/fonts'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+
 import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
 // import Heimdall from '@heimdall-logs/tracker/react'
@@ -20,31 +22,16 @@ export default function RootLayout({
   children: ReactNode
 }): JSX.Element {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(
-        'min-[100dvh] font-sans text-black',
-        fontSans.variable,
-        fontNumeric.variable,
-        fontMono.variable,
-      )}
-    >
-      <body className="antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          'min-[100dvh] overscroll-none whitespace-pre-line bg-background font-sans text-foreground antialiased',
+          GeistSans.variable,
+          GeistMono.variable,
+        )}
+      >
         <ClientProvider>
           {children}
-          {/*<Heimdall*/}
-          {/*  config={{*/}
-          {/*    id: 'heimdall',*/}
-          {/*    consent: 'granted',*/}
-          {/*    host: '/api/heimdall',*/}
-          {/*    collector: '/api/trace',*/}
-          {/*    // host: 'http://localhost:8000',*/}
-          {/*    autoTrack: true,*/}
-          {/*    // env: 'prod',*/}
-          {/*    // debug: true,*/}
-          {/*  }}*/}
-          {/*/>*/}
           <Toaster />
           <Analytics />
           <TailwindIndicator />
