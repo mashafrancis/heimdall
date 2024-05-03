@@ -38,6 +38,10 @@ const nextConfig = {
       source: '/api/trace',
       destination: env.NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT,
     },
+    {
+      source: '/api/openstatus',
+      destination: 'https://vitals.openstat.us/',
+    },
   ],
   transpilePackages: ['@heimdall-logs/tracker', '@heimdall-logs/api'],
   devIndicators: {

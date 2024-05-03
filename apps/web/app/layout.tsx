@@ -31,7 +31,7 @@ export default function RootLayout({
           GeistMono.variable,
         )}
       >
-        <OpenStatusProvider dsn="heimdall" />
+        <OpenStatusProvider dsn="heimdall" endpoint="/api/openstatus" />
         <ClientProvider>
           {children}
           <Toaster />
