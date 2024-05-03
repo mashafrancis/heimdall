@@ -27,7 +27,7 @@ AlertDialogPortal.displayName = AlertDialogPrimitive.Portal.displayName
 const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
-  // rome-ignore lint/correctness/noUnusedVariables: <explanation>
+  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
 >(({ className, children, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(

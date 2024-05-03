@@ -42,7 +42,6 @@ SheetPortal.displayName = SheetPrimitive.Portal.displayName
 const SheetOverlay = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
-  // rome-ignore lint/correctness/noUnusedVariables: <explanation>
 >(({ className, children, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(

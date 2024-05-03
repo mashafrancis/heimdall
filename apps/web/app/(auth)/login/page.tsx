@@ -10,8 +10,8 @@ import { Suspense } from 'react'
 
 export default function LoginPage() {
   const active = {
-    github: false,
-    google: !!env.GOOGLE_CLIENT_ID,
+    github: !!env.GITHUB_CLIENT_ID,
+    google: false,
   }
 
   return (

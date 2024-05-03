@@ -23,7 +23,7 @@ export function MonitorCardDetails({
   setSelected,
   setIsOpen,
 }: WebsiteProps) {
-  const [isLoading, setIsLoading] = useState(false)
+  const [_isLoading, _setIsLoading] = useState(false)
   return (
     <Link href={`/s/${site.id}`}>
       <Card className="rounded-xl shadow-none @container/card hover:shadow-md">

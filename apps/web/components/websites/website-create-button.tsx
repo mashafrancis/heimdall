@@ -13,7 +13,7 @@ import { Icons } from '../icons'
 
 export function WebsiteCreateButton({ variant, ...props }: ButtonProps) {
   const [websites] = useAtom(userWebsitesAtom)
-  const [show, setShow] = useState(false)
+  const [_show, _setShow] = useState(false)
   // const [, setCreateWebsite] = useAtom(websiteFormAtom);
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   // const [keyboardHeight, setKeyboardHeight] = useState(0);

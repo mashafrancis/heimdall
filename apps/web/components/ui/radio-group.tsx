@@ -23,7 +23,7 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
-  // rome-ignore lint/correctness/noUnusedVariables: <explanation>
+  // biome-ignore lint/correctness/noUnusedVariables: <explanation>
 >(({ className, children, ...props }, ref) => {
   return (
     <RadioGroupPrimitive.Item

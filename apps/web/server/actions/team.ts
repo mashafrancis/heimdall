@@ -157,7 +157,7 @@ export async function inviteTeam(
               },
             })
             .then((res) => ({
-              // rome-ignore lint/style/noNonNullAssertion: <explanation>
+              // biome-ignore lint/style/noNonNullAssertion: <explanation>
               ...res!,
               name: res?.users?.name as string,
               email: res?.users?.email as string,

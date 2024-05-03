@@ -19,7 +19,7 @@ export default async function APIKeysLayout({
   }
 
   const { userWebsites, teamWebsites } = await getWebsite()
-  const websites = userWebsites.concat(teamWebsites)
+  const _websites = userWebsites.concat(teamWebsites)
 
   return (
     <main className="flex min-h-screen flex-col bg-muted/50 pb-12">

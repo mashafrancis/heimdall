@@ -1,39 +1,27 @@
+import { auth } from '@heimdall-logs/auth'
 import { NextResponse } from 'next/server'
 
-import { getToken } from 'next-auth/jwt'
-import { withAuth } from 'next-auth/middleware'
+export default auth((req) => {
+  const isAuth = req.auth
+  const isAuthPage = req.nextUrl.pathname.startsWith('/login')
 
-export default withAuth(
-  async function middleware(req) {
-    const token = await getToken({ req })
-    const isAuth = !!token
-    const isAuthPage = req.nextUrl.pathname.startsWith('/login')
-
-    if (isAuthPage) {
-      if (isAuth) {
-        return NextResponse.redirect(new URL('/dashboard', req.url))
-      }
-      return null
+  if (isAuthPage) {
+    if (isAuth) {
+      return NextResponse.redirect(new URL('/dashboard', req.url))
     }
+    return null
+  }
 
-    if (!isAuth) {
-      let from = req.nextUrl.pathname
-      if (req.nextUrl.search) {
-        from += req.nextUrl.search
-      }
-      return NextResponse.redirect(
-        new URL(`/login?from=${encodeURIComponent(from)}`, req.url),
-      )
+  if (!isAuth) {
+    let from = req.nextUrl.pathname
+    if (req.nextUrl.search) {
+      from += req.nextUrl.search
     }
-  },
-  {
-    callbacks: {
-      async authorized() {
-        return true
-      },
-    },
-  },
-)
+    return NextResponse.redirect(
+      new URL(`/login?from=${encodeURIComponent(from)}`, req.url),
+    )
+  }
+})
 
 export const config = {
   matcher: [

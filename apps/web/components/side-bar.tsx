@@ -10,9 +10,9 @@ import {
 import { Book, Briefcase, Key, Shield, Sliders, Users } from 'lucide-react'
 
 export default function SideBar() {
-  const [expanded, setExpanded] = useState(true)
-  const [mobile, setMobile] = useState(false)
-  const sidebar = useSidebar()
+  const [_expanded, setExpanded] = useState(true)
+  const [_mobile, setMobile] = useState(false)
+  const _sidebar = useSidebar()
 
   return (
     <Sidebar

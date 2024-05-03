@@ -6,8 +6,8 @@ import { HTMLAttributes, useState } from 'react'
 
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { signIn } from 'next-auth/react'
 
+import { signIn } from '@heimdall-logs/auth'
 import { Icons } from './icons'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -19,7 +19,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function UserAuthForm({ className, activeStrategy, ...props }: Props) {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isGitHubLoading, setIsGitHubLoading] = useState<boolean>(false)
   const searchParams = useSearchParams()
   return (
@@ -34,8 +33,8 @@ export function UserAuthForm({ className, activeStrategy, ...props }: Props) {
               callbackUrl: searchParams?.get('from') || '/dashboard',
             })
           }}
-          aria-disabled={isLoading || isGitHubLoading}
-          disabled={isLoading || isGitHubLoading}
+          aria-disabled={isGitHubLoading}
+          disabled={isGitHubLoading}
         >
           {isGitHubLoading ? (
             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
@@ -43,33 +42,6 @@ export function UserAuthForm({ className, activeStrategy, ...props }: Props) {
             <Icons.gitHub className="mr-2 h-4 w-4" />
           )}
           Github
-        </button>
-      )}
-      {activeStrategy.google && (
-        <button
-          type="button"
-          className={cn(
-            buttonVariants({
-              variant: 'outline',
-              size: 'lg',
-            }),
-            'bg-card',
-          )}
-          onClick={() => {
-            setIsLoading(true)
-            signIn('google', {
-              callbackUrl: searchParams?.get('from') || '/dashboard',
-            })
-          }}
-          aria-disabled={isLoading || isGitHubLoading}
-          // disabled={isLoading || isGitHubLoading}
-        >
-          {isLoading ? (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-          ) : (
-            <Icons.google className="mr-2 h-4 w-4 dark:fill-white" />
-          )}
-          Google
         </button>
       )}
     </div>

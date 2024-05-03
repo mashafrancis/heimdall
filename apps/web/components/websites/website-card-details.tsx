@@ -24,7 +24,7 @@ export function WebsiteCardDetails({
   setSelected,
   setIsOpen,
 }: WebsiteProps) {
-  const [isLoading, setIsLoading] = useState(false)
+  const [_isLoading, _setIsLoading] = useState(false)
   const [favicon, setFavicon] = useState('')
   // const favicon = getFavicon(site.url).then((favicon) => {
   // 	return favicon;

@@ -5,6 +5,7 @@ const tailwindConfig = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './node_modules/@almond-ui/core/src/theme/styles/*.ts',
+    './node_modules/@openstatus/react/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: ['class'],
   theme: {
