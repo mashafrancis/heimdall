@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { ReactNode } from 'react'
 
+import { auth } from '@/auth'
 import { MobileDashboardHeader } from '@/components/header'
 import { SideNav } from '@/components/side-nav'
 import { dashboardConfig } from '@/config/dashboard'
