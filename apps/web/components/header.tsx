@@ -70,7 +70,7 @@ function SiteHeader({ user, className }: Props) {
         <ExcludeSquare size={32} color="#0074a6" weight="duotone" />
         <Link
           href="/"
-          aria-label="almond-ui"
+          aria-label="heindall"
           className="block whitespace-nowrap text-lg font-semibold transition focus:outline-none"
         >
           heimdall
@@ -83,12 +83,12 @@ function SiteHeader({ user, className }: Props) {
             <NavItem key={link.href} href={link.href} text={link.name} />
           ))}
         </ul>
-        <MobileMenu user={user} />
+        <MobileMenu />
       </div>
 
       <div className="hidden md:flex">
         {user ? (
-          <UserAccountNav user={user} />
+          <UserAccountNav />
         ) : (
           <Link
             href="/login"
@@ -105,7 +105,7 @@ function SiteHeader({ user, className }: Props) {
   )
 }
 
-function DashboardHeader({ user, items, className }: DashboardHeaderProps) {
+function DashboardHeader({ items, className }: DashboardHeaderProps) {
   return (
     <header
       className={cn(
@@ -129,11 +129,11 @@ function DashboardHeader({ user, items, className }: DashboardHeaderProps) {
             <NavItem key={link.href} href={link.href} text={link.title} />
           ))}
         </ul>
-        <MobileMenu user={user} />
+        <MobileMenu />
       </div>
 
       <div className="hidden md:flex">
-        <UserAccountNav user={user} />
+        <UserAccountNav />
       </div>
     </header>
   )
@@ -171,11 +171,7 @@ function PublicDashboardHeader() {
   )
 }
 
-function MobileDashboardHeader({
-  user,
-  items,
-  className,
-}: DashboardHeaderProps) {
+function MobileDashboardHeader({ className }: DashboardHeaderProps) {
   return (
     <header
       className={cn(
@@ -190,7 +186,7 @@ function MobileDashboardHeader({
       </div>
 
       <div className="">
-        <UserAccountNav user={user} />
+        <UserAccountNav />
       </div>
     </header>
   )

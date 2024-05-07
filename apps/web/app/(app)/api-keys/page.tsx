@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 
+import { auth } from '@/auth'
 import { DeleteKeys, GenerateKeys } from '@/components/api-key-generate-buttons'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import {
@@ -11,12 +12,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { db } from '@/lib/db'
-import { getCurrentUser } from '@/lib/session'
+import { db } from '@heimdall-logs/db'
 import { formatDistanceToNow } from 'date-fns'
 
 const apiKeys = async () => {
-  const user = await getCurrentUser()
+  const session = await auth()
+  const user = session?.user
   if (!user) {
     return redirect('/login')
   }

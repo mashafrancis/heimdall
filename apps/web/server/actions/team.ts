@@ -2,9 +2,9 @@
 
 import { TeamInviteEmail } from '@/components/emails/team-invite-email'
 import { siteConfig } from '@/config/site'
-import { db } from '@/lib/db'
 import { resend } from '@/lib/resend'
 import { teamInviteSchema, teamSchema } from '@/lib/validations/team'
+import { db } from '@heimdall-logs/db'
 import { schema } from '@heimdall-logs/db'
 import { ROLE } from '@heimdall-logs/types/models'
 import { and, eq, gte } from 'drizzle-orm'

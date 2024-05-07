@@ -1,3 +1,4 @@
+import { auth } from '@/auth'
 import { EmptyPlaceholder } from '@/components/empty-placeholder'
 import { StoreSetter } from '@/components/store-setter'
 import { TeamCreateButton } from '@/components/teams/team-create-button'
@@ -7,7 +8,6 @@ import { TeamJoinedToast } from '@/components/teams/team-joined-toast'
 import { TeamMembersTable } from '@/components/teams/team-members-table'
 import { TeamUpdateForm } from '@/components/teams/team-update-form'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { getCurrentUser } from '@/lib/session'
 import { getTeams } from '@/server/query'
 
 const Page = async ({
@@ -16,7 +16,8 @@ const Page = async ({
   params: { slug: string }
   searchParams?: { [key: string]: string | string[] | undefined }
 }) => {
-  const user = await getCurrentUser()
+  const session = await auth()
+  const user = session?.user
   if (!user) return null
   const teams = await getTeams()
   return (

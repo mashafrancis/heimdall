@@ -1,24 +1,28 @@
-// 'use client'
-
-import RightSection from '@/app/(auth)/login/right-section'
+import { signIn } from '@/auth'
 import { BackLink } from '@/components/arrow-button'
 import { Icons } from '@/components/icons'
-import { UserAuthForm } from '@/components/user-auth-form'
-import { env } from '@/env.mjs'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 import loginStyles from '@/styles/login.module.css'
 import { Suspense } from 'react'
+import { z } from 'zod'
 
-export default function LoginPage() {
-  const active = {
-    github: !!env.GITHUB_CLIENT_ID,
-    google: false,
-  }
+const searchParamsSchema = z.object({
+  redirectTo: z.string().optional().default('/app'),
+})
+
+export default function LoginPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
+  const search = searchParamsSchema.safeParse(searchParams)
+  const redirectTo = search.success ? search.data.redirectTo : '/dashboard'
 
   return (
     <div className="container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="hidden h-full bg-muted lg:block" />
       <div className={loginStyles.main} />
-      <RightSection activeStrategy={active} />
       <BackLink className="absolute left-8 top-8 hidden md:flex" to="/">
         back to home
       </BackLink>
@@ -31,10 +35,24 @@ export default function LoginPage() {
               to continue to Heimdall
             </p>
             <Suspense fallback={<div>Loading...</div>}>
-              <UserAuthForm
-                activeStrategy={active}
-                className="mt-12 w-[400px]"
-              />
+              <div className={cn('grid gap-4 mt-12 w-[400px]')}>
+                <form>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full"
+                    formAction={async () => {
+                      'use server'
+                      await signIn('github', {
+                        callbackUrl: redirectTo,
+                      })
+                    }}
+                  >
+                    <Icons.gitHub className="mr-2 h-4 w-4" />
+                    Github
+                  </Button>
+                </form>
+              </div>
             </Suspense>
           </div>
         </div>

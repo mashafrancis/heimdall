@@ -1,14 +1,17 @@
-import { env } from '@/env.mjs'
-import { schema } from '@heimdall-logs/db'
 import { createClient } from '@libsql/client'
 import { drizzle } from 'drizzle-orm/libsql'
 
+import * as schema from './schema'
+
 export const getDbUrl = () => {
-  if (process.env.NODE_ENV === 'production' || env.TURSO_DB_AUTH_TOKEN) {
-    if (!env.TURSO_DB_URL) {
+  if (
+    process.env.NODE_ENV === 'production' ||
+    process.env.TURSO_DB_AUTH_TOKEN
+  ) {
+    if (!process.env.TURSO_DB_URL) {
       throw Error('❌ DATABASE URL MISSING')
     }
-    return env.TURSO_DB_URL
+    return process.env.TURSO_DB_URL
   }
   const workDir = process.cwd()
   const dir = workDir.split('/')
@@ -21,9 +24,7 @@ export const getDbUrl = () => {
 
 const client = createClient({
   url: getDbUrl(),
-  authToken: env.TURSO_DB_AUTH_TOKEN,
+  authToken: process.env.TURSO_DB_AUTH_TOKEN,
 })
 
-export const db = drizzle(client, {
-  schema,
-})
+export const db = drizzle(client, { schema })

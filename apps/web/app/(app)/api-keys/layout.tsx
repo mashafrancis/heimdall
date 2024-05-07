@@ -2,12 +2,12 @@ import { redirect } from 'next/navigation'
 
 import { ReactNode } from 'react'
 
+import { auth } from '@/auth'
 import { GenerateApiKey } from '@/components/api-key-generate-modal'
 import { MiniHeader, MobileDashboardHeader } from '@/components/header'
 import { DashboardShell } from '@/components/shell'
 import { SideNav } from '@/components/side-nav'
 import { dashboardConfig } from '@/config/dashboard'
-import { getCurrentUser } from '@/lib/session'
 import { getWebsite } from '@/server/query/website'
 
 export default async function APIKeysLayout({
@@ -15,7 +15,9 @@ export default async function APIKeysLayout({
 }: {
   children: ReactNode
 }) {
-  const user = await getCurrentUser()
+  const session = await auth()
+  const user = session?.user
+
   if (!user) {
     return redirect('/login')
   }

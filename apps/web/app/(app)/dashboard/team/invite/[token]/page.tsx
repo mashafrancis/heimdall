@@ -1,12 +1,11 @@
-import { redirect } from 'next/navigation'
-
-import { db } from '@/lib/db'
-import { getCurrentUser } from '@/lib/session'
+import { db } from '@heimdall-logs/db'
 import { schema } from '@heimdall-logs/db'
 import { eq } from 'drizzle-orm'
+import { redirect } from 'next/navigation'
 
 const Page = async ({ params }: { params: { token: string } }) => {
-  const user = await getCurrentUser()
+  const session = await auth()
+  const user = session?.user
   const invite = await db.query.teamInvitation.findFirst({
     where(fields, operators) {
       return operators.and(

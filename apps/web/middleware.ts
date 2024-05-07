@@ -1,34 +1,33 @@
-import { auth } from '@heimdall-logs/auth'
+import { auth } from '@/auth'
 import { NextResponse } from 'next/server'
 
-export default auth((req) => {
-  const isAuth = req.auth
-  const isAuthPage = req.nextUrl.pathname.startsWith('/login')
+const publicAppPaths = ['/login']
 
-  if (isAuthPage) {
-    if (isAuth) {
-      return NextResponse.redirect(new URL('/dashboard', req.url))
-    }
-    return null
-  }
+export default auth(async (req) => {
+  const pathname = req.nextUrl.pathname
 
-  if (!isAuth) {
-    let from = req.nextUrl.pathname
-    if (req.nextUrl.search) {
-      from += req.nextUrl.search
-    }
+  const isPublicAppPath = publicAppPaths.some((path) =>
+    pathname.startsWith(path),
+  )
+
+  if (!req.auth && pathname.startsWith('/dashboard') && !isPublicAppPath) {
     return NextResponse.redirect(
-      new URL(`/login?from=${encodeURIComponent(from)}`, req.url),
+      new URL(`/login?redirectTo=${encodeURIComponent(pathname)}`, req.url),
     )
   }
 })
 
+// Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: [
-    '/logs/:path*',
-    '/uptime/:path*',
-    '/dashboard/:path*',
-    '/insights/:path*',
-    '/login',
-  ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 }
+
+// export const config = {
+//   matcher: [
+//     '/logs/:path*',
+//     '/uptime/:path*',
+//     '/dashboard/:path*',
+//     '/insights/:path*',
+//     '/login',
+//   ],
+// }

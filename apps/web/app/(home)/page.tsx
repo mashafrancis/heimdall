@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
+import { auth } from '@/auth'
 import ExpandingArrow from '@/components/expanding-arrow'
 import { H3 } from '@/components/typography'
 import { buttonVariants } from '@/components/ui/button'
-import { getCurrentUser } from '@/lib/session'
 import { cn } from '@/lib/utils'
 
 const features = [
@@ -25,7 +25,8 @@ const features = [
 ]
 
 export default async function HomePage() {
-  const user = await getCurrentUser()
+  const session = await auth()
+  const user = session?.user
   return (
     <>
       <section className="space-y-6 pb-8 pt-10 md:pb-12 lg:py-32">

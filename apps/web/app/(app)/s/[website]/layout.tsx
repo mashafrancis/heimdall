@@ -5,14 +5,10 @@ import { ReactNode } from 'react'
 import { MobileDashboardHeader } from '@/components/header'
 import { SideNav } from '@/components/side-nav'
 import { dashboardConfig } from '@/config/dashboard'
-// import {
-// 	DashboardHeader,
-// 	PublicDashboardHeader,
-// } from '@/components/site-header';
-import { getCurrentUser } from '@/lib/session'
 
 export default async function layout({ children }: { children: ReactNode }) {
-  const user = await getCurrentUser()
+  const session = await auth()
+  const user = session?.user
 
   if (!user) {
     return redirect('/login')

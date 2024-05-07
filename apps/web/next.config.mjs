@@ -5,9 +5,6 @@
 import { env } from './env.mjs'
 
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['libsql'],
-  },
   logging: {
     level: 'verbose',
     fullUrl: true,
@@ -16,10 +13,18 @@ const nextConfig = {
   swcMinify: true,
   output: 'standalone',
   poweredByHeader: false,
-  eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+  experimental: {
+    serverComponentsExternalPackages: [
+      'libsql',
+      // "@libsql/client",
+      // "better-sqlite3"
+    ],
+    optimizePackageImports: ['@tremor/react'],
+    // FIXME: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+    // TODO: https://nextjs.org/docs/app/api-reference/functions/use-search-params#static-rendering
+    // TODO: https://nextjs.org/docs/messages/deopted-into-client-rendering
+    missingSuspenseWithCSRBailout: false,
   },
   images: {
     remotePatterns: [

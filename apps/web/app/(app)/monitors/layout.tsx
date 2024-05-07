@@ -2,10 +2,10 @@ import { redirect } from 'next/navigation'
 
 import { ReactNode } from 'react'
 
+import { auth } from '@/auth'
 import { MobileDashboardHeader } from '@/components/header'
 import { SideNav } from '@/components/side-nav'
 import { dashboardConfig } from '@/config/dashboard'
-import { getCurrentUser } from '@/lib/session'
 import { getWebsite } from '@/server/query/website'
 
 export default async function APIKeysLayout({
@@ -13,7 +13,8 @@ export default async function APIKeysLayout({
 }: {
   children: ReactNode
 }) {
-  const user = await getCurrentUser()
+  const session = await auth()
+  const user = session?.user
   if (!user) {
     return redirect('/login')
   }

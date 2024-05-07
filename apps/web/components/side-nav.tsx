@@ -16,7 +16,7 @@ interface DashboardNavProps {
   user: User
 }
 
-export function SideNav({ items, user }: DashboardNavProps) {
+export function SideNav({ items }: DashboardNavProps) {
   const pathname = usePathname()
 
   if (!items?.length) {
@@ -88,7 +88,7 @@ export function SideNav({ items, user }: DashboardNavProps) {
           </Button>
         </Link>
         <div className="my-4 hidden justify-center md:flex">
-          <UserAccountNav user={user} />
+          <UserAccountNav />
         </div>
       </ul>
     </aside>
