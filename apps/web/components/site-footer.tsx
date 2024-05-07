@@ -14,7 +14,7 @@ export function SiteFooter({ className }: HTMLAttributes<HTMLElement>) {
           <p className="text-foreground font-semibold">Socials</p>
           <FooterLink href="https://francismasha.com" label="francismasha" />
           <StatusWidget
-            slug="documenso"
+            slug="heimdall"
             href="https://heimdall.openstatus.dev/"
           />
         </div>

@@ -1,9 +1,9 @@
 import { signIn } from '@/auth'
 import { BackLink } from '@/components/arrow-button'
 import { Icons } from '@/components/icons'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import loginStyles from '@/styles/login.module.css'
+import { Button } from '@heimdall-logs/ui'
 import { Suspense } from 'react'
 import { z } from 'zod'
 
@@ -38,8 +38,8 @@ export default function LoginPage({
               <div className={cn('grid gap-4 mt-12 w-[400px]')}>
                 <form>
                   <Button
-                    size="lg"
-                    variant="outline"
+                    size="large"
+                    type="outline"
                     className="w-full"
                     formAction={async () => {
                       'use server'

@@ -1,4 +1,5 @@
 import ThemeSwitch from '@/components/theme-switch'
+import { UserAvatar } from '@/components/user-avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,9 +7,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Skeleton } from '@/components/ui/skeleton'
-import { UserAvatar } from '@/components/user-avatar'
+  Skeleton,
+} from '@heimdall-logs/ui'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
 

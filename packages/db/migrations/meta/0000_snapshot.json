@@ -91,22 +91,15 @@
           "name": "account_userId_user_id_fk",
           "tableFrom": "account",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
         "account_provider_providerAccountId_pk": {
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ],
+          "columns": ["provider", "providerAccountId"],
           "name": "account_provider_providerAccountId_pk"
         }
       },
@@ -143,12 +136,8 @@
           "name": "session_userId_user_id_fk",
           "tableFrom": "session",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -229,10 +218,7 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {
         "verificationToken_identifier_token_pk": {
-          "columns": [
-            "identifier",
-            "token"
-          ],
+          "columns": ["identifier", "token"],
           "name": "verificationToken_identifier_token_pk"
         }
       },
@@ -374,9 +360,7 @@
       "indexes": {
         "teamInvitation_token_unique": {
           "name": "teamInvitation_token_unique",
-          "columns": [
-            "token"
-          ],
+          "columns": ["token"],
           "isUnique": true
         }
       },
@@ -385,12 +369,8 @@
           "name": "teamInvitation_teamId_team_id_fk",
           "tableFrom": "teamInvitation",
           "tableTo": "team",
-          "columnsFrom": [
-            "teamId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["teamId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -398,12 +378,8 @@
           "name": "teamInvitation_userId_user_id_fk",
           "tableFrom": "teamInvitation",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -411,12 +387,8 @@
           "name": "teamInvitation_teamMemberId_teamMember_id_fk",
           "tableFrom": "teamInvitation",
           "tableTo": "teamMember",
-          "columnsFrom": [
-            "teamMemberId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["teamMemberId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -505,12 +477,8 @@
           "name": "teamMember_userId_user_id_fk",
           "tableFrom": "teamMember",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -518,12 +486,8 @@
           "name": "teamMember_teamId_team_id_fk",
           "tableFrom": "teamMember",
           "tableTo": "team",
-          "columnsFrom": [
-            "teamId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["teamId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -531,12 +495,8 @@
           "name": "teamMember_websiteId_website_id_fk",
           "tableFrom": "teamMember",
           "tableTo": "website",
-          "columnsFrom": [
-            "websiteId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["websiteId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -589,12 +549,8 @@
           "name": "teamWebsites_teamId_team_id_fk",
           "tableFrom": "teamWebsites",
           "tableTo": "team",
-          "columnsFrom": [
-            "teamId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["teamId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -602,12 +558,8 @@
           "name": "teamWebsites_websiteId_website_id_fk",
           "tableFrom": "teamWebsites",
           "tableTo": "website",
-          "columnsFrom": [
-            "websiteId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["websiteId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -678,16 +630,12 @@
       "indexes": {
         "apiKey_token_unique": {
           "name": "apiKey_token_unique",
-          "columns": [
-            "token"
-          ],
+          "columns": ["token"],
           "isUnique": true
         },
         "user_idx": {
           "name": "user_idx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -696,12 +644,8 @@
           "name": "apiKey_userId_user_id_fk",
           "tableFrom": "apiKey",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -709,12 +653,8 @@
           "name": "apiKey_websiteId_website_id_fk",
           "tableFrom": "apiKey",
           "tableTo": "website",
-          "columnsFrom": [
-            "websiteId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["websiteId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -780,9 +720,7 @@
       "indexes": {
         "website_userIdx": {
           "name": "website_userIdx",
-          "columns": [
-            "userId"
-          ],
+          "columns": ["userId"],
           "isUnique": false
         }
       },
@@ -791,12 +729,8 @@
           "name": "website_userId_user_id_fk",
           "tableFrom": "website",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -860,9 +794,7 @@
       "indexes": {
         "website_idx": {
           "name": "website_idx",
-          "columns": [
-            "websiteId"
-          ],
+          "columns": ["websiteId"],
           "isUnique": false
         }
       },
@@ -1013,12 +945,8 @@
           "name": "monitors_to_pages_monitor_id_monitor_id_fk",
           "tableFrom": "monitors_to_pages",
           "tableTo": "monitor",
-          "columnsFrom": [
-            "monitor_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["monitor_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1026,22 +954,15 @@
           "name": "monitors_to_pages_page_id_page_id_fk",
           "tableFrom": "monitors_to_pages",
           "tableTo": "page",
-          "columnsFrom": [
-            "page_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["page_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
         "monitors_to_pages_monitor_id_page_id_pk": {
-          "columns": [
-            "monitor_id",
-            "page_id"
-          ],
+          "columns": ["monitor_id", "page_id"],
           "name": "monitors_to_pages_monitor_id_page_id_pk"
         }
       },
@@ -1121,9 +1042,7 @@
       "indexes": {
         "page_slug_unique": {
           "name": "page_slug_unique",
-          "columns": [
-            "slug"
-          ],
+          "columns": ["slug"],
           "isUnique": true
         }
       },

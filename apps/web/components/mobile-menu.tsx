@@ -4,9 +4,9 @@ import Link from 'next/link'
 
 import { JSX, SVGProps, useEffect, useState } from 'react'
 
-import { Skeleton } from '@/components/ui/skeleton'
 import { cn, lockScroll } from '@/lib/utils'
 import styles from '@/styles/mobile-menu.module.css'
+import { Skeleton } from '@heimdall-logs/ui'
 import { signOut, useSession } from 'next-auth/react'
 import useDelayedRender from 'use-delayed-render'
 

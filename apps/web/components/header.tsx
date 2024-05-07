@@ -7,10 +7,10 @@ import { ReactNode } from 'react'
 
 import { BackLink } from '@/components/arrow-button'
 import MobileMenu from '@/components/mobile-menu'
-import { buttonVariants } from '@/components/ui/button'
 import { UserAccountNav } from '@/components/user-account-nav'
 import { cn } from '@/lib/utils'
 import { MainNavItem } from '@/types'
+import { buttonVariants } from '@heimdall-logs/ui'
 import { ExcludeSquare } from '@phosphor-icons/react'
 import { User } from 'next-auth'
 
@@ -93,7 +93,7 @@ function SiteHeader({ user, className }: Props) {
           <Link
             href="/login"
             className={cn(
-              buttonVariants({ variant: 'ghost' }),
+              buttonVariants({ type: 'outline' }),
               'hover:bg-primary/10 hover:text-primary',
             )}
           >

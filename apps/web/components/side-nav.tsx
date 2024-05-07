@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Icons } from '@/components/icons'
-import { Button } from '@/components/ui/button'
 import { UserAccountNav } from '@/components/user-account-nav'
 import { cn } from '@/lib/utils'
 import { SidebarNavItem } from '@/types'
+import { Button } from '@heimdall-logs/ui'
 import { ExcludeSquare } from '@phosphor-icons/react'
 import { User } from 'next-auth'
 
@@ -49,8 +49,8 @@ export function SideNav({ items }: DashboardNavProps) {
             >
               <Button
                 aria-label={item.title}
-                variant="ghost"
-                size="icon"
+                type="text"
+                size="tiny"
                 className={cn(
                   pathname === item.href
                     ? 'bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary'
@@ -75,8 +75,8 @@ export function SideNav({ items }: DashboardNavProps) {
         >
           <Button
             aria-label="settings"
-            variant="ghost"
-            size="icon"
+            type="text"
+            size="tiny"
             className={cn(
               pathname === 'settings'
                 ? 'bg-primary/10 hover:bg-primary/10 hover:text-primary text-primary'

@@ -23,7 +23,7 @@
     "drizzle-orm": "^0.30.10",
     "drizzle-zod": "^0.5.1",
     "tsx": "^4.9.3",
-    "zod": "^3.23.6"
+    "zod": "^3.23.7"
   },
   "devDependencies": {
     "@heimdall-logs/tsconfig": "workspace:*"
