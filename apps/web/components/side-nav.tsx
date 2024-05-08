@@ -43,8 +43,11 @@ export function SideNav({ items }: DashboardNavProps) {
               key={item.id}
               href={item.disabled ? '/' : item.href}
               className={cn(
-                'm-4 flex flex-col items-center justify-center text-center font-medium transition-colors',
-                pathname === item.href ? 'text-primary' : 'text-primary/60',
+                'hover:text-foreground/80 m-4 flex flex-col items-center justify-center text-center font-medium transition-colors',
+                pathname === item.href
+                  ? 'text-foreground'
+                  : 'text-foreground/60',
+                item.disabled && 'cursor-not-allowed opacity-80',
               )}
             >
               <Button
@@ -53,7 +56,7 @@ export function SideNav({ items }: DashboardNavProps) {
                 size="tiny"
                 className={cn(
                   pathname === item.href
-                    ? 'bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary'
+                    ? 'bg-primary/10 hover:bg-primary/10 hover:text-primary text-primary'
                     : 'text-gray-500',
                   'h-8 w-14 rounded-full p-0 font-medium ring-primary/40 transition-all hover:bg-primary/10 hover:ring-1 disabled:cursor-not-allowed disabled:text-muted-foreground/50 disabled:opacity-80',
                 )}

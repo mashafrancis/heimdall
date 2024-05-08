@@ -10,7 +10,7 @@ import MobileMenu from '@/components/mobile-menu'
 import { UserAccountNav } from '@/components/user-account-nav'
 import { cn } from '@/lib/utils'
 import { MainNavItem } from '@/types'
-import { buttonVariants } from '@heimdall-logs/ui'
+import { Button } from '@heimdall-logs/ui'
 import { ExcludeSquare } from '@phosphor-icons/react'
 import { User } from 'next-auth'
 
@@ -90,15 +90,9 @@ function SiteHeader({ user, className }: Props) {
         {user ? (
           <UserAccountNav />
         ) : (
-          <Link
-            href="/login"
-            className={cn(
-              buttonVariants({ type: 'outline' }),
-              'hover:bg-primary/10 hover:text-primary',
-            )}
-          >
-            Login
-          </Link>
+          <Button type="alternative" className="hidden lg:block" asChild>
+            <Link href="/login">Login</Link>
+          </Button>
         )}
       </div>
     </header>

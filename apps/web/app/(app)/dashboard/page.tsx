@@ -17,18 +17,20 @@ export default async function DashboardPage() {
         'scrollbar-hide w-full space-y-4 py-4 transition-all duration-700 dark:text-white/80',
       )}
     >
-      <Tabs defaultValue="card" className="w-full">
-        <div className="flex items-center justify-items-stretch gap-2 px-0">
+      <Tabs defaultValue="list" className="w-full">
+        <div className="flex items-center justify-between gap-2 px-0">
           <Search />
-          <TabsList className="grid h-10 grid-cols-2">
-            <TabsTrigger value="card">
-              <LayoutGrid size={18} />
-            </TabsTrigger>
-            <TabsTrigger value="list">
-              <List size={18} />
-            </TabsTrigger>
-          </TabsList>
-          {websites?.length ? <WebsiteCreateButton /> : null}
+          <div className="flex items-center">
+            <TabsList className="grid h-10 grid-cols-2">
+              <TabsTrigger value="card">
+                <LayoutGrid size={18} />
+              </TabsTrigger>
+              <TabsTrigger value="list">
+                <List size={18} />
+              </TabsTrigger>
+            </TabsList>
+            {websites?.length ? <WebsiteCreateButton /> : null}
+          </div>
         </div>
         <TabsContent value="card">
           <WebsitesCard websites={websites} />

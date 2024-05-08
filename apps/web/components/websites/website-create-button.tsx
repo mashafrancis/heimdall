@@ -46,8 +46,11 @@ export function WebsiteCreateButton({ type, ...props }: ButtonProps) {
   return (
     <Dialog onOpenChange={onDialogOpenChange} open={isDialogOpen}>
       <DialogTrigger asChild>
-        <Button {...props}>
-          <Icons.add className="h-4 w-4 " />
+        <Button
+          type="primary"
+          icon={<Icons.add className="h-4 w-4 " />}
+          {...props}
+        >
           <span className="hidden md:block">New Website</span>
         </Button>
       </DialogTrigger>

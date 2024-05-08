@@ -1,9 +1,9 @@
 import { signIn } from '@/auth'
 import { BackLink } from '@/components/arrow-button'
-import { Icons } from '@/components/icons'
+
 import { cn } from '@/lib/utils'
 import loginStyles from '@/styles/login.module.css'
-import { Button } from '@heimdall-logs/ui'
+import { Button, Icons } from '@heimdall-logs/ui'
 import { Suspense } from 'react'
 import { z } from 'zod'
 
@@ -39,8 +39,10 @@ export default function LoginPage({
                 <form>
                   <Button
                     size="large"
-                    type="outline"
+                    type="alternative"
                     className="w-full"
+                    htmlType="submit"
+                    // icon={<GitHubLogoIcon className="mr-2 h-4 w-4" />}
                     formAction={async () => {
                       'use server'
                       await signIn('github', {
@@ -48,7 +50,6 @@ export default function LoginPage({
                       })
                     }}
                   >
-                    <Icons.gitHub className="mr-2 h-4 w-4" />
                     Github
                   </Button>
                 </form>
