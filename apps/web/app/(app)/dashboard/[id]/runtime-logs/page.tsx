@@ -2,14 +2,18 @@ import Traces from '@/components/dashboard/traces'
 import SectionContainer from '@/components/layout/section-container'
 import { PageHeader } from '@/components/page-header'
 
-export default function AnalyticsPage() {
+export default function RuntimeLogsPage({
+  params,
+}: {
+  params: { id: string }
+}) {
   return (
     <SectionContainer>
       <PageHeader
-        title="Web analytics"
-        description="Track and analyze your website traffic and user behavior."
+        title="Runtime logs"
+        description="A view of your application's runtime logs."
       />
-      <Traces />
+      <Traces id={params.id} />
     </SectionContainer>
   )
 }

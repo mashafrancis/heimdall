@@ -12,7 +12,7 @@ import { columns } from './column'
 import { renderSubComponent } from './detail-modal'
 import { DataTable } from './table-data'
 
-const Traces = () => {
+const Traces = ({ id }: { id: string }) => {
   const url = env.NEXT_PUBLIC_API_URL
   const [timeRange, _setTimeRange] = useState<TimeRange>({
     startDate: getLast24Hour(),
@@ -20,10 +20,9 @@ const Traces = () => {
     stringValue: '24hr',
   })
   const { startDate, endDate } = timeRange
-  const websiteId = 'localhost'
 
   const { data, isLoading } = useSWR<HeimdallTraces[]>(
-    `${url}/traces?websiteId=${websiteId}&startDate=${startDate}&endDate=${endDate}`,
+    `${url}/traces?websiteId=${id}&startDate=${startDate}&endDate=${endDate}`,
     fetcher,
   )
 

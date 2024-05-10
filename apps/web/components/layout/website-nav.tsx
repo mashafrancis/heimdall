@@ -7,9 +7,10 @@ import { WEBSITE_NAMES } from '@/types/website'
 
 interface Props {
   activePage: WEBSITE_NAMES
+  id: string
 }
 
-export default function WebsiteNav({ activePage }: Props) {
+export default function WebsiteNav({ activePage, id }: Props) {
   return (
     <nav className="relative z-20 hidden md:flex items-center bg-background w-full border-b">
       <SectionContainer className="!py-0 flex gap-3 items-center">
@@ -25,7 +26,9 @@ export default function WebsiteNav({ activePage }: Props) {
                 site.name === activePage &&
                   'border-muted-foreground text-foreground',
               )}
-              href={`/dashboard/${site.name.toLowerCase().replace(' ', '-')}`}
+              href={`/dashboard/${id}/${site.name
+                .toLowerCase()
+                .replace(' ', '-')}`}
             >
               <p>{site.name}</p>
             </Link>

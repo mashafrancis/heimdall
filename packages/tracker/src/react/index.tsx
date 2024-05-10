@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react'
 
 import { heimdall } from '../lib'
 import { record } from '../record'
-// import { trace } from '../trace'
+import { trace } from '../trace'
 import type { Config, Internal } from '../types'
-import { MXLErrorBoundary } from './heimdall-error-boundary'
+import { HeimdallErrorBoundary } from './heimdall-error-boundary'
 
 interface Props {
   config: Config
@@ -14,7 +14,7 @@ declare global {
   interface Window {
     llc: NonNullable<Config>
     lli: Internal
-    safaricomMxl: typeof heimdall
+    heimdallLogs: typeof heimdall
   }
 }
 
@@ -23,10 +23,10 @@ declare global {
  * @param {Partial<Config>} [config] - The configuration options for the tracker. See {@link Config} for overview
  * @see [Documentation](https://heimdall.francismasha.com/docs) for details.
  */
-function MXLAnalytics({ config }: Props) {
+function HeimdallAnalytics({ config }: Props) {
   useEffect(() => {
     record(config)
-    // trace(config).then(() => console.log('Trace setup successful'))
+    trace(config).then(() => console.log('Trace setup successful'))
   }, [])
   return null
 }
@@ -74,4 +74,4 @@ function TrackClick({ name, payload, children }: TrackViewProps) {
   })
 }
 
-export { MXLAnalytics, TrackView, TrackClick, MXLErrorBoundary }
+export { HeimdallAnalytics, TrackView, TrackClick, HeimdallErrorBoundary }

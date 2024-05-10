@@ -9,7 +9,7 @@ import { formatError } from '../utils/format-error'
  * MXLErrorBoundary is a wrapper for ErrorBoundary that will send errors to Safaricom MXL.
  *
  */
-export function MXLErrorBoundary(props: ErrorBoundaryProps) {
+export function HeimdallErrorBoundary(props: ErrorBoundaryProps) {
   const queue = new Set()
 
   console.log(

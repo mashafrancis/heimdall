@@ -63,8 +63,8 @@ importers:
         specifier: ^0.30.10
         version: 0.30.10(@libsql/client@0.6.0)(@opentelemetry/api@1.8.0)(@types/react@18.3.1)(better-sqlite3@9.6.0)(kysely@0.27.3)(react@18.3.1)
       hono:
-        specifier: 3.11.2
-        version: 3.11.2
+        specifier: 4.3.3
+        version: 4.3.3
       isbot:
         specifier: ^5.1.6
         version: 5.1.6
@@ -93,6 +93,12 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@heimdall-logs/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      '@heimdall-logs/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@types/jsonwebtoken':
         specifier: ^9.0.6
         version: 9.0.6
@@ -352,6 +358,9 @@ importers:
       '@auth/core':
         specifier: ^0.30.0
         version: 0.30.0
+      '@clickhouse/client-web':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@libsql/client':
         specifier: ^0.6.0
         version: 0.6.0
@@ -759,6 +768,9 @@ packages:
 
   '@clickhouse/client-common@1.0.1':
     resolution: {integrity: sha512-3L6e0foP6VOktScoi6XWMjJyOpKCWgLUYgPVxP2c7gm6Kotq+iRmmmXtXTSg7B7uozcLZycTtPfIw2d80SYsYw==}
+
+  '@clickhouse/client-web@1.0.1':
+    resolution: {integrity: sha512-gKmfOxJ3+6kFtlmQaBd0sOz8t8lAiJcBfR9sx1Cmk4M38T5xxza7ZWhyGs3O6I7nJkU60RuM1MY8Woct6vMtRg==}
 
   '@clickhouse/client@1.0.1':
     resolution: {integrity: sha512-fluUNnE2R7COJ6rn6DorYfi4D+AQn3t2qeBtEq37bQV3pD4EbKrBfKAwJ13e1lmMWdQ2B9bJUTMqGsRIDdWhJw==}
@@ -3204,8 +3216,8 @@ packages:
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
-  electron-to-chromium@1.4.760:
-    resolution: {integrity: sha512-xF6AWMVM/QGQseTPgXjUewfNjCW2fgUcV/z5cSG0r+SiYcgtvcmRAL3oH/MSZwHBBD+fyKTXdQ4qGENJMSedEQ==}
+  electron-to-chromium@1.4.761:
+    resolution: {integrity: sha512-PIbxpiJGx6Bb8dQaonNc6CGTRlVntdLg/2nMa1YhnrwYOORY9a3ZgGN0UQYE6lAcj/lkyduJN7BPt/JiY+jAQQ==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -3615,10 +3627,6 @@ packages:
 
   hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
-
-  hono@3.11.2:
-    resolution: {integrity: sha512-UysqMvSVFBPoUvN8veT7w+lgVjbRYafZNsVQqrs1Ssrx8oByPBq9jwWaCLnjkGbfTydfDxILnPEf5/kbu8Wl/A==}
-    engines: {node: '>=16.0.0'}
 
   hono@4.3.3:
     resolution: {integrity: sha512-LDa1n/aLYK4CsZQyjQpFiaQgxiXCZp0WfcfliinQOH1Lqt4mIOvyw4qjmHihpKXsuXhkQHfHU2Erysp6oEdnVA==}
@@ -6067,6 +6075,10 @@ snapshots:
 
   '@clickhouse/client-common@1.0.1': {}
 
+  '@clickhouse/client-web@1.0.1':
+    dependencies:
+      '@clickhouse/client-common': 1.0.1
+
   '@clickhouse/client@1.0.1':
     dependencies:
       '@clickhouse/client-common': 1.0.1
@@ -7786,7 +7798,7 @@ snapshots:
   browserslist@4.23.0:
     dependencies:
       caniuse-lite: 1.0.30001617
-      electron-to-chromium: 1.4.760
+      electron-to-chromium: 1.4.761
       node-releases: 2.0.14
       update-browserslist-db: 1.0.15(browserslist@4.23.0)
 
@@ -8344,7 +8356,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  electron-to-chromium@1.4.760: {}
+  electron-to-chromium@1.4.761: {}
 
   emoji-regex@10.3.0: {}
 
@@ -8918,8 +8930,6 @@ snapshots:
   hoist-non-react-statics@3.3.2:
     dependencies:
       react-is: 16.13.1
-
-  hono@3.11.2: {}
 
   hono@4.3.3: {}
 
