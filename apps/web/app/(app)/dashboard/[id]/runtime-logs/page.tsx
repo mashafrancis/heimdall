@@ -8,7 +8,7 @@ export default function RuntimeLogsPage({
   params: { id: string }
 }) {
   return (
-    <SectionContainer>
+    <SectionContainer className="sm:py-12 py-14 md:py-12 lg:py-16">
       <PageHeader
         title="Runtime logs"
         description="A view of your application's runtime logs."
