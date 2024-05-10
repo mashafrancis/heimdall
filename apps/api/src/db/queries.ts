@@ -53,12 +53,11 @@ export const customEventsQuery = (
 export const tracesQuery = (
   startDate: string,
   endDate: string,
-  websiteId: string,
+  _websiteId: string,
 ) =>
   `SELECT *
    FROM default.otel_traces
-   WHERE ServiceName = '${websiteId}'
-     AND Timestamp <= '${endDate}'
+   WHERE Timestamp <= '${endDate}'
      AND Timestamp >= '${startDate}'
      AND SpanName != 'click'
    ORDER BY Timestamp DESC

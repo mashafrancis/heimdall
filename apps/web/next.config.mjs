@@ -9,6 +9,7 @@ const nextConfig = {
   poweredByHeader: false,
   typescript: { ignoreBuildErrors: true },
   experimental: {
+    instrumentationHook: true,
     serverComponentsExternalPackages: [
       'libsql',
       // "@libsql/client",
