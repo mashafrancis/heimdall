@@ -31,7 +31,7 @@ export const columns: ColumnDef<any>[] = [
     cell: ({ row }) => {
       const dateObj = dayjsTime(row.original.timestamp).local()
       return (
-        <div className="uppercase text-xs font-light">
+        <div className="uppercase font-light">
           {dateObj.format('MMM DD HH:mm:ss.SSS')}
         </div>
       )

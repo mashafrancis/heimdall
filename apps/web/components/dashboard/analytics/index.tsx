@@ -193,7 +193,7 @@ export default function Analytics({
           tooltip=" The percentage of visitors who quickly exit your website without exploring further."
         />
       </div>
-      <div className="grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
+      <div className="grid min-h-max grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7 mt-4">
         <Card className="md:col-span-4 shadow-none">
           {curTableTab === 'locations' ? (
             <Fragment>

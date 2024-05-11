@@ -12,7 +12,7 @@ interface Props {
 
 export default function WebsiteNav({ activePage, id }: Props) {
   return (
-    <nav className="relative z-20 hidden md:flex items-center bg-background w-full border-b">
+    <nav className="relative z-20 hidden md:flex items-center w-full border-b">
       <SectionContainer className="!py-0 flex gap-3 items-center">
         {Object.entries(website).map((obj: any) => {
           const site = obj[1]

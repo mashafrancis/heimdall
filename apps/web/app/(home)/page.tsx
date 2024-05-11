@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { auth } from '@/auth'
 import ExpandingArrow from '@/components/expanding-arrow'
+import { GetStartedButton } from '@/components/get-started-button'
 import { H4 } from '@/components/typography'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@heimdall-logs/ui'
@@ -81,17 +82,21 @@ export default async function HomePage() {
             performance.
           </p>
           <div className="mt-8 space-x-4">
-            <Link
-              href={user ? '/dashboard' : '/login'}
-              className={cn(
-                buttonVariants({
-                  size: 'large',
-                  type: 'primary',
-                }),
-              )}
-            >
-              {user ? 'Go to dashboard' : 'Get started'}
-            </Link>
+            {user ? (
+              <Link
+                href="/dashboard"
+                className={cn(
+                  buttonVariants({
+                    size: 'large',
+                    type: 'primary',
+                  }),
+                )}
+              >
+                Go to dashboard
+              </Link>
+            ) : (
+              <GetStartedButton />
+            )}
           </div>
         </div>
       </section>
