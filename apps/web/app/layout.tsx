@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import '@/styles/globals.css'
 // import Heimdall from '@heimdall-logs/tracker/react'
 
+import { ModalProvider } from '@/components/client-provider/modal-provider'
 import { constructMetadata } from '@/lib/construct-metadata'
 import { fontSans } from '@/lib/fonts'
 import { OpenStatusProvider } from '@openstatus/next-monitoring'
@@ -35,6 +36,7 @@ export default function RootLayout({
         <OpenStatusProvider dsn="heimdall" endpoint="/api/openstatus" />
         <ClientProvider>
           {children}
+          <ModalProvider />
           <Toaster
             className="font-sans font-normal"
             position="bottom-right"

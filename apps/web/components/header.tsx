@@ -8,6 +8,7 @@ import { ReactNode } from 'react'
 import { BackLink } from '@/components/arrow-button'
 import MobileMenu from '@/components/mobile-menu'
 import { UserAccountNav } from '@/components/user-account-nav'
+import { useSigninModal } from '@/hooks/use-signin-modal'
 import { cn } from '@/lib/utils'
 import { MainNavItem } from '@/types'
 import { Button } from '@heimdall-logs/ui'
@@ -59,6 +60,8 @@ function NavItem({ href, text }: { href: string; text: string }) {
 }
 
 function SiteHeader({ user, className }: Props) {
+  const signInModal = useSigninModal()
+
   return (
     <header
       className={cn(
@@ -90,8 +93,12 @@ function SiteHeader({ user, className }: Props) {
         {user ? (
           <UserAccountNav />
         ) : (
-          <Button type="alternative" className="hidden lg:block" asChild>
-            <Link href="/login">Login</Link>
+          <Button
+            type="default"
+            className="hidden lg:block"
+            onClick={signInModal.onOpen}
+          >
+            Login
           </Button>
         )}
       </div>
