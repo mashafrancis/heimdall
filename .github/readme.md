@@ -22,24 +22,7 @@ everything new in Next.js 13.
 - Written in **TypeScript**
 - Clickhouse
 
-## Setting up Clickhouse using docker
 
-    ```bash
-    docker run -d --name clickhouse-server --ulimit nofile=262144:262144 yandex/clickhouse-server
-    docker run -d --name clickhouse-client --link clickhouse-server:clickhouse-server yandex/clickhouse-client --host clickhouse-server
-    docker exec -it clickhouse-client clickhouse-client --host clickhouse-server
-    ```
-    
-    ```sql
-    CREATE DATABASE IF NOT EXISTS heimdall;
-    USE heimdall;
-    CREATE TABLE IF NOT EXISTS events (
-        id UUID,
-        type String,
-        data String,
-        created_at DateTime
-    ) ENGINE = MergeTree()
-    PARTITION BY toYYYYMM(created_at)
-    ORDER BY (created_at, id)
-    SETTINGS index_granularity = 8192;
-    ```
+## Repo Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/d0d487fcd55117f5d2f7b2d8401f19f64fe1df17.svg "Repobeats analytics image")

@@ -7,6 +7,7 @@ export default {
   out: './migrations',
   schema: './src/schema/index.ts',
   breakpoints: true,
+  dialect: 'sqlite',
   driver: 'turso',
   strict: true,
   dbCredentials: {

@@ -116,7 +116,7 @@ export const WebsiteForm = (props: Props) => {
       initialValues={{
         title: '',
         url: '',
-        slug: '',
+        id: '',
       }}
       validationSchema={toFormikValidationSchema(ZCreateWebsiteSchema)}
       onSubmit={onSubmit}
@@ -150,15 +150,15 @@ export const WebsiteForm = (props: Props) => {
               disabled={isSubmitting}
               onChange={() => {
                 const slug = generateSlug(values.url)
-                setFieldValue('slug', slug)
+                setFieldValue('id', slug)
               }}
             />
 
             <Input
-              id="slug"
-              name="slug"
+              id="id"
+              name="id"
               type="text"
-              label="Your website @mxl-console"
+              label="Your website @heimdall"
               placeholder="site_name"
               disabled={isSubmitting}
             />
