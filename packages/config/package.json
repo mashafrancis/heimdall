@@ -1,6 +1,0 @@
-{
-  "name": "@heimdall-logs/config",
-  "private": true,
-  "version": "0.0.1",
-  "files": ["tsconfig.base.json"]
-}

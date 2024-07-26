@@ -1,0 +1,35 @@
+{
+  "name": "@heimdall-logs/auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "react-server": "./src/index.rsc.ts",
+      "default": "./src/index.ts"
+    },
+    "./env": "./env.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@heimdall-logs/db": "workspace:*",
+    "@auth/core": "^0.34.1",
+    "@auth/drizzle-adapter": "^1.4.1",
+    "@t3-oss/env-nextjs": "^0.11.0",
+    "next": "^14.2.5",
+    "next-auth": "5.0.0-beta.19",
+    "react": "catalog:react18",
+    "react-dom": "catalog:react18",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@heimdall-logs/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

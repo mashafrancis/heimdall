@@ -7,7 +7,7 @@
     "email": "francismasha96@gmail.com"
   },
   "scripts": {
-    "build": "dotenv -- turbo build --log-order=grouped --parallel",
+    "build": "dotenv -- turbo build",
     "dev": "dotenv -- turbo run dev --parallel",
     "start": "dotenv -- turbo run start",
     "format": "biome format --write .",
