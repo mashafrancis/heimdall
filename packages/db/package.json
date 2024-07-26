@@ -15,13 +15,13 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@auth/core": "^0.31.0",
-    "@clickhouse/client-web": "^1.0.2",
-    "@libsql/client": "^0.6.0",
+    "@auth/core": "^0.34.1",
+    "@clickhouse/client-web": "^1.4.0",
+    "@libsql/client": "^0.7.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.21.4",
-    "drizzle-orm": "^0.30.10",
+    "drizzle-kit": "^0.23.0",
+    "drizzle-orm": "^0.32.1",
     "drizzle-zod": "^0.5.1",
     "zod": "^3.23.8"
   },

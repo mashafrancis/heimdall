@@ -1,4 +1,4 @@
-import { type Configuration, registerOTel } from '@heimdall-logs/nodejs-otel'
+import { type Configuration, registerOTel } from '@vercel/otel'
 
 export function register() {
   const config: Configuration = {
