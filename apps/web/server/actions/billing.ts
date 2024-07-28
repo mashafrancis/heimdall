@@ -1,10 +1,10 @@
 'use server'
+import { env } from '@/env'
 import { stripe } from '@/lib/stripe'
 import { PLANS } from '@/lib/stripe/plans'
 import { db } from '@heimdall-logs/db'
-import { env } from 'env.mjs'
 
-import { auth } from '@/auth'
+import { auth } from '@heimdall-logs/auth'
 import { queries } from '../query/queries'
 
 //TODO: look into this

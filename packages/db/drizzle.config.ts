@@ -1,17 +1,13 @@
-import * as dotenv from 'dotenv'
-import { type Config } from 'drizzle-kit'
+import type { Config } from 'drizzle-kit'
 
-dotenv.config()
+if (!process.env.POSTGRES_URL) {
+  throw new Error('Missing POSTGRES_URL')
+}
+
+const nonPoolingUrl = process.env.POSTGRES_URL.replace(':6543', ':5432')
 
 export default {
-  out: './migrations',
-  schema: './src/schema/index.ts',
-  breakpoints: true,
-  dialect: 'sqlite',
-  driver: 'turso',
-  strict: true,
-  dbCredentials: {
-    url: (process.env.TURSO_DB_URL as string) ?? 'file:./heimdall.db',
-    authToken: process.env.TURSO_DB_AUTH_TOKEN as string,
-  },
+  schema: './src/schema.ts',
+  dialect: 'postgresql',
+  dbCredentials: { url: nonPoolingUrl },
 } satisfies Config

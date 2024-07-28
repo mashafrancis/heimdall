@@ -1,10 +1,11 @@
 {
-  "name": "@heimdall-logs/server",
+  "name": "server",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "dotenv -e ../../.env -- bun run --hot src/index.ts",
-    "start": "NODE_ENV=production bun run src/index.ts",
+    "build": "bun build.ts",
+    "start": "NODE_ENV=production bun dist/index.js",
     "setup:geo": "tsx setup/geo.ts",
     "setup:clickhouse": "dotenv tsx setup/clickhouse-db.ts",
     "serve": "pm2 start dist/index.js --name heimdall",
@@ -24,7 +25,7 @@
     "detect-browser": "^5.3.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.32.1",
-    "hono": "4.5.1",
+    "hono": "4.5.2",
     "isbot": "^5.1.13",
     "jsonwebtoken": "^9.0.2",
     "kysely": "^0.27.4",

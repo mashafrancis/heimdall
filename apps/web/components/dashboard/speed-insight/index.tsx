@@ -1,5 +1,5 @@
 'use client'
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 import { useIsMobile } from '@/hooks/use-viewport'
 import { localSettingAtom } from '@/jotai/store'
 import { getLast24Hour } from '@/lib/time-helper'

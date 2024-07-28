@@ -1,8 +1,8 @@
-import { auth } from '@/auth'
 import Analytics from '@/components/dashboard/analytics'
 import SectionContainer from '@/components/layout/section-container'
 import { PageHeader } from '@/components/page-header'
 import { generateToken } from '@/lib/generate-token'
+import { auth } from '@heimdall-logs/auth'
 import { db } from '@heimdall-logs/db'
 
 export default async function AnalyticsPage({

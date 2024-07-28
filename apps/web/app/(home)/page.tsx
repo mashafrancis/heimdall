@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-import { auth } from '@/auth'
 import ExpandingArrow from '@/components/expanding-arrow'
 import { GetStartedButton } from '@/components/get-started-button'
 import { H4 } from '@/components/typography'
 import { cn } from '@/lib/utils'
+import { auth } from '@heimdall-logs/auth'
 import { buttonVariants } from '@heimdall-logs/ui'
 
 const features = [

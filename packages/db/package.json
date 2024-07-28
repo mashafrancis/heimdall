@@ -15,17 +15,20 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@auth/core": "^0.34.1",
+    "next-auth": "5.0.0-beta.19",
     "@clickhouse/client-web": "^1.4.0",
     "@libsql/client": "^0.7.0",
     "@paralleldrive/cuid2": "^2.2.2",
-    "dotenv": "^16.4.5",
-    "drizzle-kit": "^0.23.0",
+    "@t3-oss/env-core": "^0.11.0",
+    "@vercel/postgres": "^0.9.0",
     "drizzle-orm": "^0.32.1",
     "drizzle-zod": "^0.5.1",
-    "zod": "^3.23.8"
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@heimdall-logs/tsconfig": "workspace:*"
+    "@heimdall-logs/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.23.0",
+    "typescript": "catalog:"
   }
 }

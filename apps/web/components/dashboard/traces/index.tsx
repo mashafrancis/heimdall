@@ -1,8 +1,8 @@
 'use client'
 
+import { env } from '@/env'
 import { fetcher } from '@/lib/utils'
 import { HeimdallTraces } from '@heimdall-logs/types'
-import { env } from 'env.mjs'
 import useSWR from 'swr'
 
 import { TimeRange } from '@/components/dashboard/type'

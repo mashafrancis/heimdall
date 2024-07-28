@@ -7,9 +7,9 @@
     "email": "francismasha96@gmail.com"
   },
   "scripts": {
-    "build": "dotenv -- turbo build",
+    "build": "dotenv -- turbo run build",
     "dev": "dotenv -- turbo run dev --parallel",
-    "start": "dotenv -- turbo run start",
+    "start": "dotenv -e ./.env -- turbo run start",
     "format": "biome format --write .",
     "format:fix": "biome format --apply .",
     "lint": "turbo lint && manypkg check",

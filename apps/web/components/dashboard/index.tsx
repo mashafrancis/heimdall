@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useState } from 'react'
 
 import Traces from '@/components/dashboard/traces'
+import { env } from '@/env'
 import { localSettingAtom } from '@/jotai/store'
 import { getLast24Hour } from '@/lib/time-helper'
 import { cn, fetcher } from '@/lib/utils'
@@ -11,7 +12,6 @@ import { TrackClick } from '@heimdall-logs/tracker/react'
 import { GetInsightResponse } from '@heimdall-logs/types'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@heimdall-logs/ui'
 import { Card, CardContent, CardHeader, CardTitle } from '@heimdall-logs/ui'
-import { env } from 'env.mjs'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import {

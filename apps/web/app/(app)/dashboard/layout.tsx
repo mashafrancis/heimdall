@@ -2,7 +2,6 @@ import { redirect } from 'next/navigation'
 
 import { ReactNode } from 'react'
 
-import { auth } from '@/auth'
 import BottomNavigation from '@/components/bottom-navigation'
 import { MobileDashboardHeader } from '@/components/header'
 import { SideNav } from '@/components/side-nav'
@@ -10,6 +9,7 @@ import { StoreSetter } from '@/components/store-setter'
 import { dashboardConfig } from '@/config/dashboard'
 import { getTeams } from '@/server/query'
 import { getWebsite } from '@/server/query/website'
+import { auth } from '@heimdall-logs/auth'
 
 export const dynamic = 'force-dynamic'
 

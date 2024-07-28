@@ -2,10 +2,10 @@ import { redirect } from 'next/navigation'
 
 import { ReactNode } from 'react'
 
-import { auth } from '@/auth'
 import { MobileDashboardHeader } from '@/components/header'
 import { SideNav } from '@/components/side-nav'
 import { dashboardConfig } from '@/config/dashboard'
+import { auth } from '@heimdall-logs/auth'
 
 export default async function layout({ children }: { children: ReactNode }) {
   const session = await auth()

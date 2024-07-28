@@ -23,29 +23,15 @@
   },
   "typesVersions": {
     "*": {
-      "*": [
-        "dist/index.d.ts"
-      ],
-      "react": [
-        "dist/react/index.d.ts"
-      ]
+      "*": ["dist/index.d.ts"],
+      "react": ["dist/react/index.d.ts"]
     }
   },
   "types": "dist/index.d.ts",
-  "keywords": [
-    "heimdall",
-    "event tracker",
-    "web analytics",
-    "analytics"
-  ],
+  "keywords": ["heimdall", "event tracker", "web analytics", "analytics"],
   "author": "Francis Masha",
   "license": "MIT",
-  "files": [
-    "dist",
-    "package.json",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "package.json", "LICENSE", "README.md"],
   "devDependencies": {
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",

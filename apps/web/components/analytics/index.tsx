@@ -1,4 +1,4 @@
-import { env } from '@/env.mjs'
+import { env } from '@/env'
 import { HeimdallAnalytics } from '@heimdall-logs/tracker/react'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { Fragment } from 'react'

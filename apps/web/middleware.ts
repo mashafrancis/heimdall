@@ -1,4 +1,4 @@
-import { auth } from '@/auth'
+import { auth } from '@heimdall-logs/auth'
 import { Span, SpanStatusCode, trace as traceApi } from '@opentelemetry/api'
 import { NextResponse } from 'next/server'
 

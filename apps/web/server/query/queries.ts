@@ -1,8 +1,8 @@
+import { env } from '@/env'
 import { getIsWebsiteActive } from '@/lib/clickhouse'
 import { clickhouseClient as client } from '@heimdall-logs/db'
 import { db } from '@heimdall-logs/db'
 import { sql } from 'drizzle-orm'
-import { env } from 'env.mjs'
 
 export const getTodayVisitorsCount = (websiteId: string) => {
   const before24Hour = new Date(new Date().getTime() - 24 * 60 * 60 * 1000)

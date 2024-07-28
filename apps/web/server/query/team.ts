@@ -1,5 +1,5 @@
 'use server'
-import { auth } from '@/auth'
+import { auth } from '@heimdall-logs/auth'
 import { db } from '@heimdall-logs/db'
 
 export const getTeams = async () => {

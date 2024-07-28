@@ -1,11 +1,10 @@
-// import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import jwt from 'jsonwebtoken'
 
 import { clickhouseClient as client, db } from '@heimdall-logs/db'
-import { VitalData } from '@heimdall-logs/types/tracker'
+import { type VitalData } from '@heimdall-logs/types/tracker'
 import { detect } from 'detect-browser'
 import { showRoutes } from 'hono/dev'
 import { eventDB } from './db'
@@ -20,7 +19,7 @@ import { getTablesData } from './routes/table'
 import { getVitalsData } from './routes/vital-graph-table'
 import { getVitalInsight } from './routes/vital-insight'
 import { apiQuery, insightPubApiSchema, insightSchema } from './schema'
-import { Filter, HeimdallEvent, Path } from './type'
+import type { Filter, HeimdallEvent, Path } from './type'
 
 const app = new Hono({ strict: false })
 

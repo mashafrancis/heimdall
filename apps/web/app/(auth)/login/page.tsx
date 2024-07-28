@@ -1,8 +1,8 @@
-import { signIn } from '@/auth'
 import { BackLink } from '@/components/arrow-button'
 
 import { cn } from '@/lib/utils'
 import loginStyles from '@/styles/login.module.css'
+import { signIn } from '@heimdall-logs/auth'
 import { Button, Icons } from '@heimdall-logs/ui'
 import { Suspense } from 'react'
 import { z } from 'zod'

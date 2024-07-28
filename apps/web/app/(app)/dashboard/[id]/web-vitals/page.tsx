@@ -1,8 +1,8 @@
-import { auth } from '@/auth'
 import { SpeedInsight } from '@/components/dashboard/speed-insight'
 import SectionContainer from '@/components/layout/section-container'
 import { PageHeader } from '@/components/page-header'
 import { generateToken } from '@/lib/generate-token'
+import { auth } from '@heimdall-logs/auth'
 
 export default async function WebVitalsPage({
   params,

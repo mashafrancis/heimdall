@@ -1,7 +1,7 @@
 'use server'
 import { db } from '@heimdall-logs/db'
 
-import { auth } from '@/auth'
+import { auth } from '@heimdall-logs/auth'
 import { queries } from './queries'
 
 export const getWebsite = async () => {

@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
 
-import { auth } from '@/auth'
 import { Dashboard } from '@/components/dashboard'
 import { generateToken } from '@/lib/generate-token'
 import { queries } from '@/server/query/queries'
+import { auth } from '@heimdall-logs/auth'
 import { db } from '@heimdall-logs/db'
 import { schema } from '@heimdall-logs/db'
 import { eq } from 'drizzle-orm'

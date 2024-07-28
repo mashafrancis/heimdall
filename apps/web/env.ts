@@ -1,7 +1,16 @@
+import { env as authEnv } from '@heimdall-logs/auth/env'
 import { createEnv } from '@t3-oss/env-nextjs'
+import { vercel } from '@t3-oss/env-nextjs/presets'
 import { z } from 'zod'
 
 export const env = createEnv({
+  extends: [authEnv, vercel()],
+  shared: {
+    NODE_ENV: z
+      .enum(['development', 'production', 'test'])
+      .default('development'),
+  },
+
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars.
@@ -39,6 +48,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
+    NODE_ENV: process.env.NODE_ENV,
     TURSO_DB_URL: process.env.TURSO_DB_URL,
     TURSO_DB_AUTH_TOKEN: process.env.TURSO_DB_AUTH_TOKEN,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
@@ -60,4 +70,6 @@ export const env = createEnv({
     NEXT_PUBLIC_OTEL_SERVICE_NAME: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
     AUTH_SECRET: process.env.AUTH_SECRET,
   },
+  skipValidation:
+    !!process.env.CI || process.env.npm_lifecycle_event === 'lint',
 })

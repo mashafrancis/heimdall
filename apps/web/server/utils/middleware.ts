@@ -1,4 +1,4 @@
-import { auth } from '@/auth'
+import { auth } from '@heimdall-logs/auth'
 import { db } from '@heimdall-logs/db'
 import { ROLE } from '@heimdall-logs/types/models'
 import { inArray } from 'drizzle-orm'

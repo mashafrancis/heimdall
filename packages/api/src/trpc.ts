@@ -10,8 +10,8 @@ import { TRPCError, initTRPC } from '@trpc/server'
 import superjson from 'superjson'
 import { ZodError } from 'zod'
 
-import type { Session } from '@acme/auth'
-import { auth, validateToken } from '@acme/auth'
+import type { Session } from '@heimdall-logs/auth'
+import { auth, validateToken } from '@heimdall-logs/auth'
 import { db } from '@heimdall-logs/db'
 
 /**

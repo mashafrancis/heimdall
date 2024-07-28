@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { auth } from '@/auth'
+import { auth } from '@heimdall-logs/auth'
 import { SessionProvider } from 'next-auth/react'
 
 export const dynamic = 'force-dynamic'
