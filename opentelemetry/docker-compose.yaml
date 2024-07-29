@@ -7,7 +7,7 @@ x-default-logging: &logging
 
 services:
   otelcol:
-    image: otel/opentelemetry-collector-contrib
+    image: otel/opentelemetry-collector-contrib:0.102.0
     container_name: otelcol
     deploy:
       resources:
@@ -15,8 +15,13 @@ services:
           memory: 125M
     restart: always
     command: [ "--config=/etc/otelcol-config.yml" ]
+    environment:
+      - CLICKHOUSE_ENDPOINT=${CLICKHOUSE_ENDPOINT}
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}
     volumes:
       - ./otelcol-config.yml:/etc/otelcol-config.yml
+    expose:
+      - 4318
     ports:
       - "4317:4317"     # OTLP over gRPC receiver
       - "4318:4318"     # OTLP over HTTP receiver
