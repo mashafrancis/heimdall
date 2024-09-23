@@ -1,12 +1,14 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  logging: {
-    level: 'verbose',
-    fullUrl: true,
-  },
   reactStrictMode: true,
   swcMinify: true,
   output: 'standalone',
   poweredByHeader: false,
+  logging: {
+    fetches: {
+      fullUrl: process.env.NODE_ENV === 'development',
+    },
+  },
   typescript: { ignoreBuildErrors: true },
   experimental: {
     instrumentationHook: true,
@@ -32,24 +34,16 @@ const nextConfig = {
   rewrites: async () => [
     {
       source: '/api/trace',
-      destination: 'http://localhost:4318/v1/traces',
+      destination: process.env.NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT,
     },
     {
       source: '/api/heimdall',
-      destination: 'http://localhost:8000',
+      destination: process.env.NEXT_PUBLIC_API_URL,
     },
     {
       source: '/api/heimdall/:path*',
-      destination: `http://localhost:8000/:path*`,
+      destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
     },
-    // {
-    //   source: '/api/heimdall',
-    //   destination: env.NEXT_PUBLIC_API_URL,
-    // },
-    // {
-    //   source: '/api/trace',
-    //   destination: env.NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT,
-    // },
     {
       source: '/api/openstatus',
       destination: 'https://vitals.openstat.us/',

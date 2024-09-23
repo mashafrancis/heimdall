@@ -5,7 +5,6 @@ import type {
   NextAuthConfig,
   Session as NextAuthSession,
 } from 'next-auth'
-import Discord from 'next-auth/providers/discord'
 
 import { db } from '@heimdall-logs/db'
 
@@ -39,8 +38,7 @@ export const authConfig = {
       }
     : {}),
   trustHost: true,
-  secret: env.AUTH_SECRET,
-  providers: [Discord, GitHub({ allowDangerousEmailAccountLinking: true })],
+  providers: [GitHub({ allowDangerousEmailAccountLinking: true })],
   callbacks: {
     session: (opts) => {
       if (!('user' in opts))

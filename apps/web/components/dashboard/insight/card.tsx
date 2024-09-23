@@ -8,7 +8,8 @@ import {
 } from '@heimdall-logs/ui'
 import { Skeleton } from '@heimdall-logs/ui'
 import { Card, CardContent, CardHeader, CardTitle } from '@heimdall-logs/ui'
-import { ArrowDown, ArrowUpIcon, LucideIcon } from 'lucide-react'
+import { BadgeDelta } from '@tremor/react'
+import { LucideIcon } from 'lucide-react'
 
 export type InsightType = {
   title: string
@@ -27,7 +28,6 @@ export type InsightType = {
 
 export function InsightCard({
   title,
-  Icon,
   data,
   valuePrefix,
   BottomChildren,
@@ -40,56 +40,57 @@ export function InsightCard({
   return (
     <Card className="relative p-0 shadow-none">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4 pb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild className=" cursor-pointer">
-              <Icon className="h-5 w-5" />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{tooltip}</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <CardTitle className="text-base font-bold text-muted-foreground">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild className="cursor-pointer">
+                <span>{title}</span>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{tooltip}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </CardTitle>
+        {data.change ? (
+          <div className="flex items-center text-xs xl:text-sm">
+            <BadgeDelta
+              deltaType={increase ? 'moderateIncrease' : 'moderateDecrease'}
+              isIncreasePositive={true}
+            >
+              {' '}
+              {changePrefix ?? ''}
+              {data.change && `${data.change.toLocaleString()} %`}{' '}
+            </BadgeDelta>
+          </div>
+        ) : (
+          <div>-</div>
+        )}
       </CardHeader>
       {!isLoading && data ? (
         <CardContent className="px-4">
-          <div className="text-2xl font-semibold ordinal slashed-zero tabular-nums xl:text-3xl">{`${
-            data.current ? data.current.toLocaleString() : 0
-          } ${valuePrefix ?? ''}`}</div>
-          <div className=" flex items-center justify-between">
-            {data.change ? (
-              <div className=" flex items-center text-xs xl:text-sm">
-                {increase ? (
-                  <ArrowUpIcon className="w-4 text-green-500 xl:w-5" />
-                ) : (
-                  <ArrowDown className="w-4 text-red-500 xl:w-5" />
-                )}
-                <div>
-                  {' '}
-                  {changePrefix ?? ''}
-                  {data.change && `${data.change.toLocaleString()} %`}{' '}
-                </div>
-              </div>
-            ) : (
-              <div>-</div>
-            )}
-            {/* @ts-ignore */}
+          <div className="text-xl font-semibold tracking-tight xl:text-2xl flex flex-row items-center justify-between">
+            <div className="flex items-baseline gap-1">
+              <span className="font-mono">
+                {data.current ? data.current.toLocaleString().split(' ')[0] : 0}
+              </span>
+              <span className="text-base text-muted-foreground font-light">
+                {valuePrefix ?? ''}
+                {data.current
+                  ? data.current.toLocaleString().split(' ')[1]
+                  : ''}
+              </span>
+            </div>
             {BottomChildren ? <BottomChildren /> : null}
           </div>
         </CardContent>
       ) : (
         <CardContent className="px-4">
-          <div className="flex flex-col justify-center gap-5">
-            <div className="text-2xl font-bold xl:text-3xl">
-              <Skeleton className="h-6 w-20 rounded-md bg-gray-200 dark:bg-muted/50" />
-            </div>
-            <div className=" flex items-center justify-between">
-              <div className=" flex items-center text-xs xl:text-sm">
-                <Skeleton className="h-4 w-9 rounded-md bg-gray-200 dark:bg-muted/50" />
-              </div>
-              {BottomChildren ? <BottomChildren /> : null}
-            </div>
+          <div
+            className="text-xl font-semibold tracking-tight xl:text-2xl
+              flex flex-row items-center justify-between"
+          >
+            <Skeleton className="h-6 w-20 my-2 rounded-md bg-gray-200 dark:bg-muted/50" />
           </div>
         </CardContent>
       )}

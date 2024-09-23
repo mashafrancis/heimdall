@@ -17,7 +17,10 @@
   ],
   "version": "0.0.0",
   "license": "MIT",
-  "files": ["dist/**", "README.md"],
+  "files": [
+    "dist/**",
+    "README.md"
+  ],
   "private": false,
   "sideEffects": false,
   "scripts": {
@@ -29,13 +32,13 @@
   },
   "devDependencies": {
     "@heimdall-logs/tsconfig": "workspace:*",
-    "@types/react": "^18.3.3",
+    "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.40",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
     "react": "^18.3.1",
-    "tailwindcss": "^3.4.7",
-    "typescript": "^5.5.4"
+    "tailwindcss": "^3.4.12",
+    "typescript": "^5.6.2"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
@@ -64,19 +67,20 @@
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-toggle": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.2",
-    "@types/node": "^20.14.12",
+    "@types/node": "^22.5.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "formik": "^2.4.6",
-    "lucide-react": "^0.416.0",
+    "lucide-react": "^0.445.0",
     "next-themes": "^0.3.0",
-    "react-day-picker": "^9.0.4",
+    "react-day-picker": "^9.1.1",
     "react-feather": "^2.0.10",
-    "react-resizable-panels": "^2.0.22",
+    "react-resizable-panels": "^2.1.3",
+    "recharts": "^2.12.7",
     "sonner": "^1.5.0",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.5.2"
   },
   "peerDependencies": {
     "react": "^18.2.0",

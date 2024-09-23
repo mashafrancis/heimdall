@@ -43,7 +43,6 @@ export default async function AnalyticsPage({
         title="Web analytics"
         description="Track and analyze your website traffic and user behavior."
       />
-      {/* @ts-expect-error */}
       <Analytics token={token} website={website} />
     </SectionContainer>
   )

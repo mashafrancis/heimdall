@@ -12,9 +12,9 @@ exporters:
   # Clickhouse exporter
   clickhouse:
     endpoint: ${CLICKHOUSE_ENDPOINT}
-    database: default
+    database: heimdall
     username: default
-    password: ${CLICKHOUSE_PASSWORD}
+#    password: ${CLICKHOUSE_PASSWORD}
     logs_table_name: otel_logs
     traces_table_name: otel_traces
     metrics_table_name: otel_metrics

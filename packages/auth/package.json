@@ -18,19 +18,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/core": "^0.34.2",
-    "@auth/drizzle-adapter": "^1.4.2",
+    "@auth/core": "^0.35.0",
+    "@auth/drizzle-adapter": "^1.5.0",
     "@heimdall-logs/db": "workspace:*",
-    "@t3-oss/env-nextjs": "^0.11.0",
-    "next": "^14.2.5",
-    "next-auth": "5.0.0-beta.19",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "next": "^14.2.13",
+    "next-auth": "5.0.0-beta.20",
     "react": "catalog:react18",
     "react-dom": "catalog:react18",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@heimdall-logs/tsconfig": "workspace:*",
-    "typescript": "catalog:",
-    "@types/react": "catalog:react18"
+    "@types/react": "catalog:react18",
+    "typescript": "catalog:"
   }
 }
