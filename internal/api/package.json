@@ -21,12 +21,12 @@
   "dependencies": {
     "@heimdall-logs/auth": "workspace:*",
     "@heimdall-logs/db": "workspace:*",
-    "@trpc/server": "catalog:",
+    "@trpc/server": "11.0.0-rc.566",
     "superjson": "2.2.1",
-    "zod": "catalog:"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@heimdall-logs/tsconfig": "workspace:*",
-    "typescript": "catalog:"
+    "typescript": "^5.6.3"
   }
 }

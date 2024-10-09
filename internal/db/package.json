@@ -20,15 +20,15 @@
     "@paralleldrive/cuid2": "^2.2.2",
     "@t3-oss/env-core": "^0.11.1",
     "@vercel/postgres": "^0.10.0",
-    "drizzle-orm": "^0.33.0",
+    "drizzle-orm": "^0.34.1",
     "drizzle-zod": "^0.5.1",
-    "next-auth": "5.0.0-beta.20",
-    "zod": "catalog:"
+    "next-auth": "5.0.0-beta.21",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@heimdall-logs/tsconfig": "workspace:*",
     "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.24.2",
-    "typescript": "catalog:"
+    "drizzle-kit": "^0.25.0",
+    "typescript": "^5.6.3"
   }
 }
