@@ -1,0 +1,67 @@
+enum AvailableRegions {
+  auto
+  arn1
+  bom1
+  cdg1
+  cle1
+  cpt1
+  dub1
+  fra1
+  gru1
+  hkg1
+  hnd1
+  iad1
+  icn1
+  kix1
+  lhr1
+  pdx1
+  sfo1
+  sin1
+  syd1
+}
+
+enum Methods {
+  GET
+  POST
+}
+
+enum Periodicity {
+  ONE_MINUTE
+  FIVE_MINUTES
+  TEN_MINUTES
+  THIRTY_MINUTES
+  ONE_HOUR
+  OTHER
+}
+
+enum JobType {
+  WEBSITE
+  CRON
+  OTHER
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+model Monitor {
+  id          String           @id @default(cuid())
+  name        String           @db.VarChar(256)
+  description String           @db.VarChar(256)
+  periodicity Periodicity      @default(OTHER)
+  jobType     JobType          @default(OTHER)
+  status      Status           @default(INACTIVE)
+  active      Boolean          @default(false)
+  regions     AvailableRegions @default(auto)
+  url         String           @unique
+  headers     String?
+  body        String?
+  method      Methods          @default(GET)
+  page        Page             @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  pageId      String
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now()) @updatedAt
+  TeamMonitor TeamMonitor[]
+}

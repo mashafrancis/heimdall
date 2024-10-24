@@ -1,16 +1,11 @@
-// import { skipCSRFCheck } from '@auth/core'
-import { DrizzleAdapter } from '@auth/drizzle-adapter'
 import type {
   DefaultSession,
   NextAuthConfig,
   Session as NextAuthSession,
 } from 'next-auth'
-
-import { db } from '@heimdall-logs/db'
-
-import { accounts, sessions, users } from '@heimdall-logs/db/src/schema'
 import GitHub from 'next-auth/providers/github'
 import { env } from '../env'
+import { prismaAdapter } from './adapter'
 
 declare module 'next-auth' {
   interface Session {
@@ -20,16 +15,10 @@ declare module 'next-auth' {
   }
 }
 
-const adapter = DrizzleAdapter(db, {
-  usersTable: users,
-  accountsTable: accounts,
-  sessionsTable: sessions,
-})
-
 export const isSecureContext = env.NODE_ENV !== 'development'
 
 export const authConfig = {
-  adapter,
+  adapter: prismaAdapter,
   // In development, we need to skip checks to allow Expo to work
   ...(!isSecureContext
     ? {
@@ -59,7 +48,7 @@ export const validateToken = async (
   token: string,
 ): Promise<NextAuthSession | null> => {
   const sessionToken = token.slice('Bearer '.length)
-  const session = await adapter.getSessionAndUser?.(sessionToken)
+  const session = await prismaAdapter.getSessionAndUser?.(sessionToken)
   return session
     ? {
         user: {
@@ -71,5 +60,5 @@ export const validateToken = async (
 }
 
 export const invalidateSessionToken = async (token: string) => {
-  await adapter.deleteSession?.(token)
+  await prismaAdapter.deleteSession?.(token)
 }

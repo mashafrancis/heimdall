@@ -12,7 +12,7 @@ import { ZodError } from 'zod'
 
 import type { Session } from '@heimdall-logs/auth'
 import { auth, validateToken } from '@heimdall-logs/auth'
-import { db } from '@heimdall-logs/db'
+import { client } from '@heimdall-logs/db'
 
 /**
  * Isomorphic Session getter for API requests
@@ -49,7 +49,7 @@ export const createTRPCContext = async (opts: {
 
   return {
     session,
-    db,
+    db: client,
     token: authToken,
   }
 }

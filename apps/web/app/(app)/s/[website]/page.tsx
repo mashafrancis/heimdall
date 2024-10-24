@@ -4,7 +4,7 @@ import { Dashboard } from '@/components/dashboard'
 import { generateToken } from '@/lib/generate-token'
 import { queries } from '@/server/query/queries'
 import { auth } from '@heimdall-logs/auth'
-import { db } from '@heimdall-logs/db'
+import { client } from '@heimdall-logs/db'
 import { schema } from '@heimdall-logs/db'
 import { eq } from 'drizzle-orm'
 
@@ -19,7 +19,7 @@ export default async function Page({
     id: user?.id ?? 'public',
     website: params.website as string,
   })
-  const websites = await db.query.website.findMany({
+  const websites = await client.query.website.findMany({
     with: {
       teamWebsites: {
         with: {
@@ -51,7 +51,7 @@ export default async function Page({
           const haveSession = (await queries.getIsWebsiteActive(params.website))
             .length
           if (haveSession) {
-            await db
+            await client
               .update(schema.website)
               .set({
                 active: true,

@@ -3,7 +3,7 @@ import SectionContainer from '@/components/layout/section-container'
 import { PageHeader } from '@/components/page-header'
 import { generateToken } from '@/lib/generate-token'
 import { auth } from '@heimdall-logs/auth'
-import { db } from '@heimdall-logs/db'
+import { client } from '@heimdall-logs/db'
 
 export default async function AnalyticsPage({
   params,
@@ -17,7 +17,7 @@ export default async function AnalyticsPage({
     website: params.id as string,
   })
 
-  const websites = await db.query.website.findMany({
+  const websites = await client.query.website.findMany({
     with: {
       teamWebsites: {
         with: {

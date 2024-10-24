@@ -3,7 +3,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import jwt from 'jsonwebtoken'
 
-import { clickhouseClient as client, db } from '@heimdall-logs/db'
+import { clickhouseClient as client, client } from '@heimdall-logs/db'
 import { type VitalData } from '@heimdall-logs/types/tracker'
 import { detect } from 'detect-browser'
 import { showRoutes } from 'hono/dev'
@@ -229,7 +229,7 @@ app.get('/v1/hits', async (c) => {
   if (!apiKey) {
     return c.json({ message: 'Unauthorized' }, 401)
   }
-  const site = await db.query.apiKey.findFirst({
+  const site = await client.query.apiKey.findFirst({
     where(fields, operators) {
       return operators.and(operators.eq(fields.token, apiKey))
     },
@@ -279,7 +279,7 @@ app.get('/v1/insight', async (c) => {
       429,
     )
   }
-  const site = await db.query.apiKey.findFirst({
+  const site = await client.query.apiKey.findFirst({
     where(fields, operators) {
       return operators.and(operators.eq(fields.token, apiKey))
     },

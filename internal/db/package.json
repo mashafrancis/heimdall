@@ -7,28 +7,30 @@
   "author": "Francis Masha",
   "license": "ISC",
   "scripts": {
-    "generate": "drizzle-kit generate:sqlite",
-    "push": "drizzle-kit push:sqlite",
-    "studio": "pnpm with-env drizzle-kit studio --port 3333",
-    "migrate": "pnpm with-env tsx src/migrate.mts",
-    "dev": "turso dev --db-file heimdall.db",
-    "with-env": "dotenv -e ../../.env --"
+    "dev": "pnpm with-env prisma studio --browser none",
+    "db:generate": "pnpm with-env prisma generate && npx prisma format",
+    "db:reset": "pnpm with-env prisma migrate reset",
+    "codegen": "pnpm with-env prisma generate && npx prisma format",
+    "migrate": "pnpm with-env prisma migrate dev",
+    "migrate:deploy": "pnpm with-env prisma migrate deploy",
+    "push": "pnpm with-env prisma db push",
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "format": "biome format .",
+    "lint": "biome check .",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env -c --"
   },
   "dependencies": {
-    "@clickhouse/client-web": "^1.6.0",
-    "@libsql/client": "^0.14.0",
-    "@paralleldrive/cuid2": "^2.2.2",
-    "@t3-oss/env-core": "^0.11.1",
-    "@vercel/postgres": "^0.10.0",
-    "drizzle-orm": "^0.34.1",
-    "drizzle-zod": "^0.5.1",
-    "next-auth": "5.0.0-beta.21",
-    "zod": "^3.23.8"
+    "@prisma/adapter-pg": "^5.20.0",
+    "@prisma/client": "^5.20.0",
+    "@prisma/extension-optimize": "^1.0.1",
+    "async-cache-dedupe": "^2.2.0",
+    "dotenv-cli": "^7.4.2",
+    "pg": "^8.13.0"
   },
   "devDependencies": {
-    "@heimdall-logs/tsconfig": "workspace:*",
-    "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.25.0",
+    "@types/pg": "^8.11.10",
+    "prisma": "^5.20.0",
     "typescript": "^5.6.3"
   }
 }

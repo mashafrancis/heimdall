@@ -1,5 +1,5 @@
 import { kafka } from '@heimdall-logs/clickhouse'
-import { clickhouseClient as client, db, schema } from '@heimdall-logs/db'
+import { clickhouseClient as client, client, schema } from '@heimdall-logs/db'
 import { sql } from 'drizzle-orm'
 
 import { VitalDateWithSession } from '@heimdall-logs/types/tracker'
@@ -179,7 +179,7 @@ const createEvent = () => {
         }
       },
       sqlite: async () =>
-        db.insert(schema.events).values({
+        client.insert(schema.events).values({
           id,
           sessionId,
           visitorId,
@@ -233,7 +233,7 @@ const createEvents = (data: InsertEventParams[]) => {
       }
     },
     sqlite: async () => {
-      await db.insert(schema.events).values(
+      await client.insert(schema.events).values(
         data.map((d) => ({
           ...d,
           timestamp: new Date(),
@@ -252,7 +252,7 @@ async function getHitsData(
   return {
     sqlite: async () => {
       const event = schema.events
-      return await db
+      return await client
         .select()
         .from(event)
         .where(
@@ -297,7 +297,7 @@ async function getCustomEventData(
   return {
     sqlite: async () => {
       const event = schema.events
-      return await db
+      return await client
         .select()
         .from(event)
         .where(
@@ -361,7 +361,7 @@ function getSiteVitals(websiteId: string, startDate: Date, endDate: Date) {
   return {
     sqlite: async () => {
       const event = schema.events
-      return await db
+      return await client
         .select()
         .from(event)
         .where(
@@ -402,7 +402,7 @@ async function getTraceData(
   return {
     sqlite: async () => {
       const event = schema.events
-      return await db
+      return await client
         .select()
         .from(event)
         .where(

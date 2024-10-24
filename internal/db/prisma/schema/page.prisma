@@ -1,0 +1,13 @@
+model Page {
+  id           String    @id @default(cuid())
+  title        String    @db.VarChar(256)
+  description  String    @db.VarChar(256)
+  icon         String?
+  slug         String    @unique
+  customDomain String    @db.VarChar(256)
+  published    Boolean   @default(false)
+  monitor      Monitor[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
